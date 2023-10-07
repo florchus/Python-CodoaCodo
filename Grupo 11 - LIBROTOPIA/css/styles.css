@@ -20,6 +20,7 @@
    border-radius: 0 0 1vw 1vw ;
    display: flex;
    justify-content:space-around;
+   align-items: center;
 }
 /* Estilos para el modo Día */
 html.modoDia {
@@ -70,4 +71,35 @@ html.modoNoche {
 .item2 {
     border-radius: 1vw;
     padding: 1vw;   
+}
+
+.menu{
+    /* buscar los valores para avanzar */
+    padding: 1vw;
+    width: 10vw ;
+    height: 5vh;
+    font-family: Ubuntu;
+    font-size:15px;
+    background-color: grey;
+}
+
+.formulario{
+    padding: 3vw;
+    font-family: Ubuntu;
+    font-size:15px;
+}
+
+.email{
+    padding: 1vw;
+}
+
+.pass1{
+    padding: 1vw;
+}
+
+.pass2{
+    padding: 1vw;
+}
+.B-registro{
+    
 }

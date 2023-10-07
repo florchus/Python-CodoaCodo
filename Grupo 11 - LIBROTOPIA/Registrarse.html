@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>LibroTopía</title>
+</head>
+<body>
+    <section class="contenedor">
+        <div class="item1 header">
+            <div class="menu">Registrarse</div>
+            <div class="menu">Iniciar Sesion</div>
+            <div class="menu">Modo Invitado</div>
+            <button id="modoDiaNoche"></button>
+        </div>
+        <div class="item2 left">left</div>
+        <!-- hay que poner un summary de lo que hace la pagina, colocar algunos libros -->
+        <div class="item2 contenido">REGISTRO
+            <div class="formulario">
+                <form>
+                    <div class="email">
+                        <label for="correo">CORREO ELECTRONICO</label>
+                        <input type="email" name="correo" id="correo">
+                    </div>
+                    <div class="pass1">
+                        <label for="password">CONTRASEÑA</label>
+                        <input type="password">
+                    </div>
+                    <div class="pass2">
+                        <!-- Falta validar que ambas contraseñas coincidan -->
+                        <label for="repass"> REINGRESAR CONTRASEÑA</label>
+                        <input type="password">
+                    </div>
+                    <div class="B-registro">
+                        <button type="submit">REGISTRARSE</button>
+                        <button type="reset">BORRAR</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="item1 footer">footer</div>
+    </section>
+    <script src="js/codigo.js"></script> 
+</body>
+</html>
