@@ -1,0 +1,73 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+.contenedor{
+    display: grid;
+    grid-template: 10vh 1fr 10vh / 10vw 1fr;
+    grid-template-areas:    "header header" 
+                            "left contenido" 
+                            "footer footer";
+    grid-gap: 1vw;
+    height: 100vh;
+}
+
+.header {
+   grid-area: header;
+   border-radius: 0 0 1vw 1vw ;
+   display: flex;
+   justify-content:space-around;
+}
+/* Estilos para el modo Día */
+html.modoDia {
+    background-color: #fbfbfb;
+    color: #000000;
+}
+  
+/* Estilos para el modo Noche */
+html.modoNoche {
+    background-color: #121212;
+    color: #fbfbfb;
+}
+/* Botón modo Día Noche */
+#modoDiaNoche {
+    background-image: url("../css/iconos/dia.png");
+    background-size: cover;
+    border: none;
+    background-repeat: no-repeat;  
+    background-color:transparent;
+    width: 3vw;
+    height: 3vw;
+    margin-right: 0.5vw;
+    cursor: pointer;
+}
+
+.left {
+    grid-area: left;
+    background-color:rgba(175, 89, 158, 0.3);
+    margin-left: 1vw;
+}
+
+.contenido {
+    grid-area: contenido;
+    background-color:rgba(153, 204, 255, 0.5);
+    margin-right: 1vw;
+}
+
+.footer {
+    grid-area: footer;
+    border-radius: 1vw 1vw 0 0;
+}
+
+.item1{
+    background-color: #af599e;
+    padding: 1vw;
+}
+
+.item2 {
+    border-radius: 1vw;
+    padding: 1vw;   
+}
