@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" href="../img/Logo.ico">
+    <title>LibroTopía</title>
+</head>
+<body>
+    <section class="contenedor">
+        <div class="item1 header">
+            <div id="logo">
+                <img src="img/Nombre completo.jpg" alt="logo">
+                <div>LibroTopía</div>
+            </div>
+            <div id="menu">
+                <nav id="menu1">
+                    <h1>Panel de Usuario</h1>
+                </nav>
+            </div>
+            <button id="modoDiaNoche"></button>
+        </div>
+        <div class="item2 left">
+            <button id="cambiarSeccion">Cambiar a Preferencias de Lectura</button>
+            <button id="BotonDatosPersonales" disabled>Datos Personales</button>
+            <button id="BotonPreferenciasLectura">Preferencias de Lectura</button>
+        </div>
+        <div class="item2 contenido">
+            <div class="container" id="datosPersonales">
+                <h1>Datos Personales</h1>
+                <form onsubmit="return validarFormularioUsuario()"> <!-- action="procesar_usuario.php" method="post" -->
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" id="apellido" name="apellido" required>
+                    </div>  
+                    <div class="form-group">
+                        <label for="DNI">DNI:</label>
+                        <input type="number" id="DNI" name="dni" placeholder="Coloque sólo números" required>
+                    </div>                          
+                    <div class="form-group">
+                        <label for="direccion">Dirección:</label>
+                        <input type="text" id="direccion" name="direccion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="number" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fechana">Fecha de Nacimiento: </label>
+                        <input type="date" name="fechana" required>
+                    </div>
+                    <p>Género:
+                        <input type="radio" name="genero" value="Hombre" checked>Hombre
+                        <input type="radio" name="genero" value="Mujer">Mujer
+                        <input type="radio" name="genero" value="Otro"> Otro
+                    </p>
+                    <button type="submit" class="btn">Actualizar</button>
+                </form>
+            </div>
+            <div class="container" id="preferenciasLectura" style="display: none;">
+                <h1>Preferencias de Lectura</h1>
+  
+                <form id="generosForm">
+                    <input type="checkbox" id="generoAventura" name="libroGenero" value="Aventura">
+                    <label for="generoAventura">Aventura</label><br>
+            
+                    <input type="checkbox" id="generoMisterio" name="libroGenero" value="Misterio">
+                    <label for="generoMisterio">Misterio</label><br>
+            
+                    <input type="checkbox" id="generoNaturalez" name="libroGenero" value="Naturalez">
+                    <label for="generoNaturaleza">Naturaleza</label><br>
+            
+                    <input type="checkbox" id="generoRomance" name="libroGenero" value="Romance">
+                    <label for="generoRomance">Romance</label><br>
+            
+                    <button type="submit">Guardar Preferencias</button>
+                </form>
+            </div>              
+        </div>
+        <div class="item1 footer">footer</div>
+    </section>
+    <script src="../js/codigo.js"></script> 
+</body>
+</html>
