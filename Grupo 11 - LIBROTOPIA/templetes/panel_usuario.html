@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="icon" href="../img/Logo.ico">
+    <link rel="icon" href="../css/iconos/LogoTemp.ico">
     <title>LibroTopía</title>
 </head>
+
 <body>
     <section class="contenedor">
         <div class="item1 header">
             <div id="logo">
-                <img src="img/Nombre completo.jpg" alt="logo">
+                <img src="../css/iconos/LogoTemp.png" alt="logo">
                 <div>LibroTopía</div>
             </div>
             <div id="menu">
@@ -38,11 +39,11 @@
                     <div class="form-group">
                         <label for="apellido">Apellido:</label>
                         <input type="text" id="apellido" name="apellido" required>
-                    </div>  
+                    </div>
                     <div class="form-group">
                         <label for="DNI">DNI:</label>
                         <input type="number" id="DNI" name="dni" placeholder="Coloque sólo números" required>
-                    </div>                          
+                    </div>
                     <div class="form-group">
                         <label for="direccion">Dirección:</label>
                         <input type="text" id="direccion" name="direccion" required>
@@ -65,26 +66,37 @@
             </div>
             <div class="container" id="preferenciasLectura" style="display: none;">
                 <h1>Preferencias de Lectura</h1>
-  
+
                 <form id="generosForm">
-                    <input type="checkbox" id="generoAventura" name="libroGenero" value="Aventura">
-                    <label for="generoAventura">Aventura</label><br>
-            
-                    <input type="checkbox" id="generoMisterio" name="libroGenero" value="Misterio">
-                    <label for="generoMisterio">Misterio</label><br>
-            
-                    <input type="checkbox" id="generoNaturalez" name="libroGenero" value="Naturalez">
-                    <label for="generoNaturaleza">Naturaleza</label><br>
-            
-                    <input type="checkbox" id="generoRomance" name="libroGenero" value="Romance">
-                    <label for="generoRomance">Romance</label><br>
-            
-                    <button type="submit">Guardar Preferencias</button>
+                    <div class="form-genero">
+                        <input type="checkbox" id="generoAventura" name="libroGenero" value="aventure">
+                        <label for="generoAventura">
+                            Aventura<img src="../css/iconos/LogoTemp.png" alt="logo" id="logoGenero"></label>
+                    </div>
+                    <div class="form-genero">
+                        <input type="checkbox" id="generoMisterio" name="libroGenero" value="mistery">
+                        <label for="generoMisterio">Misterio<img src="../css/iconos/LogoTemp.png" alt="logo"
+                                id="logoGenero"></label>
+                    </div>
+
+                    <div class="form-genero">
+                        <input type="checkbox" id="generoNaturaleza" name="libroGenero" value="nature">
+                        <label for="generoNaturaleza">Naturaleza<img src="../css/iconos/LogoTemp.png" alt="logo"
+                                id="logoGenero"></label>
+                    </div>
+                    <div class="form-genero">
+                        <input type="checkbox" id="generoRomance" name="libroGenero" value="love">
+                        <label for="generoRomance">Romance<img src="../css/iconos/LogoTemp.png" alt="logo"
+                                id="logoGenero"></label>
+                    </div>
+                    <button type="submit" class="btn">Ver Libros</button>
                 </form>
-            </div>              
+            </div>
         </div>
         <div class="item1 footer">footer</div>
     </section>
-    <script src="../js/codigo.js"></script> 
+    <script src="../js/codigo.js"></script>
+    <script src="../js/codigo_panel_usuario.js"></script>
 </body>
+
 </html>

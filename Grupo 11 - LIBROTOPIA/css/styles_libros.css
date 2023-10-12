@@ -1,0 +1,66 @@
+
+/*======================================== Estilos para tira de libros ============================================ */
+/* Aplica los colores a los div de género */
+#divGeneroaventure {
+  background-color: var(--color-aventura);
+}
+
+#divGenerolove {
+  background-color: var(--color-romance);
+}
+
+#divGeneromistery {
+  background-color: var(--color-misterio);
+}
+
+#divGeneronature {
+  background-color: var(--color-naturaleza);
+}
+
+.encabezadoGenero{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lista-libros {
+  display: flex;
+}
+
+.contenedor-libros {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  align-items: center;
+  width: 95%;
+  margin: 0 1vw;
+}
+
+.libros {
+  display: flex;
+  width: max-content;
+  transition: transform 0.5s ease;
+}
+
+.libros img {
+  width: 10vw;
+  margin-right: 1vw;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.flecha {
+  width: 2vw;
+}
+
+#divGeneroaventure, #divGeneromistery, #divGeneronature, #divGenerolove{
+  max-width: 85vw;
+  margin-top: 5vh;
+}
+/* h1{
+  text-align: center;
+}; */

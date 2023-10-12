@@ -9,6 +9,13 @@
     font-family: 'Lato', sans-serif;
 }
 
+:root {
+  --color-aventura: #007F4C;     /* Color verde oscuro para Aventura */
+  --color-romance: #FF69B4;      /* Color rosa para Romance */
+  --color-misterio: #4B0082;     /* Color morado oscuro para Misterio */
+  --color-naturaleza: #228B22;  /* Color verde para Naturaleza */
+}
+
 html {
   font-size: 2.5vw;
   min-font-size: 18px; /* Tamaño de letra base para dispositivos móviles */
@@ -49,11 +56,19 @@ html.modoNoche {
 #logo{
     display: flex;
     width: 40vw;
-    align-items: center;
+    align-items:center;
+    justify-content:flex-start;
+
 } 
-/* #logo img{
-    width: 40vw;
-} */
+#logo img{
+    width: 5vw;
+    margin-right: 1vw;
+}
+#logoGenero{
+  width: 3vw;
+  margin-left: 1vw;
+}
+
 #logo div {
     font-family: 'Satisfy', cursive; 
     font-size: 150%; 
@@ -171,3 +186,37 @@ html.modoNoche {
     width: 90%;
     line-height: 1.5;
   }
+/* ============================== Preferencias de lectura ==============================*/
+/* Establece colores de fondo para cada género */
+#generoAventura + label {
+  background-color: var(--color-aventura);
+}
+
+#generoMisterio + label {
+  background-color: var(--color-misterio);
+}
+
+#generoNaturaleza + label {
+  background-color: var(--color-naturaleza);
+}
+
+#generoRomance + label  {
+  background-color: var(--color-romance);
+}
+
+.form-genero {
+  display: flex; 
+  align-items: center; 
+  gap: 1vw; 
+  margin-bottom: 1vh;
+}
+
+.form-genero label {
+  display: flex; 
+  align-items: center; 
+  padding: 1vw; 
+  flex: 1; 
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
