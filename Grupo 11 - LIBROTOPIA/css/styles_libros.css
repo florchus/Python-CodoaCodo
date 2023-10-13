@@ -21,6 +21,7 @@
   display:flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 2vh;
 }
 
 .lista-libros {
@@ -55,12 +56,30 @@ button {
 
 .flecha {
   width: 2vw;
+  margin: 0 1vw;
 }
 
 #divGeneroaventure, #divGeneromistery, #divGeneronature, #divGenerolove{
   max-width: 85vw;
-  margin-top: 5vh;
+  margin-top: 3vh;
+  padding: 2vh 0;
+  border-radius: 1vw;
 }
-/* h1{
+
+.tarjetas {
+  display: flex;
+  align-items: center;
+  height: 5vh;
+  background-color: #888888;
+  width: 95%;
+  margin: 2vh auto 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.tarjeta {
   text-align: center;
-}; */
+  font-size: 90%;
+  margin: auto;
+}
+

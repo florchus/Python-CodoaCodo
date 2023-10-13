@@ -5,115 +5,154 @@ const urlParametros = new URLSearchParams(window.location.search);
 // divide en un arreglo utilizando la coma como separador
 let generosSeleccionados = urlParametros.get("generos").split(",");
 
+// Indices para mover la cinta de portada de cada género.
+const generosIndices = {};
+
+
 generosSeleccionados.forEach(genero => {
+  // Crear la URL de la API basada en el género actual
   const apiUrl = `https://openlibrary.org/subjects/${genero}.json?limit=10`;
+
+  // Arreglo para almacenar los libros del género actual
+  const librosGenero = [];
+
+  // Realizar la consulta a la API
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      data.works.forEach(book => {
+        const titulo = book.title;
+        const autor = book.authors[0]?.name || 'Desconocido';
+        const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
+
+        // Agregar el libro al arreglo del género actual
+        librosGenero.push({ titulo, autor, coverUrl });
+      });
+      // Añadir los libros al div del género correspondiente
+      mostrarLibrosEnSeccion(librosGenero, genero);
+    })
+    .catch(error => console.error(error));
 });
 
-const apiUrl = 'https://openlibrary.org/subjects/love.json?limit=10';
-let Lista_libros = [];
-let librosDerecha = [];
-let indiceLibroPrincipal = 0;
 
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    data.works.forEach(book => {
-      const titulo = book.title;
-      const autor = book.authors[0]?.name || 'Desconocido';
-      const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
-      Lista_libros.push(coverUrl);
-    });
+/* function mostrarLibrosEnSeccion(libros, genero) {
+  // Identificar la sección correspondiente en el HTML basada en el género
+  const seccion = document.getElementById(`divGenero${genero}`);
+  // Coloca visible el div correspondiente
+  seccion.style.display = 'block';
 
-    // Para grupo de tres libros
-    inicializarGaleria();
+  // Obtén el contenedor de libros dentro de la sección
+  const contenedorLibros = seccion.querySelector('.libros');
 
-    // Variables para rastrear el índice actual
-    let indiceActual = 0;
-    const indiceMaximo = Lista_libros.length - 1;
-    console.log("indiceMaximo", indiceMaximo);
-    // Inicializa la página creando y agregando las imágenes para la lista
-    crearYAgregarImagenes();
+  // Limpia el contenido
+  contenedorLibros.innerHTML = '';
 
-  })
-  .catch(error => console.error(error));
-
-
-
-/*======================================== Tres grupos de libros ============================================ */
-
-function inicializarGaleria() {
-  const libroIzquierda = document.getElementById('libroIzquierda');
-  const libroPrincipal = document.getElementById('libroPrincipal');
-  const libroDerecha = document.getElementById('libroDerecha');
-
-  libroIzquierda.src = Lista_libros[indiceLibroPrincipal];
-}
-
-function libroSiguiente() {
-  console.log("siguiente ", indiceLibroPrincipal);
-  if (indiceLibroPrincipal <= Lista_libros.length) {
-    indiceLibroPrincipal++;
-    libroDerecha.src = libroPrincipal.src;
-    libroPrincipal.src = libroIzquierda.src;
-    libroIzquierda.src = Lista_libros[indiceLibroPrincipal];
-  }
-}
-
-function libroAnterior() {
-  console.log("Anterior ", indiceLibroPrincipal);
-  if (indiceLibroPrincipal > 0) {
-    indiceLibroPrincipal--;
-    libroIzquierda.src = libroPrincipal.src;
-    libroPrincipal.src = libroDerecha.src;
-    libroDerecha.src = Lista_libros[indiceLibroPrincipal - 2];
-  }
-}
-
-/*======================================== Lista de libros ============================================ */
-
-// Obtén referencias a elementos HTML
-const contenedorLibros = document.querySelector('.libros');
-const btnAnterior = document.getElementById('btnAnterior');
-const btnSiguiente = document.getElementById('btnSiguiente');
-// Variables para rastrear el índice actual
-let indiceActual = 0;
-let indiceMaximo;
-
-// Crea y agrega las imágenes al contenedor
-function crearYAgregarImagenes() {
-  contenedorLibros.innerHTML = ''; // Limpia el contenido actual
-  Lista_libros.forEach((url, indice) => {
+  // Agrega las imágenes de los libros al contenedor
+  libros.forEach(libro => {
     const imagen = document.createElement('img');
-    imagen.src = url;
-    imagen.alt = `Portada de libro ${indice + 1}`;
+    imagen.src = libro.coverUrl;
+    imagen.alt = `Portada de libro: ${libro.titulo}`;
     contenedorLibros.appendChild(imagen);
   });
-  indiceMaximo = document.querySelectorAll('.libros img').length - 1;
+
+  //Inicializar los índices para mover la cinta de libros en cada género
+  generosIndices[`${genero}`] = {
+    indiceActual: 0,
+    indiceMaximo: libros.length, 
+  };
+} */
+
+function mostrarLibrosEnSeccion(libros, genero) {
+  // Identificar la sección correspondiente en el HTML basada en el género
+  const seccion = document.getElementById(`divGenero${genero}`);
+  // Coloca visible el div correspondiente
+  seccion.style.display = 'block';
+
+  // Obtén el contenedor de libros dentro de la sección
+  const contenedorLibros = seccion.querySelector('.libros');
+  const contenedortarjetas = seccion.querySelector('.tarjetas'); //nuevo
+  // Limpia el contenido
+  contenedorLibros.innerHTML = '';
+  contenedortarjetas.innerHTML = ''; //nuevo
+
+  // Agrega las imágenes de los libros al contenedor
+  libros.forEach(libro => {
+    const imagen = document.createElement('img');
+    imagen.src = libro.coverUrl;
+    imagen.alt = `Portada de libro: ${libro.titulo}`;
+    
+    // Crea la tarjeta con la información del título y el autor
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'tarjeta';
+    tarjeta.style.display = 'none';  //Inicialmente oculta nuevo
+
+    const infoLibro = document.createElement('h5');
+    infoLibro.textContent = `Título: ${libro.titulo}. Autor: ${libro.autor}`;
+
+    tarjeta.appendChild(infoLibro);
+
+    // Agrega el evento mouseover para mostrar la tarjeta
+    imagen.addEventListener('mouseover', () => {
+      tarjeta.style.display = 'block';
+    });
+
+    // Agrega el evento mouseout para ocultar la tarjeta
+    imagen.addEventListener('mouseout', () => {
+      tarjeta.style.display = 'none';
+    });
+
+    // Agrega la imagen y la tarjeta al contenedor de libros
+    contenedorLibros.appendChild(imagen);
+    /* contenedorLibros.appendChild(tarjeta); */
+    contenedortarjetas.appendChild(tarjeta);
+  });
+
+  //Inicializar los índices para mover la cinta de libros en cada género
+  generosIndices[`${genero}`] = {
+    indiceActual: 0,
+    indiceMaximo: libros.length, 
+  };
 }
 
-// Botones
-btnAnterior.addEventListener('click', mostrarLibroAnterior);
-btnSiguiente.addEventListener('click', mostrarSiguienteLibro);
 
-// Funciones para mostrar libros anteriores y siguientes
-function mostrarLibroAnterior() {
-  if (indiceActual > 0) {
-    indiceActual--;
-    actualizarPosicionLibros();
+// *******************************mover con los botones de flecha los libros de cada género*******************
+document.addEventListener('click', function (event) {
+  const button = event.target.closest('button');
+
+  if (button.id === 'btnSiguiente' || button.id === 'btnAnterior') {
+    // divGenero desde donde se realizó el clic
+    const divGenero = event.target.closest('div[id*="divGenero"]');
+    // nombre del género
+    const genero = divGenero.id.slice(9); // divGenero tiene 9 caracteres
+    if (button.id === 'btnAnterior'){
+      mostrarLibrosAnteriores(divGenero, genero)
+    } else{
+      mostrarLibrosSiguientes(divGenero, genero)
+    }
+  }
+});
+
+function mostrarLibrosAnteriores(divGenero, genero) {
+  console.log("Anterior, índice:", generosIndices[genero].indiceActual);
+  if (generosIndices[genero].indiceActual > 0) {
+    generosIndices[genero].indiceActual--;
+    console.log(generosIndices[genero].indiceActual);
+    actualizarPosicion(divGenero, genero);
   }
 }
 
-function mostrarSiguienteLibro() {
-  if (indiceActual < indiceMaximo -1) {
-    indiceActual++;
-    actualizarPosicionLibros();
+function mostrarLibrosSiguientes(divGenero, genero) {
+  console.log("Siguiente, índice:", generosIndices[genero].indiceActual);
+  // como cada libro tiene un acho de 10vw entonces caben como 7 en la pantalla
+  if (generosIndices[genero].indiceActual < generosIndices[genero].indiceMaximo - 7) { 
+    generosIndices[genero].indiceActual++;
+    console.log(generosIndices[genero].indiceActual);
+    actualizarPosicion(divGenero, genero);
   }
 }
 
-// Actualiza la posición de las imágenes en el contenedor
-function actualizarPosicionLibros() {
-  const trasladarX = -indiceActual * 210; // 210 es el ancho de la portada más el margen derecho
-  contenedorLibros.style.transform = `translateX(${trasladarX}px)`;
+function actualizarPosicion(divGenero, genero) {
+  const translateX = -generosIndices[genero].indiceActual * 12; // el ancho de la portada esta en 10vw y el maren en 1vw
+  const libros = divGenero.querySelector('.libros');
+  libros.style.transform = `translateX(${translateX}vw)`;
 }
-
-

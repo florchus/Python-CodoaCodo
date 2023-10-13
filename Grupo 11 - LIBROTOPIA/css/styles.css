@@ -3,220 +3,235 @@
 
 /* Reset */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Lato', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
 }
 
 :root {
-  --color-aventura: #007F4C;     /* Color verde oscuro para Aventura */
-  --color-romance: #FF69B4;      /* Color rosa para Romance */
-  --color-misterio: #4B0082;     /* Color morado oscuro para Misterio */
-  --color-naturaleza: #228B22;  /* Color verde para Naturaleza */
+  --color-aventura: #007F4C; /* Color verde oscuro para Aventura */
+  --color-romance: #FF69B4; /* Color rosa para Romance */
+  --color-misterio: #4B0082; /* Color morado oscuro para Misterio */
+  --color-naturaleza: #228B22; /* Color verde para Naturaleza */
 }
 
 html {
   font-size: 2.5vw;
-  min-font-size: 18px; /* Tamaño de letra base para dispositivos móviles */
-  max-font-size: 36px; /* Tamaño de letra base para Desktop */
+  min-font-size: 18px;
+  /* Tamaño de letra base para dispositivos móviles */
+  max-font-size: 36px;
+  /* Tamaño de letra base para Desktop */
 }
 
-.contenedor{
-    display: grid;
-    grid-template: 10vh 1fr 10vh / 10vw 1fr;
-    grid-template-areas:    "header header" 
-                            "left contenido" 
-                            "footer footer";
-    grid-gap: 1vw;
-    height: 100vh;
+.contenedor {
+  display: grid;
+  grid-template: 10vh 1fr 10vh / 10vw 1fr;
+  grid-template-areas: "header header"
+    "left contenido"
+    "footer footer";
+  grid-gap: 1vw;
+  height: 100vh;
 }
 
 /* Estilos para el modo Día */
 html.modoDia {
-    background-color: #fbfbfb;
-    color: #000000;
+  background-color: #fbfbfb;
+  color: #000000;
 }
-  
+
 /* Estilos para el modo Noche */
 html.modoNoche {
-    background-color: #121212;
-    color: #fbfbfb;
+  background-color: #121212;
+  color: #fbfbfb;
 }
 
 
 .header {
-   grid-area: header;
-   border-radius: 0 0 1vw 1vw ;
-   display: flex;
-   justify-content:space-around;
-   align-items: center;
+  grid-area: header;
+  border-radius: 0 0 1vw 1vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-#logo{
-    display: flex;
-    width: 40vw;
-    align-items:center;
-    justify-content:flex-start;
+#logo {
+  display: flex;
+  width: 40vw;
+  align-items: center;
+  justify-content: flex-start;
 
-} 
-#logo img{
-    width: 5vw;
-    margin-right: 1vw;
 }
-#logoGenero{
+
+#logo img {
+  width: 5vw;
+  margin-right: 1vw;
+}
+
+#logoGenero {
   width: 3vw;
   margin-left: 1vw;
 }
 
 #logo div {
-    font-family: 'Satisfy', cursive; 
-    font-size: 150%; 
+  font-family: 'Satisfy', cursive;
+  font-size: 150%;
 }
 
 /* Botón modo Día Noche */
 #modoDiaNoche {
-    background-image: url("../css/iconos/dia.png");
-    background-size: cover;
-    border: none;
-    background-repeat: no-repeat;  
-    background-color:transparent;
-    width: 3vw;
-    height: 3vw;
-    margin-right: 0.5vw;
-    cursor: pointer;
+  background-image: url("../css/iconos/dia.png");
+  background-size: cover;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+  margin-right: 0.5vw;
+  cursor: pointer;
 }
 
 #menu {
-    width: auto;
-    /* height: 6vh; */
-    padding: 1vw;
-    background-color: #0732f12d;
-    font-size: 50%;
-    border-radius: 5px;
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-    color: white;
-  }
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  .menuop {
-    display:inline-block;
-    background: #f66b8a;
-    color: white;
-    padding: 0.5vw; 
-    border-radius: 5px;
-  }
-  .menuop:hover {
-    background: #d8d8da;
-    color: black;
-  }
+  width: auto;
+  /* height: 6vh; */
+  padding: 1vw;
+  background-color: #0732f12d;
+  font-size: 50%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
 
-  .left {
-    grid-area: left;
-    background-color:rgba(175, 89, 158, 0.3);
-    margin-left: 1vw;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.menuop {
+  display: inline-block;
+  background: #f66b8a;
+  color: white;
+  padding: 0.5vw;
+  border-radius: 5px;
+}
+
+.menuop:hover {
+  background: #d8d8da;
+  color: black;
+}
+
+.left {
+  grid-area: left;
+  background-color: rgba(175, 89, 158, 0.3);
+  margin-left: 1vw;
 }
 
 .contenido {
-    grid-area: contenido;
-    background-color:rgba(153, 204, 255, 0.5);
-    margin-right: 1vw;
+  grid-area: contenido;
+  background-color: rgba(153, 204, 255, 0.5);
+  margin-right: 1vw;
 }
 
 .footer {
-    grid-area: footer;
-    border-radius: 1vw 1vw 0 0;
+  grid-area: footer;
+  border-radius: 1vw 1vw 0 0;
 }
 
-.item1{
-    background-color: #af599e;
-    padding: 1vw;
+.item1 {
+  background-color: #af599e;
+  padding: 1vw;
 }
 
 .item2 {
-    border-radius: 1vw;
-    padding: 1vw;   
+  border-radius: 1vw;
+  padding: 1vw;
 }
 
 /* ============================== INICIO Y REGISTRO ==============================*/
 .container {
-    width: 300px;
-    padding: 2vh;
-    margin: 2vh auto;
-    background-color: rgba(200, 200, 200, 0.8);
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-size: 80%;
-  }
-  
-  .form-group input {
-    width: 100%;
-    height: 5vh;
-    border: 1px solid #ccc;
-    border-radius: 15px;
-  }
-  
-  .btn {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    text-align: center;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  p {
-    font-size: 60%;  
-    margin: 1vw auto;
-    text-align: justify;
-    width: 90%;
-    line-height: 1.5;
-  }
+  width: 30vw;
+  padding: 2vh;
+  margin: 2vh auto;
+  background-color: rgba(200, 200, 200, 0.8);
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 80%;
+}
+
+.form-group input {
+  width: 100%;
+  height: 5vh;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+p {
+  font-size: 60%;
+  margin: 1vw auto;
+  text-align: justify;
+  width: 90%;
+  line-height: 1.5;
+}
+h3 {
+  text-align: center;
+}
+
 /* ============================== Preferencias de lectura ==============================*/
 /* Establece colores de fondo para cada género */
-#generoAventura + label {
+#generoAventura+label {
   background-color: var(--color-aventura);
 }
 
-#generoMisterio + label {
+#generoMisterio+label {
   background-color: var(--color-misterio);
 }
 
-#generoNaturaleza + label {
+#generoNaturaleza+label {
   background-color: var(--color-naturaleza);
 }
 
-#generoRomance + label  {
+#generoRomance+label {
   background-color: var(--color-romance);
 }
 
 .form-genero {
-  display: flex; 
-  align-items: center; 
-  gap: 1vw; 
+  display: flex;
+  align-items: center;
   margin-bottom: 1vh;
 }
 
 .form-genero label {
-  display: flex; 
-  align-items: center; 
-  padding: 1vw; 
-  flex: 1; 
-  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding: 1vw;
+  flex: 1;
+  justify-content: space-around;
   border-radius: 10px;
 }
 
+input[type="checkbox"] {
+  width: 4vw; 
+  height: 4vh; 
+}
