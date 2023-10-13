@@ -75,8 +75,12 @@ function mostrarLibrosEnSeccion(libros, genero) {
   contenedorLibros.innerHTML = '';
   contenedortarjetas.innerHTML = ''; //nuevo
 
-  // Agrega las imágenes de los libros al contenedor
+   // Crea un enlace para la página de detalles del libro
   libros.forEach(libro => {
+    const enlaceDetalle = document.createElement('a');
+    enlaceDetalle.href = `seleccion_libro.html?titulo=${encodeURIComponent(libro.titulo)}&autor=${encodeURIComponent(libro.autor)}`;
+
+    // Crea la imagen del libro
     const imagen = document.createElement('img');
     imagen.src = libro.coverUrl;
     imagen.alt = `Portada de libro: ${libro.titulo}`;
@@ -105,6 +109,9 @@ function mostrarLibrosEnSeccion(libros, genero) {
     contenedorLibros.appendChild(imagen);
     /* contenedorLibros.appendChild(tarjeta); */
     contenedortarjetas.appendChild(tarjeta);
+    // Agrega la imagen al enlace de detalles
+    enlaceDetalle.appendChild(imagen);
+    contenedorLibros.appendChild(enlaceDetalle);
   });
 
   //Inicializar los índices para mover la cinta de libros en cada género
