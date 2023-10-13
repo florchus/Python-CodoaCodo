@@ -1,10 +1,10 @@
 //***************************Cambiar entre datos personales y Preferencias de lectura**************************************
 //con un solo botón
-const botonCambiarSeccion = document.getElementById("cambiarSeccion");
+/* const botonCambiarSeccion = document.getElementById("cambiarSeccion"); */
 const DatosPersonales = document.getElementById("datosPersonales");
 const PreferenciasLectura = document.getElementById("preferenciasLectura");
 
-botonCambiarSeccion.addEventListener("click", function () {
+/* botonCambiarSeccion.addEventListener("click", function () {
   if (DatosPersonales.style.display === "block") {
     // Si los datos personales están visibles, oculta ese div y muestra el de preferencias de lectura
     DatosPersonales.style.display = "none";
@@ -16,7 +16,7 @@ botonCambiarSeccion.addEventListener("click", function () {
     DatosPersonales.style.display = "block";
     botonCambiarSeccion.textContent = "Cambiar a Preferencias de Lectura";
   }
-});
+}); */
 //con dos botones
 const botonDatosPersonales = document.getElementById("BotonDatosPersonales");
 const botonPreferenciasLectura = document.getElementById("BotonPreferenciasLectura");
@@ -37,7 +37,7 @@ botonPreferenciasLectura.addEventListener("click", function () {
   botonDatosPersonales.disabled = false;
 });
 
-//***************************Capturar Generos selecionados en Perfil del Usuario**************************************
+//***************************Capturar Géneros selecionados en Perfil del Usuario**************************************
 
 const generosForm = document.getElementById("generosForm");
 

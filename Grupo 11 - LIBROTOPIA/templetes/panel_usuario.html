@@ -16,17 +16,14 @@
                 <img src="../css/iconos/LogoTemp.png" alt="logo">
                 <div>Librotopía</div>
             </div>
-            <div id="menu">
-                <nav id="menu1">
-                    <h1>Panel de Usuario</h1>
-                </nav>
-            </div>
             <button id="modoDiaNoche"></button>
         </div>
         <div class="item2 left">
-            <button id="cambiarSeccion">Cambiar a Preferencias de Lectura</button>
-            <button id="BotonDatosPersonales" disabled>Datos Personales</button>
-            <button id="BotonPreferenciasLectura">Preferencias de Lectura</button>
+            <div>Panel del Usuario</div>
+            <div class="menuPU left_A">
+              <button id="BotonDatosPersonales" class="menuop" disabled>Datos Personales</button>
+              <button id="BotonPreferenciasLectura" class="menuop">Preferencias de Lectura</button>   
+            </div>
         </div>
         <div class="item2 contenido">
             <div class="container" id="datosPersonales">
@@ -66,7 +63,6 @@
             </div>
             <div class="container" id="preferenciasLectura" style="display: none;">
                 <h3>Preferencias de Lectura</h3>
-
                 <form id="generosForm">
                     <div class="form-genero">
                         <input type="checkbox" id="generoAventura" name="libroGenero" value="aventure">

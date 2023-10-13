@@ -57,9 +57,9 @@ html.modoNoche {
 
 #logo {
   display: flex;
-  width: 40vw;
+  width: 95vw;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 
 }
 
@@ -91,18 +91,33 @@ html.modoNoche {
   cursor: pointer;
 }
 
-#menu {
-  width: auto;
-  /* height: 6vh; */
-  padding: 1vw;
-  background-color: #0732f12d;
-  font-size: 50%;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  color: white;
+.left {
+  grid-area: left;
+  background-color: rgba(175, 89, 158, 0.3);
+  margin-left: 1vw;
+  font-size: 70%;
 }
+
+.left_A {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-evenly;
+  align-items: center;
+  /* color: white; */
+}
+.menuPU{
+  height: 50%;
+}
+.left div {
+ text-align: center;
+ font-weight: bold;
+}
+
+.left button {
+  /* text-align: center; */
+  border: none;
+ }
+
 
 a {
   text-decoration: none;
@@ -110,23 +125,20 @@ a {
 }
 
 .menuop {
-  display: inline-block;
+  /* display: inline-block; */
   background: #f66b8a;
   color: white;
-  padding: 0.5vw;
+  padding: 2vh 0.5vw;
   border-radius: 5px;
+  font-size: 80%;
+  text-align: center;
 }
 
 .menuop:hover {
-  background: #d8d8da;
+  background: #0732f12d;
   color: black;
 }
 
-.left {
-  grid-area: left;
-  background-color: rgba(175, 89, 158, 0.3);
-  margin-left: 1vw;
-}
 
 .contenido {
   grid-area: contenido;
@@ -234,4 +246,34 @@ h3 {
 input[type="checkbox"] {
   width: 4vw; 
   height: 4vh; 
+}
+
+/* ============================== CARRUSEL ==============================*/
+
+.carrusel-contenedor {
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+.carrusel-imagenes {
+  display: flex;
+  animation: scroll 10s linear infinite; 
+}
+
+.carrusel-imagenes img {
+  width: 100%;
+  height: 15vw;
+}
+
+@keyframes scroll {
+  0% {
+      transform: translateX(0);
+  }
+  50% {
+      transform: translateX(-35%);
+  }
+  100% {
+    transform: translateX(1%);
+} 
 }
