@@ -46,7 +46,7 @@ html {
 /* Estilos para el modo Día */
 html.modoDia {
   background-color: #fbfbfb;
-  color: #000000;
+  color: #020000;
 }
 
 /* Estilos para el modo Noche */
@@ -136,7 +136,7 @@ a {
 .menuop {
   /* display: inline-block; */
   background: #f66b8a;
-  color: white;
+  color: rgb(201, 201, 201);
   padding: 2vh 0.5vw;
   border-radius: 5px;
   font-size: 80%;
