@@ -62,6 +62,7 @@ generosSeleccionados.forEach(genero => {
   };
 } */
 
+
 function mostrarLibrosEnSeccion(libros, genero) {
   // Identificar la sección correspondiente en el HTML basada en el género
   const seccion = document.getElementById(`divGenero${genero}`);
@@ -78,7 +79,7 @@ function mostrarLibrosEnSeccion(libros, genero) {
    // Crea un enlace para la página de detalles del libro
   libros.forEach(libro => {
     const enlaceDetalle = document.createElement('a');
-    enlaceDetalle.href = `seleccion_libro.html?titulo=${encodeURIComponent(libro.titulo)}&autor=${encodeURIComponent(libro.autor)}`;
+    enlaceDetalle.href = `seleccion_libro.html?titulo=${encodeURIComponent(libro.titulo)}&autor=${encodeURIComponent(libro.autor)}&autor=${encodeURIComponent(libro.genero)}&portada=${encodeURIComponent(libro.coverUrl)}`;
 
     // Crea la imagen del libro
     const imagen = document.createElement('img');
@@ -91,7 +92,7 @@ function mostrarLibrosEnSeccion(libros, genero) {
     tarjeta.style.display = 'none';  //Inicialmente oculta nuevo
 
     const infoLibro = document.createElement('h5');
-    infoLibro.textContent = `Título: ${libro.titulo}. Autor: ${libro.autor}`;
+    infoLibro.textContent = `Título: ${libro.titulo}. Autor: ${libro.autor}. Género: ${genero}`;
 
     tarjeta.appendChild(infoLibro);
 

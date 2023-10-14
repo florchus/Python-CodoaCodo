@@ -17,15 +17,26 @@
             </div>
             <button id="modoDiaNoche"></button>
         </div>
-        <div class="item2 left">left</div>
+        <div class="item2 left">
+            <div>Libros</div>
+            <div class="menuPU left_A">
+                <a href="../templetes/panel_usuario.html" class="menuop">Panel del Usuario</a>   
+            </div>
+        </div>
         <div class="item2 contenido">
             <!-- Recupera los datos del libro desde los parámetros de consulta en la URL -->
+            <h1>Detalles del Libro</h1>
+
             <h2>Título: <span id="titulo"></span></h2>
             <p>Autor: <span id="autor"></span></p>
+            <p>Género: <span id="genero"></span></p>
+
+            <!-- Agrega una imagen para mostrar la portada del libro -->
+            <img id="portada" src="" alt="Portada del libro">
 
 
             <div id="btn">
-                <a href="index.html">Volver al inicio</a>
+                <a href="libros.html">Volver Atrás</a>
             </div>
         </div>
         
@@ -40,13 +51,16 @@
     </section>
     <script>
         // Recupera los datos del libro desde los parámetros de consulta en la URL y muestra en la página
-        const titulo = document.getElementById('titulo');
-        const autor = document.getElementById('autor');
-
         const urlParams = new URLSearchParams(window.location.search);
-        titulo.textContent = urlParams.get('titulo');
-        autor.textContent = urlParams.get('autor');
-
+        const titulo = urlParams.get('titulo');
+        const autor = urlParams.get('autor');
+        const genero = urlParams.get('genero');
+        const portada = urlParams.get('portada');
+        // Muestra los detalles en la página
+        document.getElementById('titulo').textContent = titulo;
+        document.getElementById('autor').textContent = autor;
+        document.getElementById('genero').textContent = genero;
+        document.getElementById('portada').src = portada;
     </script>
     <script src="../js/codigo.js"></script>
     <script src="../js/codigo_libros.js"></script>
