@@ -1,3 +1,4 @@
+
 // Obtener la cadena de consulta de la URL
 const urlParametros = new URLSearchParams(window.location.search);
 
@@ -35,34 +36,6 @@ generosSeleccionados.forEach(genero => {
 });
 
 
-/* function mostrarLibrosEnSeccion(libros, genero) {
-  // Identificar la sección correspondiente en el HTML basada en el género
-  const seccion = document.getElementById(`divGenero${genero}`);
-  // Coloca visible el div correspondiente
-  seccion.style.display = 'block';
-
-  // Obtén el contenedor de libros dentro de la sección
-  const contenedorLibros = seccion.querySelector('.libros');
-
-  // Limpia el contenido
-  contenedorLibros.innerHTML = '';
-
-  // Agrega las imágenes de los libros al contenedor
-  libros.forEach(libro => {
-    const imagen = document.createElement('img');
-    imagen.src = libro.coverUrl;
-    imagen.alt = `Portada de libro: ${libro.titulo}`;
-    contenedorLibros.appendChild(imagen);
-  });
-
-  //Inicializar los índices para mover la cinta de libros en cada género
-  generosIndices[`${genero}`] = {
-    indiceActual: 0,
-    indiceMaximo: libros.length, 
-  };
-} */
-
-
 function mostrarLibrosEnSeccion(libros, genero) {
   // Identificar la sección correspondiente en el HTML basada en el género
   const seccion = document.getElementById(`divGenero${genero}`);
@@ -79,7 +52,7 @@ function mostrarLibrosEnSeccion(libros, genero) {
    // Crea un enlace para la página de detalles del libro
   libros.forEach(libro => {
     const enlaceDetalle = document.createElement('a');
-    enlaceDetalle.href = `seleccion_libro.html?titulo=${encodeURIComponent(libro.titulo)}&autor=${encodeURIComponent(libro.autor)}&autor=${encodeURIComponent(libro.genero)}&portada=${encodeURIComponent(libro.coverUrl)}`;
+    enlaceDetalle.href = `seleccion_libro.html?titulo=${encodeURIComponent(libro.titulo)}&autor=${encodeURIComponent(libro.autor)}&genero=${encodeURIComponent(genero)}&portada=${encodeURIComponent(libro.coverUrl)}`;
 
     // Crea la imagen del libro
     const imagen = document.createElement('img');
@@ -164,3 +137,4 @@ function actualizarPosicion(divGenero, genero) {
   const libros = divGenero.querySelector('.libros');
   libros.style.transform = `translateX(${translateX}vw)`;
 }
+
