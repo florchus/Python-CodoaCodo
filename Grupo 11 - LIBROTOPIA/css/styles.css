@@ -15,15 +15,6 @@
   --color-misterio: #4B0082; /* Color morado oscuro para Misterio */
   --color-naturaleza: #228B22; /* Color verde para Naturaleza */
 }
-button {
-  margin-top: 10px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
 
 html {
   font-size: 2.5vw;
@@ -62,6 +53,8 @@ html.modoNoche {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: #af599e;
+  padding: 1vw;
 }
 
 #logo {
@@ -105,6 +98,8 @@ html.modoNoche {
   background-color: rgba(175, 89, 158, 0.3);
   margin-left: 1vw;
   font-size: 70%;
+  border-radius: 1vw;
+  padding: 1vw;
 }
 
 .left_A {
@@ -153,20 +148,14 @@ a {
   grid-area: contenido;
   background-color: rgba(153, 204, 255, 0.5);
   margin-right: 1vw;
+  border-radius: 1vw;
+  padding: 1vw;
 }
 
 .footer {
   grid-area: footer;
   border-radius: 1vw 1vw 0 0;
-}
-
-.item1 {
   background-color: #af599e;
-  padding: 1vw;
-}
-
-.item2 {
-  border-radius: 1vw;
   padding: 1vw;
 }
 
@@ -182,7 +171,7 @@ a {
   margin-right: 220px;
   margin-top: 100px;
 }
-button {
+.btn {
   margin-top: 10px;
   background-color: #007BFF;
   color: #fff;

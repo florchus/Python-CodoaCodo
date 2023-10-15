@@ -1,3 +1,12 @@
+// Actualizar el href del "botón" Volver Atrás.
+document.addEventListener("DOMContentLoaded", () => {
+  // Obtener el elemento <a>
+  const link = document.querySelector("#btn a");
+  // Asigna la url almacenada en el localstorage. Si no hay entoces asigna la url completa.
+  const url = localStorage.getItem("url") || "libros.html?generos=aventure,mistery,nature,love";
+  link.setAttribute("href", url);
+});
+
 // *******************************Seccion seleccion_libros para traer los parametros al html*******************
 
 function datosLibroSeleccionado() {
@@ -10,7 +19,7 @@ function datosLibroSeleccionado() {
     // Muestra los detalles en la página
     document.getElementById('titulo').textContent = titulo;
     document.getElementById('autor').textContent = autor;
-    document.getElementById('genero').textContent = genero;
+    document.getElementById('genero').textContent = (genero == "aventure") ? "Aventura" : (genero == "mistery") ? "Misterio" : (genero == "nature") ? "Naturaleza" : "Romance";
     document.getElementById('portada').src = portada;
   }
 

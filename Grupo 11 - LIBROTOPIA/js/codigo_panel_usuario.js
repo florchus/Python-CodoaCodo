@@ -55,7 +55,8 @@ generosForm.addEventListener("submit", function (event) {
   }
   // URL con los parámetros de consulta
   const url = `libros.html?generos=${generosSeleccionados.join(",")}`;
-
+  //Guarda la url de la última selección de géneros
+  localStorage.setItem('url', url);
   // Redirigir a la página "libros.html" con los parámetros de consulta
   window.location.href = url;
 });
