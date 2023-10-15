@@ -4,19 +4,6 @@
 const DatosPersonales = document.getElementById("datosPersonales");
 const PreferenciasLectura = document.getElementById("preferenciasLectura");
 
-/* botonCambiarSeccion.addEventListener("click", function () {
-  if (DatosPersonales.style.display === "block") {
-    // Si los datos personales están visibles, oculta ese div y muestra el de preferencias de lectura
-    DatosPersonales.style.display = "none";
-    PreferenciasLectura.style.display = "block";
-    botonCambiarSeccion.textContent = "Volver a Datos Personales";
-  } else {
-    // Si las preferencias de lectura están visibles, oculta ese div y muestra el de datos personales
-    PreferenciasLectura.style.display = "none";
-    DatosPersonales.style.display = "block";
-    botonCambiarSeccion.textContent = "Cambiar a Preferencias de Lectura";
-  }
-}); */
 //con dos botones
 const botonDatosPersonales = document.getElementById("BotonDatosPersonales");
 const botonPreferenciasLectura = document.getElementById("BotonPreferenciasLectura");
