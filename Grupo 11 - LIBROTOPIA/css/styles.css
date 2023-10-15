@@ -32,6 +32,7 @@ html {
     "footer footer";
   grid-gap: 1vw;
   height: 100vh;
+  background-color: rgba(154, 117, 245, 0.605);
 }
 
 /* Estilos para el modo Día */
@@ -49,11 +50,11 @@ html.modoNoche {
 
 .header {
   grid-area: header;
-  border-radius: 0 0 1vw 1vw;
+  border-radius: 15vw 0 15vw 0vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #af599e;
+  background-color: #8686e7;
   padding: 1vw;
 }
 
@@ -147,7 +148,7 @@ a {
 
 .menuop {
   /* display: inline-block; */
-  background: #f66b8a;
+  background: #6246ea;
   color: rgb(201, 201, 201);
   padding: 2vh 0.5vw;
   border-radius: 5px;
@@ -160,10 +161,9 @@ a {
   color: black;
 }
 
-
 .contenido {
   grid-area: contenido;
-  background-color: rgba(153, 204, 255, 0.5);
+  background-color: rgba(168, 134, 254, 0.324);
   margin-right: 1vw;
   border-radius: 1vw;
   padding: 1vw;
@@ -172,11 +172,16 @@ a {
 .footer {
   grid-area: footer;
   border-radius: 1vw 1vw 0 0;
-  background-color: #af599e;
+  background-color: #8686e7;
   padding: 1vw;
 }
 
 /* ============================== INDEX ==============================*/
+.about-us {
+  background-color:rgba(101, 157, 214, 0.605);
+  border-radius: 15vw 0vw 15vw 0vw;
+  margin-bottom: 8vw;
+}
 .about-us h1 {
   position: relative;
   display: flex;
@@ -186,24 +191,33 @@ a {
 .about-us p {
   position: relative;
   display: flex;
-  padding-top: 1vw;
+  padding-top: 3vw;
+  padding-bottom: 6vw;
   font-size: 2vw;
 }
 .carrusel-contenedor {
+  background-color:rgba(101, 157, 214, 0.605);
+  border-radius: 15vw 15vw 15vw 15vw;
   position: relative;
   display: flex;
   padding-top: 6vw;
   padding-bottom: 6vw;
 }
+.contact {
+  background-color:rgba(101, 157, 214, 0.605);
+  border-radius: 15vw 0vw 15vw 0vw;
+  margin-top: 8vw;
+}
 .contact h1 {
   position: relative;
   display: flex;
-  padding-top: 5vw;
+  padding-top: 4vw;
 }
 .contact p {
   position: relative;
   display: flex;
-  padding-top: 1vw;
+  padding-top: 3vw;
+  padding-bottom: 6vw;
   font-size: 2vw;
 }
 
