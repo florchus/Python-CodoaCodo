@@ -56,14 +56,21 @@ html.modoNoche {
   background-color: #af599e;
   padding: 1vw;
 }
-a {
-  margin-left: 3vw;
-  
+
+.link-contacto a {
+  margin-left: 14vw;
+  position: relative;
+  top: 40px;
 }
 
 .foot2 {
+  position: relative;
+  top: 80px;
   display: flex;
   justify-content: right;
+  font-size: 2vw;
+  font-family:'Lato', sans-serif;
+  color: #fbfbfb;
 
 }
 
@@ -167,6 +174,37 @@ a {
   border-radius: 1vw 1vw 0 0;
   background-color: #af599e;
   padding: 1vw;
+}
+
+/* ============================== INDEX ==============================*/
+.about-us h1 {
+  position: relative;
+  display: flex;
+  padding-top: 5vw;
+
+}
+.about-us p {
+  position: relative;
+  display: flex;
+  padding-top: 1vw;
+  font-size: 2vw;
+}
+.carrusel-contenedor {
+  position: relative;
+  display: flex;
+  padding-top: 6vw;
+  padding-bottom: 6vw;
+}
+.contact h1 {
+  position: relative;
+  display: flex;
+  padding-top: 5vw;
+}
+.contact p {
+  position: relative;
+  display: flex;
+  padding-top: 1vw;
+  font-size: 2vw;
 }
 
 /* ============================== INICIO Y REGISTRO ==============================*/
