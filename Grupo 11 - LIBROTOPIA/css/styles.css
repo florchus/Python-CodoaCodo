@@ -56,6 +56,16 @@ html.modoNoche {
   background-color: #af599e;
   padding: 1vw;
 }
+a {
+  margin-left: 3vw;
+  
+}
+
+.foot2 {
+  display: flex;
+  justify-content: right;
+
+}
 
 #logo {
   display: flex;
