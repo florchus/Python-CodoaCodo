@@ -31,8 +31,8 @@ html {
     "left contenido"
     "footer footer";
   grid-gap: 1vw;
-  height: 100vh;
-  background-color: rgba(154, 117, 245, 0.605);
+/*   height: 100vh;
+  background-color: rgba(154, 117, 245, 0.605); */
 }
 
 /* Estilos para el modo Día */
@@ -58,13 +58,17 @@ html.modoNoche {
   padding: 1vw;
 }
 
-.link-contacto a {
-  margin-left: 14vw;
+.link-contacto {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  /* margin-left: 14vw;
   position: relative;
-  top: 40px;
+  top: 40px; */
 }
 
-.foot2 {
+/* .foot2 {
   position: relative;
   top: 80px;
   display: flex;
@@ -72,8 +76,7 @@ html.modoNoche {
   font-size: 2vw;
   font-family:'Lato', sans-serif;
   color: #fbfbfb;
-
-}
+} */
 
 #logo {
   display: flex;
@@ -107,7 +110,7 @@ html.modoNoche {
   background-color: transparent;
   width: 3vw;
   height: 3vw;
-  margin-right: 0.5vw;
+  margin-right: 1vw;
   cursor: pointer;
 }
 
@@ -175,6 +178,9 @@ a {
   background-color: #8686e7;
   padding: 1vw;
 }
+.footer a {
+  font-size: 150%;
+}
 
 /* ============================== INDEX ==============================*/
 .about-us {
@@ -193,7 +199,7 @@ a {
   display: flex;
   padding-top: 3vw;
   padding-bottom: 6vw;
-  font-size: 2vw;
+  font-size: 100%;
 }
 .carrusel-contenedor {
   background-color:rgba(101, 157, 214, 0.605);
@@ -218,7 +224,7 @@ a {
   display: flex;
   padding-top: 3vw;
   padding-bottom: 6vw;
-  font-size: 2vw;
+  font-size: 100%;
 }
 
 /* ============================== INICIO Y REGISTRO ==============================*/
@@ -338,4 +344,55 @@ input[type="checkbox"] {
   100% {
     transform: translateX(1%);
 } 
+}
+
+/* ============================== RESPONSIVE ==============================*/
+
+
+@media (max-width: 780px) {
+  #logo img {
+    width: 7vw;
+    margin-right: 2vw;
+  }
+  #logo div {
+    font-size: 200%;
+  }
+  #modoDiaNoche {
+    width: 4vw;
+    height: 4vw;
+    margin-right: 2vw;
+  }
+  .menuop {
+    font-size: 90%;
+  }
+
+  .footer a {
+    font-size: 200%;
+  }
+  .footer h6 {
+    font-size: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  #logo div {
+    font-size: 250%;
+  }
+  #logo img {
+    margin-right: 2.5vw;
+  }
+  #modoDiaNoche {
+    width: 5vw;
+    height: 5vw;
+    margin-right: 2.5vw;
+  }
+  .menuop {
+    font-size: 100%;
+  }
+  .footer a {
+    font-size: 250%;
+  }
+  .footer h6 {
+    font-size: 80%;
+  }
 }
