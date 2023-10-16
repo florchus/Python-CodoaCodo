@@ -231,7 +231,6 @@ a {
 }
 
 /* ============================== REGISTRO ==============================*/
-
 .wrapper-reg {
   text-align: center;
   padding: 10px;
@@ -275,6 +274,78 @@ p {
 h3 {
   text-align: center;
 }
+/* ============================== LOGIN ==============================*/
+.wrapper-log {
+  text-align: center;
+  padding: 10px;
+}
+.container-login {
+  padding-top: 1.5vw;
+  background-color: whitesmoke;
+  box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
+  border-radius: 5px;
+  width: 30vw;
+  height: 15vw;
+  margin-top: 2vw;
+  margin-left: 25vw;
+}
+.btn-login button {
+  margin-top: 10px;
+  background-color: rgba(4, 4, 243, 0.742);
+  padding: 10px;
+  color:#fbfbfb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.container-login label {
+  font-size: 20px;
+  font-weight: bold;
+}
+/* ============================== PAGINA SELECCION DE LIBRO ============================== */
+.contenido-libro {
+  margin-top: 2vw;
+  display: flex;
+  justify-content: center;
+}
+.imagen-libro {
+  margin-right: 2vw;
+}
+.info-libro {
+  font-size: 80%;
+}
+/* ============================== PANEL DE USUARIO ==============================*/
+.contenido-panel {
+  margin-top: 2vw;
+  display: flex;
+  justify-content: center;
+  background-color: whitesmoke;
+  box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
+  border-radius: 5px;
+  width: 50vw;
+  height: 30vw;
+  margin-top: 2vw;
+  margin-left: 25vw;
+}
+.wrapper-panel h3 {
+  margin-top: 1vw;
+  margin-bottom: 2vw;
+}
+.form-group {
+  font-size: 80%;
+}
+.panel {
+  margin-top: 10px;
+  background-color: rgba(4, 4, 243, 0.742);
+  padding: 10px;
+  color:#fbfbfb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
 
 /* ============================== Preferencias de lectura ==============================*/
 /* Establece colores de fondo para cada género */
@@ -303,7 +374,7 @@ h3 {
 .form-genero label {
   display: flex;
   align-items: center;
-  padding: 1vw;
+  padding: 0.5vw;
   flex: 1;
   justify-content: space-around;
   border-radius: 10px;

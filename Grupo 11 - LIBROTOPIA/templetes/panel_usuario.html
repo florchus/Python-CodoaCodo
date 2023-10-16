@@ -20,11 +20,12 @@
             <button id="modoDiaNoche"></button>
         </div>
         <div class="left">
+            <a class="menuop" href="../index.html">Home</a>  
             <button id="BotonDatosPersonales" class="menuop" disabled>Datos Personales</button>
-            <button id="BotonPreferenciasLectura" class="menuop">Preferencias de Lectura</button>   
+            <button id="BotonPreferenciasLectura" class="menuop">Preferencias de Lectura</button>
         </div>
-        <div class="contenido">
-            <div class="wrapper" id="datosPersonales">
+        <div class="contenido-panel">
+            <div class="wrapper-panel" id="datosPersonales">
                 <h3>Datos Personales</h3>
                 <form onsubmit="return validarFormularioUsuario()"> <!-- action="procesar_usuario.php" method="post" -->
                     <div class="form-group">
@@ -56,10 +57,10 @@
                         <input type="radio" name="genero" value="Mujer">Mujer
                         <input type="radio" name="genero" value="Otro"> Otro
                     </p>
-                    <button type="submit" class="btn">Actualizar</button>
+                    <button class="panel" type="submit" class="btn">Actualizar</button>
                 </form>
             </div>
-            <div class="wrapper" id="preferenciasLectura" style="display: none;">
+            <div class="wrapper-panel" id="preferenciasLectura" style="display: none;">
                 <h3>Preferencias de Lectura</h3>
                 <form id="generosForm">
                     <div class="form-genero">
@@ -83,7 +84,7 @@
                         <label for="generoRomance">Romance<img src="../css/iconos/LogoTemp.png" alt="logo"
                                 id="logoGenero"></label>
                     </div>
-                    <button type="submit" class="btn">Ver Libros</button>
+                    <button class="panel" type="submit" class="btn">Ver Libros</button>
                 </form>
             </div>
         </div>
