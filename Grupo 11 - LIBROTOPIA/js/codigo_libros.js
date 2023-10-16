@@ -10,6 +10,18 @@ let generosSeleccionados = urlParametros.get("generos").split(",");
 const generosIndices = {};
 
 
+// Barra de progreso
+const carga = document.getElementById('carga');
+const barraDeProgreso = document.getElementById('barra-de-progreso');
+// Mostrar el mensaje de carga y la barra de progreso
+carga.style.display = 'block';
+
+// Inicializar la barra de progreso
+let progreso = 0;
+barraDeProgreso.style.width = progreso + '%';
+
+
+// Recorrer arreglo de géneros selecionados
 generosSeleccionados.forEach(genero => {
   // Crear la URL de la API basada en el género actual
   const apiUrl = `https://openlibrary.org/subjects/${genero}.json?limit=10`;
@@ -19,7 +31,14 @@ generosSeleccionados.forEach(genero => {
 
   // Realizar la consulta a la API
   fetch(apiUrl)
-    .then(response => response.json())
+    .then(response => {
+      // Ocultar el mensaje de carga
+      carga.style.display = 'none';
+      // Detener la barra de progreso
+      clearInterval(barraProgresoInterval);
+      // respuesta de la API
+      return response.json()
+    })
     .then(data => {
       data.works.forEach(book => {
         const titulo = book.title;
@@ -33,6 +52,12 @@ generosSeleccionados.forEach(genero => {
       mostrarLibrosEnSeccion(librosGenero, genero);
     })
     .catch(error => console.error(error));
+  
+    // Actualizar la barra de progreso
+    const barraProgresoInterval = setInterval(() => {
+      progreso += 1;
+      barraDeProgreso.style.width = progreso + '%';
+    }, 50);
 });
 
 
@@ -49,7 +74,7 @@ function mostrarLibrosEnSeccion(libros, genero) {
   contenedorLibros.innerHTML = '';
   contenedortarjetas.innerHTML = ''; //nuevo
 
-   // Crea un enlace para la página de detalles del libro
+  // Crea un enlace para la página de detalles del libro
   libros.forEach(libro => {
     const enlaceDetalle = document.createElement('a');
     enlaceDetalle.href = `seleccion_libro.html?titulo=${encodeURIComponent(libro.titulo)}&autor=${encodeURIComponent(libro.autor)}&genero=${encodeURIComponent(genero)}&portada=${encodeURIComponent(libro.coverUrl)}`;
@@ -58,7 +83,7 @@ function mostrarLibrosEnSeccion(libros, genero) {
     const imagen = document.createElement('img');
     imagen.src = libro.coverUrl;
     imagen.alt = `Portada de libro: ${libro.titulo}`;
-    
+
     // Crea la tarjeta con la información del título y el autor
     const tarjeta = document.createElement('div');
     tarjeta.className = 'tarjeta';
@@ -91,7 +116,7 @@ function mostrarLibrosEnSeccion(libros, genero) {
   //Inicializar los índices para mover la cinta de libros en cada género
   generosIndices[`${genero}`] = {
     indiceActual: 0,
-    indiceMaximo: libros.length, 
+    indiceMaximo: libros.length,
   };
 }
 
@@ -105,9 +130,9 @@ document.addEventListener('click', function (event) {
     const divGenero = event.target.closest('div[id*="divGenero"]');
     // nombre del género
     const genero = divGenero.id.slice(9); // divGenero tiene 9 caracteres
-    if (button.id === 'btnAnterior'){
+    if (button.id === 'btnAnterior') {
       mostrarLibrosAnteriores(divGenero, genero)
-    } else{
+    } else {
       mostrarLibrosSiguientes(divGenero, genero)
     }
   }
@@ -125,7 +150,7 @@ function mostrarLibrosAnteriores(divGenero, genero) {
 function mostrarLibrosSiguientes(divGenero, genero) {
   console.log("Siguiente, índice:", generosIndices[genero].indiceActual);
   // como cada libro tiene un acho de 10vw entonces caben como 7 en la pantalla
-  if (generosIndices[genero].indiceActual < generosIndices[genero].indiceMaximo - 7) { 
+  if (generosIndices[genero].indiceActual < generosIndices[genero].indiceMaximo - 7) {
     generosIndices[genero].indiceActual++;
     console.log(generosIndices[genero].indiceActual);
     actualizarPosicion(divGenero, genero);
