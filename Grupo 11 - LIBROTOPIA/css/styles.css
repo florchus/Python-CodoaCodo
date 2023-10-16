@@ -118,21 +118,14 @@ html.modoNoche {
   grid-area: left;
   background-color: rgba(175, 89, 158, 0.3);
   margin-left: 1vw;
-  font-size: 70%;
   border-radius: 1vw;
   padding: 1vw;
-}
-
-.left_A {
   display: flex;
   flex-direction: column;
-  justify-content:space-evenly;
+  justify-content:start;
   align-items: center;
-  /* color: white; */
 }
-.menuPU{
-  height: 50%;
-}
+
 .left div {
  text-align: center;
  font-weight: bold;
@@ -153,9 +146,12 @@ a {
   /* display: inline-block; */
   background: #6246ea;
   color: rgb(201, 201, 201);
-  padding: 2vh 0.5vw;
+  padding: 2vh 0vw;
   border-radius: 5px;
-  font-size: 80%;
+  font-size: 40%;
+  margin: 0.5vw 0.5vw;
+  width: 80%;
+  height: auto;
   text-align: center;
 }
 
@@ -172,12 +168,19 @@ a {
   padding: 1vw;
 }
 
+/* ============================== FOOTER  ==============================*/
+
 .footer {
+  position: fixed;
   grid-area: footer;
   border-radius: 1vw 1vw 0 0;
   background-color: #8686e7;
-  padding: 1vw;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 3px;
 }
+
 .footer a {
   font-size: 150%;
 }
@@ -227,44 +230,39 @@ a {
   font-size: 100%;
 }
 
-/* ============================== INICIO Y REGISTRO ==============================*/
+/* ============================== REGISTRO ==============================*/
 
-.wrapper {
-  background-color: whitesmoke;
+.wrapper-reg {
   text-align: center;
-  padding: 40px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
-  margin-left: 220px;
-  margin-right: 220px;
-  margin-top: 100px;
+  padding: 10px;
 }
-.btn {
+.container-registro {
+  background-color: whitesmoke;
+  box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
+  border-radius: 5px;
+  width: 30vw;
+  height: 25vw;
+  margin-top: 2vw;
+  margin-left: 25vw;
+}
+.btn-registro button {
   margin-top: 10px;
-  background-color: #007BFF;
-  color: #fff;
+  background-color: rgba(4, 4, 243, 0.742);
+  padding: 10px;
+  color:#fbfbfb;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
   cursor: pointer;
+  font-weight: bold;
 }
-.box {
-  margin-bottom: 5px;
+.container-registro label {
+  font-size: 20px;
+  font-weight: bold;
 }
-.label {
-  font-size: 16px;
-}
-.registro {
-  margin-top: 20px;
-  text-align: center;
-}
-.registro p {
+
+.register p {
   font-size: 14px;
   color: #db2777;
-}
-.register {
-  text-align: right;
-  margin-top: 1vw;
 }
 
 p {
