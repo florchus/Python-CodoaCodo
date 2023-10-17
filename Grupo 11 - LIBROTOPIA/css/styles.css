@@ -228,36 +228,44 @@ a {
 
 /* ============================== REGISTRO ==============================*/
 .wrapper-reg {
-  text-align: center;
+  text-align: left;
   padding: 10px;
 }
 .container-registro {
   background-color: whitesmoke;
   box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
   border-radius: 5px;
-  width: 30vw;
+  width: 24.5vw;
   height: 25vw;
-
   margin-left: 25vw;
 }
-.btn-registro button {
-  margin-top: 10px;
+.container-registro button {
   background-color: rgba(4, 4, 243, 0.742);
-  padding: 10px;
+  padding: 14px;
   color:#fbfbfb;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  margin-left: 2vw;
 }
 .container-registro label {
   font-size: 20px;
   font-weight: bold;
+  margin-left: 2vw;
+}
+.container-registro input {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 2vw;
+  border-radius: 5px;
+  padding-top: 3px;
 }
 
-.register p {
+.login p {
   font-size: 14px;
   color: #db2777;
+  margin-left: 9vw;
 }
 
 p {
@@ -272,23 +280,25 @@ h3 {
 }
 /* ============================== LOGIN ==============================*/
 .wrapper-log {
-  text-align: center;
+  text-align: left;
   padding: 10px;
 }
 .container-login {
-  padding-top: 1.5vw;
   background-color: whitesmoke;
   box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
   border-radius: 5px;
-  width: 30vw;
-  height: 15vw;
-  margin-top: 2vw;
+  width: 24vw;
+  height: 22vw;
   margin-left: 25vw;
 }
+.form-group{
+  padding: 1vw;
+}
 .btn-login button {
-  margin-top: 10px;
+  margin-top: 2vw;
+  margin-left: 4vw;
   background-color: rgba(4, 4, 243, 0.742);
-  padding: 10px;
+  padding: 14px;
   color:#fbfbfb;
   border: none;
   border-radius: 5px;
@@ -298,6 +308,19 @@ h3 {
 .container-login label {
   font-size: 20px;
   font-weight: bold;
+  margin-left: 2vw;
+}
+.container-login input {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 2vw;
+  border-radius: 5px;
+  padding-top: 3px;
+}
+.register p {
+  font-size: 14px;
+  color: #db2777;
+  margin-left: 12vw;
 }
 /* ============================== PAGINA SELECCION DE LIBRO ============================== */
 .contenido-libro {
