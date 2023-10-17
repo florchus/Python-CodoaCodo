@@ -60,16 +60,6 @@ html.modoNoche {
   top: 40px; */
 }
 
-/* .foot2 {
-  position: relative;
-  top: 80px;
-  display: flex;
-  justify-content: right;
-  font-size: 2vw;
-  font-family:'Lato', sans-serif;
-  color: #fbfbfb;
-} */
-
 #logo {
   display: flex;
   width: 95vw;
@@ -80,7 +70,7 @@ html.modoNoche {
 
 
 #logoGenero {
-  width: 8vw;
+  width: 6.5vw;
   margin-left: 2vw;
   border-radius: 50%;
 }
