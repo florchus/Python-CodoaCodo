@@ -324,7 +324,7 @@ h3 {
 }
 /* ============================== PAGINA SELECCION DE LIBRO ============================== */
 .contenido-libro {
-  margin-top: 2vw;
+  margin-top: 4vw;
   display: flex;
   justify-content: center;
 }
@@ -333,6 +333,7 @@ h3 {
 }
 .info-libro {
   font-size: 80%;
+  margin-left:5vw;
 }
 .busqueda a {
   font-size: 70%;
@@ -414,7 +415,7 @@ h3 {
   flex: 1;
   justify-content: space-around;
   border-radius: 10px;
-  margin-top: 1vw;
+  margin-top: 1vwgit ;
 }
 
 input[type="checkbox"] {
@@ -455,7 +456,7 @@ input[type="checkbox"] {
 /* ============================== RATING ESTRELLAS ==============================*/
 .rating {
   display: inline-block;
-  margin-left: 16vw;
+  margin-left: 23vw;
   margin-top: 3vw;
 }
 .rating > span {
