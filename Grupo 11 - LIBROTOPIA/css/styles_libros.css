@@ -85,3 +85,22 @@ button {
   margin: auto;
 }
 
+/*======================================== Estilos para barra de carga ============================================ */
+#carga {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#barra-de-progreso {
+  width: 100%;
+  height: 10px;
+  background: #0074d9; /* Color de la barra de progreso */
+  margin-top: 10px;
+}

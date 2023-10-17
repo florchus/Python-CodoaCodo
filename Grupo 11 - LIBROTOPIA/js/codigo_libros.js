@@ -148,11 +148,9 @@ function mostrarLibrosAnteriores(divGenero, genero) {
 }
 
 function mostrarLibrosSiguientes(divGenero, genero) {
-  console.log("Siguiente, índice:", generosIndices[genero].indiceActual);
   // como cada libro tiene un acho de 10vw entonces caben como 7 en la pantalla
   if (generosIndices[genero].indiceActual < generosIndices[genero].indiceMaximo - 7) {
     generosIndices[genero].indiceActual++;
-    console.log(generosIndices[genero].indiceActual);
     actualizarPosicion(divGenero, genero);
   }
 }
