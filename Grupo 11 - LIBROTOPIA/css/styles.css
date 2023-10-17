@@ -10,11 +10,11 @@
 }
 
 :root {
-  --color-aventura: #007F4C; /* Color verde oscuro para Aventura */
-  --color-romance: #FF69B4; /* Color rosa para Romance */
-  --color-misterio: #4B0082; /* Color morado oscuro para Misterio */
-  --color-naturaleza: #228B22; /* Color verde para Naturaleza */
-}
+  --color-aventura: #d9a876; /* Color verde oscuro para Aventura */
+  --color-romance: #f2dbe7; /* Color rosa para Romance */
+  --color-misterio: #444146; /* Color morado oscuro para Misterio */
+  --color-naturaleza: #6977f1; /* Color verde para Naturaleza */
+} 
 
 html {
   font-size: 2.5vw;
@@ -48,15 +48,7 @@ html.modoNoche {
 }
 
 
-.header {
-  grid-area: header;
-  border-radius: 15vw 0 15vw 0vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #8686e7;
-  padding: 1vw;
-}
+
 
 .link-contacto {
   display: flex;
@@ -86,19 +78,17 @@ html.modoNoche {
 
 }
 
-#logo img {
-  width: 5vw;
-  margin-right: 1vw;
-}
 
 #logoGenero {
-  width: 3vw;
-  margin-left: 1vw;
+  width: 8vw;
+  margin-left: 2vw;
+  border-radius: 50%;
 }
 
 #logo div {
   font-family: 'Satisfy', cursive;
-  font-size: 150%;
+  font-size: 300%;
+  margin-left: 2vw;
 }
 
 /* Botón modo Día Noche */
@@ -116,7 +106,7 @@ html.modoNoche {
 
 .left {
   grid-area: left;
-  background-color: rgba(175, 89, 158, 0.3);
+  background-color: rgba(168, 134, 254, 0.324);
   margin-left: 1vw;
   border-radius: 1vw;
   padding: 1vw;
@@ -124,6 +114,8 @@ html.modoNoche {
   flex-direction: column;
   justify-content:start;
   align-items: center;
+  margin-top:6.5vw;
+  height: auto;
 }
 
 .left div {
@@ -163,10 +155,26 @@ a {
 .contenido {
   grid-area: contenido;
   background-color: rgba(168, 134, 254, 0.324);
-  margin-right: 1vw;
   border-radius: 1vw;
-  padding: 1vw;
+  margin-top:6.5vw;
 }
+/* ============================== HEADER ==============================*/
+.header {
+  grid-area: header;
+  border-radius: 15vw 0 15vw 0vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(168, 134, 254, 0.324);
+  padding: 6vw;
+}
+.header img {
+  width: 14%; 
+  height: auto;
+  border-radius: 50%; 
+
+}
+
 
 /* ============================== FOOTER  ==============================*/
 
@@ -241,7 +249,7 @@ a {
   border-radius: 5px;
   width: 30vw;
   height: 25vw;
-  margin-top: 2vw;
+
   margin-left: 25vw;
 }
 .btn-registro button {
@@ -315,38 +323,61 @@ h3 {
 .info-libro {
   font-size: 80%;
 }
+.busqueda a {
+  font-size: 70%;
+  background-color: rgba(4, 4, 243, 0.742);
+  padding: 10px;
+  color: white;;
+  margin-left: 2vw;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
 /* ============================== PANEL DE USUARIO ==============================*/
 .contenido-panel {
-  margin-top: 2vw;
   display: flex;
   justify-content: center;
   background-color: whitesmoke;
   box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
   border-radius: 5px;
-  width: 50vw;
-  height: 30vw;
-  margin-top: 2vw;
-  margin-left: 25vw;
+  width: 45vw;
+  height: 41vw;
+  margin-top: 7vw;
+  margin-left: 15vw;
+}
+.contenido-panel form{
+  align-items: center;
+
 }
 .wrapper-panel h3 {
-  margin-top: 1vw;
-  margin-bottom: 2vw;
+  margin-bottom: 3vw;
 }
+.wrapper-panel p {
+  margin-top: 4vw;
+  margin-bottom: 5vw;
+}
+
 .form-group {
   font-size: 80%;
 }
 .panel {
-  margin-top: 10px;
   background-color: rgba(4, 4, 243, 0.742);
-  padding: 10px;
+  padding: 20px;
   color:#fbfbfb;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
 }
-
-
+.datos {
+  background-color: rgba(4, 4, 243, 0.742);
+  padding: 20px;
+  color:#fbfbfb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
 /* ============================== Preferencias de lectura ==============================*/
 /* Establece colores de fondo para cada género */
 #generoAventura+label {
@@ -374,7 +405,7 @@ h3 {
 .form-genero label {
   display: flex;
   align-items: center;
-  padding: 0.5vw;
+  padding: 0.1vw;
   flex: 1;
   justify-content: space-around;
   border-radius: 10px;
@@ -413,6 +444,33 @@ input[type="checkbox"] {
   100% {
     transform: translateX(1%);
 } 
+}
+
+/* ============================== RATING ESTRELLAS ==============================*/
+.rating {
+  display: inline-block;
+  margin-left: 16vw;
+  margin-top: 3vw;
+}
+.rating > span {
+  display: inline-block;
+  font-size: 36px;
+  cursor: pointer;
+  color: black; /* Color de estrella no seleccionada */
+}
+
+.rating > span.selected {
+  color: orange; /* Color de estrella seleccionada */
+}
+.rating h2 {
+  font-size: 70%;
+}
+.rating p {
+  font-size: 40%;
+}
+
+.rating i {
+  margin-bottom: 1vw;
 }
 
 /* ============================== RESPONSIVE ==============================*/

@@ -19,20 +19,43 @@
         </div>
         <div class="left">
             <a href="../templetes/panel_usuario.html" class="menuop">Panel del Usuario</a>   
-            <a href="libros.html" class="menuop" id="btnVolver">Volver Atrás</a>
+            <a href="libros.html" class="menuop"    >Volver Atrás</a>
         </div>
-        <div class="contenido-libro">
-            <div class="imagen-libro">
-                <!-- Agrega una imagen para mostrar la portada del libro -->
-                <img id="portada" src="" alt="Portada del libro">
+        <div class="contenido">
+            <div class="contenido-libro">
+                <!-- esto es nuevo -->
+                <div class="imagen-libro">
+                    <!-- Agrega una imagen para mostrar la portada del libro -->
+                    <img id="portada" src="" alt="Portada del libro">
+                </div>
+                <div class="info-libro">
+                    <!-- Recupera los datos del libro desde los parámetros de consulta en la URL -->
+                    <h1>Detalles del Libro</h1>
+        
+                    <h2>Título: <span id="titulo"></span></h2>
+                    <p>Autor: <span id="autor"></span></p>
+                    <p>Género: <span id="genero"></span></p>
+                    <div class="busqueda">
+                        <p>¡¿Quieres saber donde comprarlo?!</p>
+                        <a href="https://www.google.com/" target="_blank">Click Aquí</a>
+                    </div>
+                </div>
             </div>
-            <div class="info-libro">
-                <!-- Recupera los datos del libro desde los parámetros de consulta en la URL -->
-                <h1>Detalles del Libro</h1>
-    
-                <h2>Título: <span id="titulo"></span></h2>
-                <p>Autor: <span id="autor"></span></p>
-                <p>Género: <span id="genero"></span></p>
+            <div class="rating">
+                <i class="fa-solid fa-minus"></i>
+                <i class="fa-solid fa-minus"></i>
+                <i class="fa-solid fa-minus"></i>
+                <i class="fa-solid fa-minus"></i>
+                <i class="fa-solid fa-minus"></i>
+                <i class="fa-solid fa-minus"></i>
+                <h2>Califica este Libro:</h2>
+                <!-- el &#9733 representa la estrella, se llama al caracter especial -->
+                <span>&#9733;</span> 
+                <span>&#9733;</span>
+                <span>&#9733;</span>
+                <span>&#9733;</span>
+                <span>&#9733;</span>
+                <p>Calificación: <span id="ratingValue">0</span> estrellas.</p>
             </div>
         </div>
         
@@ -57,5 +80,6 @@
     <script src="../js/codigo.js"></script>
     <script src="../js/codigo_libros.js"></script>
     <script src="../js/codigo_libro_seleccionado.js"></script>
+    <script src="../js/codigo_rating.js"></script>
 </body>
 </html>
