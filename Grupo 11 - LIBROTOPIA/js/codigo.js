@@ -64,14 +64,6 @@ function validarFormularioUsuario() {
   var dni = document.getElementById("DNI").value.trim()
   var direccion = document.getElementById("direccion").value.trim()
 
-
-  // Creo que esto no es necesario si se coloca el atributo required> en el input
-  // Verificar si algún campo está en blanco
-  /*     if(nombre==="" || dni==="" || direccion===""){
-        alert("Debe completar todos los campos del formulario.")
-        return false
-      } */
-
   // Verificar si el nombre, apellido y dirección contienen solo caracteres permitidos. 
 
   var nombreTest = /^[a-zA-Z\s]+$/.test(nombre) //también se permite espacio en blanco
@@ -106,3 +98,12 @@ function validarFormularioUsuario() {
   return true
 }
 
+//***************************Guardar en el localstorage la busqueda al entrar ModoInvitado*************************************
+// "Botón" Modo Invitado
+
+document.addEventListener("DOMContentLoaded", () => {
+  const enlace = document.getElementById("modoInvitado");
+  enlace.addEventListener('click', function(event) {
+    localStorage.setItem('url', 'libros.html?generos=aventure,mistery,nature,love');
+  });
+});
