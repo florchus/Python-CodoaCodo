@@ -229,37 +229,48 @@ a {
 /* ============================== REGISTRO ==============================*/
 .wrapper-reg {
   text-align: left;
-  padding: 10px;
+  padding: 3vw;
+  font-size: 70%;
+}
+.wrapper-reg  p {
+  font-size: 80%;
+  width: 95%;
 }
 .container-registro {
   background-color: whitesmoke;
   box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
   border-radius: 5px;
-  width: 24.5vw;
-  height: 25vw;
+  width: 24vw;
+  /* height: 25vw; */
   margin-left: 25vw;
 }
+#registroBotones {
+  display:flex;
+  justify-content: space-evenly;
+}
+
 .container-registro button {
   background-color: rgba(4, 4, 243, 0.742);
-  padding: 14px;
+  padding: 1vw;
   color:#fbfbfb;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  margin-left: 2vw;
+  /* margin-left: 2vw; */
 }
 .container-registro label {
-  font-size: 20px;
+  /* font-size: 20px; */
   font-weight: bold;
   margin-left: 2vw;
 }
 .container-registro input {
-  font-size: 20px;
+  font-size: 100%;
   font-weight: bold;
   margin-left: 2vw;
   border-radius: 5px;
   padding-top: 3px;
+  width: 85%;
 }
 
 .login p {
@@ -301,7 +312,7 @@ h3 {
 }
 .btn-login button {
   /* margin-top: 2vw; */
-  margin-left: 7vw;
+  margin-left: 8vw;
   background-color: rgba(4, 4, 243, 0.742);
   padding: 1vw;
   color:#fbfbfb;
@@ -361,7 +372,7 @@ h3 {
   box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
   border-radius: 5px;
   width: 45vw;
-  height: 41vw;
+  /* height: 41vw; */
   margin-top: 7vw;
   margin-left: 15vw;
 }

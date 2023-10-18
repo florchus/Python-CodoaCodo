@@ -23,41 +23,33 @@
             <a href="../index.html" class="menuop">Home</a>
         </div>
         <div class="contenido">
+            <div class="wrapper-reg">
             <p>
                 ¡Únete a nuestra comunidad de amantes de la lectura! Regístrate para acceder a una amplia selección de
                 libros disponibles y conectar con otros lectores.
-            </p>  
-            <div class="wrapper-reg">
+            </p>                 
                 <div class="container-registro">
                     <form onsubmit="return validarClavesRegistro()" action="panel_usuario.html"> <!-- method="post"  -->
-                        <div class="label">
-                            <label for="correo">CORREO ELECTRONICO</label>
-                        </div>
-                        <div class="box">
+                        <div class="form-group">
+                            <label for="correo">Correo electrónico</label>
                             <input type="email" name="correo" id="correoR" required>
                         </div>
-                        <div class="label">
-                            <label for="password">CONTRASEÑA</label>
+                        <div class="form-group">
+                            <label for="password1">Contraseña</label>
+                            <input type="password" id="password1" required>
+                        </div>                        
+                        <div class="form-group">
+                            <label for="password2"> Reingresar contraseña</label>
+                            <input type="password" id="password2" required>
                         </div>
-                        <div class="box">
-                            <input type="password" id="passwordR" required>
-                        </div>
-                        <div class="label">
-                            <!-- Falta validar que ambas contraseñas coincidan -->
-                            <label for="repass"> REINGRESAR CONTRASEÑA</label>
-                        </div>
-                        <div class="box">
-                            <input type="password" id="repass" required>
-                        </div>
+                        <div id="registroBotones">
+                            <button type="submit" class="btn" onclick="nuevaCuenta()">Registrarse</button>
+                            <button type="reset">Borrar</button>
+                        </div>                       
+                    </form>
                         <div class="register">
                             <p>¿Ya tienes una cuenta? <a href="../templetes/inicio.html"><b>Inicia sesión</b></a></p>   
-                        </div>
-                        <div>
-                            <button type="button" onclick="nuevaCuenta()">REGISTRARSE</button>
-                            <button type="reset">BORRAR</button>
-                        </div>
-                    </form>
-                    
+                        </div>                    
                 </div>           
             </div>
         </div>
