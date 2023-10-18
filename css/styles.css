@@ -128,7 +128,7 @@ a {
   color: rgb(201, 201, 201);
   padding: 2vh 0vw;
   border-radius: 5px;
-  font-size: 40%;
+  font-size: 45%;
   margin: 0.5vw 0.5vw;
   width: 80%;
   height: auto;
@@ -198,7 +198,7 @@ a {
   display: flex;
   padding-top: 3vw;
   padding-bottom: 6vw;
-  font-size: 100%;
+  font-size: 90%;
 }
 .carrusel-contenedor {
   background-color:rgba(101, 157, 214, 0.605);
@@ -223,7 +223,7 @@ a {
   display: flex;
   padding-top: 3vw;
   padding-bottom: 6vw;
-  font-size: 100%;
+  font-size:90%;
 }
 
 /* ============================== REGISTRO ==============================*/
@@ -281,46 +281,54 @@ h3 {
 /* ============================== LOGIN ==============================*/
 .wrapper-log {
   text-align: left;
-  padding: 10px;
+  padding: 3vw;
+  font-size: 80%;
+}
+.wrapper-log  p {
+  font-size: 80%;
+  width: 95%;
 }
 .container-login {
   background-color: whitesmoke;
   box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
   border-radius: 5px;
   width: 24vw;
-  height: 22vw;
+  /* height: 22vw; */
   margin-left: 25vw;
 }
 .form-group{
   padding: 1vw;
 }
 .btn-login button {
-  margin-top: 2vw;
-  margin-left: 4vw;
+  /* margin-top: 2vw; */
+  margin-left: 7vw;
   background-color: rgba(4, 4, 243, 0.742);
-  padding: 14px;
+  padding: 1vw;
   color:#fbfbfb;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 60%;
 }
 .container-login label {
-  font-size: 20px;
+  /* font-size: 20px; */
   font-weight: bold;
   margin-left: 2vw;
 }
 .container-login input {
-  font-size: 20px;
+  font-size: 80%;
   font-weight: bold;
   margin-left: 2vw;
   border-radius: 5px;
   padding-top: 3px;
+  width: 85%;
 }
 .register p {
-  font-size: 14px;
+  /* font-size: 14px; */
   color: #db2777;
-  margin-left: 12vw;
+  /* margin-left: 12vw; */
+  text-align: center;
 }
 /* ============================== PAGINA SELECCION DE LIBRO ============================== */
 .contenido-libro {
@@ -361,9 +369,9 @@ h3 {
   align-items: center;
 
 }
-.form-group {
+/* .form-group {
   font-size: 80%;
-}
+} */
 .panel {
   background-color: rgba(4, 4, 243, 0.742);
   padding: 20px;
@@ -484,21 +492,21 @@ input[type="checkbox"] {
 
 
 @media (max-width: 780px) {
-  #logo img {
+ /*  #logo img {
     width: 7vw;
     margin-right: 2vw;
-  }
-  #logo div {
+  } */
+/*   #logo div {
     font-size: 200%;
-  }
+  } */
   #modoDiaNoche {
     width: 4vw;
     height: 4vw;
     margin-right: 2vw;
   }
-  .menuop {
+/*   .menuop {
     font-size: 90%;
-  }
+  } */
 
   .footer a {
     font-size: 200%;
@@ -509,20 +517,20 @@ input[type="checkbox"] {
 }
 
 @media (max-width: 500px) {
-  #logo div {
+/*   #logo div {
     font-size: 250%;
-  }
-  #logo img {
+  } */
+/*   #logo img {
     margin-right: 2.5vw;
-  }
+  } */
   #modoDiaNoche {
     width: 5vw;
     height: 5vw;
     margin-right: 2.5vw;
   }
-  .menuop {
+/*   .menuop {
     font-size: 100%;
-  }
+  } */
   .footer a {
     font-size: 250%;
   }
