@@ -289,7 +289,7 @@ p {
 h3 {
   text-align: center;
 }
-/* ============================== LOGIN ==============================*/
+/* ============================== Inicio ==============================*/
 .wrapper-log {
   text-align: left;
   padding: 3vw;
@@ -365,43 +365,52 @@ h3 {
   border-radius: 5px;
 }
 /* ============================== PANEL DE USUARIO ==============================*/
-.contenido-panel {
-  display: flex;
-  justify-content: center;
+.wrapper-panel {
+  text-align: left;
+  padding: 3vw;
+  font-size: 80%;
+}
+.container-data {
   background-color: whitesmoke;
   box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
   border-radius: 5px;
-  width: 45vw;
-  /* height: 41vw; */
-  margin-top: 7vw;
-  margin-left: 15vw;
+  width: 40vw;
+  /* height: 25vw; */
+  margin-left: 25vw;
 }
-.contenido-panel form{
-  align-items: center;
 
+.container-data button {
+  background-color: rgba(4, 4, 243, 0.742);
+  padding: 1vw;
+  color:#fbfbfb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 60%;
 }
-/* .form-group {
+.btn-datosPersonales{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1vw;
+}
+
+.container-data label {
+  /* font-size: 20px; */
+  font-weight: bold;
+  margin-left: 1vw;
+}
+.container-data input {
   font-size: 80%;
-} */
-.panel {
-  background-color: rgba(4, 4, 243, 0.742);
-  padding: 20px;
-  color:#fbfbfb;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
   font-weight: bold;
+  /* margin-left: 2vw; */
+  border-radius: 5px;
+  padding-top: 3px;
+  /* width: 85%; */
 }
-.datos {
-  background-color: rgba(4, 4, 243, 0.742);
-  padding: 20px;
-  color:#fbfbfb;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 1vw;
-  margin-left: 10vw;
+
+.container-data input[type="radio"] {
+  margin: 0 0.5vw 0 2vw;
 }
 /* ============================== Preferencias de lectura ==============================*/
 /* Establece colores de fondo para cada género */
