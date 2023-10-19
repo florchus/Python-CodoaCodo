@@ -573,3 +573,26 @@ input[type="checkbox"] {
     font-size: 80%;
   }
 }
+
+/* IFRAME LOCATION*/
+.mapouter {
+  position: relative;
+  height: 460px;
+  width: 720px;
+  background: #fff;
+}
+.gmap_canvas {
+  overflow: hidden;
+  height: 460px;
+  width: 720px
+}
+
+.gmap_canvas iframe {
+  position: relative;
+  z-index: 2
+}
+.contenido-map {
+  display: flex;
+  justify-content: space-around;
+
+}
