@@ -379,7 +379,7 @@ h3 {
   margin-left: 25vw;
 }
 
-.container-data button {
+.container-data button, .container-prefe button {
   background-color: rgba(4, 4, 243, 0.742);
   padding: 1vw;
   color:#fbfbfb;
@@ -430,10 +430,19 @@ h3 {
   background-color: var(--color-romance);
 }
 
+.container-prefe {
+  background-color: whitesmoke;
+  box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
+  border-radius: 5px;
+  width: 40vw;
+  margin-left: 25vw;
+  padding: 1vw 0;
+}
+
 .form-genero {
   display: flex;
   align-items: center;
-  margin-bottom: 1vh;
+  padding: 1vw 1vw;
 }
 
 .form-genero label {
@@ -449,8 +458,11 @@ h3 {
 input[type="checkbox"] {
   width: 4vw; 
   height: 4vh; 
+  margin-right: 1vw;
 }
-
+#BotonPreferenciasLectura{
+  font-size: 35%;
+}
 /* ============================== CARRUSEL ==============================*/
 
 .carrusel-contenedor {
@@ -533,6 +545,9 @@ input[type="checkbox"] {
   }
   .footer h6 {
     font-size: 70%;
+  }
+  .form-genero {
+    padding: 0.5vw 1vw; 
   }
 }
 
