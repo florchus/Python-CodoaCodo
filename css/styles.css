@@ -310,7 +310,7 @@ h3 {
 .form-group{
   padding: 1vw;
 }
-.btn-login button {
+.btn-login button, .registroBotones button {
   /* margin-top: 2vw; */
   margin-left: 8vw;
   background-color: rgba(4, 4, 243, 0.742);
@@ -589,10 +589,12 @@ input[type="checkbox"] {
 
 .gmap_canvas iframe {
   position: relative;
-  z-index: 2
+  /* z-index: 2 */
 }
 .contenido-map {
   display: flex;
   justify-content: space-around;
-
+}
+.descripcion{
+  padding: 0 1vw;
 }
