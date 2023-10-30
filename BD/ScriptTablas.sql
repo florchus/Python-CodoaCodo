@@ -7,13 +7,13 @@ use Librotopia
 create table Cliente(
     Email varchar(50) not null PRIMARY KEY,
     Contraseña VARCHAR(50) not null,
-    Nombre varchar(50) not null,
-    Apellido varchar(50) not null,
-    DNI bigint not null,
+    Nombre varchar(50),
+    Apellido varchar(50),
+    DNI bigint,
     Direccion varchar(100),
-    FechaDeNacimiento date not null,
-    Alias varchar(60) not null,
-    Estado int default 1 not null
+    FechaDeNacimiento date,
+    Alias varchar(60),
+    Estado int default 1
 )
 
 create Table Genero(
