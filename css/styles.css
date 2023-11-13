@@ -496,8 +496,8 @@ input[type="checkbox"] {
 /* ============================== RATING ESTRELLAS ==============================*/
 .rating {
   display: inline-block;
-  margin-left: 23vw;
-  margin-top: 3vw;
+  /* margin-left: 23vw; */
+  /* margin-top: 3vw; */
 }
 .rating > span {
   display: inline-block;

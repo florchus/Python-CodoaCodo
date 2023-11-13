@@ -1,0 +1,125 @@
+#calificaciones {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 1vw;
+}
+
+#barras {
+    width: 80%;
+}
+
+.barra-estrellas {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.barra_contenedor {
+    height: 1vw;
+    background-color: #9c9d9e;
+    width: 100%;
+    border-radius: 9999px;
+}
+
+.barra {
+    height: 1vw;
+    background-color: #3498db;
+    width: 0%;
+    border-radius: 9999px;
+    text-align: center;
+}
+
+.estrella {
+    font-size: 60%;
+    margin: 0 0.5vw 0 1vw;
+}
+
+.votos-estrellas {
+    font-size: 35%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.votos-estrellas:hover {
+    opacity: 1;
+}
+
+#promedio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#promedio-valor {
+    font-weight: bold;
+    font-size: 250%;
+}
+
+#total_votos {
+    font-size: 60%;
+}
+
+#rating_comentarios{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2vw;
+}
+
+/*  *********************************************Comentarios********************************************** */
+.comentarios {
+    
+    max-width: 50%;
+}
+
+#comentarios-container {
+    overflow-x: auto;
+    max-height: 200px;
+    overflow-y: auto;   
+}
+
+#tabla-comentarios {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#tabla-comentarios th,
+#tabla-comentarios td {
+    border: 1px solid #080808;
+    padding: 8px;
+    text-align: left;
+    font-size: 30%;
+}
+
+#tabla-comentarios th {
+    background-color: #f1f1f1;
+}
+
+#tabla-comentarios th.fecha,
+#tabla-comentarios td.fecha,
+#tabla-comentarios th.usuario,
+#tabla-comentarios td.usuario {
+    width: auto;
+    white-space: nowrap;
+}
+
+#tabla-comentarios th.comentario,
+#tabla-comentarios td.comentario {
+    width: 900px;
+    word-wrap: break-word;
+    /* Permite que las palabras largas se dividan en varias líneas */
+}
+#contador-caracteres{
+    font-size: 40%;
+}
+
+@media (max-width: 600px) {
+
+    #tabla-comentarios th,
+    #tabla-comentarios td {
+        font-size: 40%;
+    }
+}

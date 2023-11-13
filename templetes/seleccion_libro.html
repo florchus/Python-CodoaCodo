@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/styles_califica_comenta.css">
     <link rel="icon" href="../css/iconos/LogoTemp.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <title>Librotopía</title>
 </head>
+
 <body>
     <section class="contenedor">
         <div class="header">
@@ -18,7 +21,7 @@
             <button id="modoDiaNoche"></button>
         </div>
         <div class="left">
-            <a href="../templetes/panel_usuario.html" class="menuop">Panel del Usuario</a>   
+            <a href="../templetes/panel_usuario.html" class="menuop">Panel del Usuario</a>
             <a href="libros.html?generos=aventure,mistery,nature,love" class="menuop" id="btnVolver">Volver Atrás</a>
         </div>
         <div class="contenido">
@@ -31,57 +34,136 @@
                 <div class="info-libro">
                     <!-- Recupera los datos del libro desde los parámetros de consulta en la URL -->
                     <h1>Detalles del Libro</h1>
-        
+
                     <h2>Título: <span id="titulo"></span></h2>
                     <p>Autor: <span id="autor"></span></p>
                     <p>Género: <span id="genero"></span></p>
                     <div class="busqueda">
-                        <p>¡¿Quieres saber donde comprarlo?!</p>
-                        <a href="https://www.google.com/" target="_blank">Click Aquí</a>
+                        <!-- <p>¡¿Quieres saber donde comprarlo?!</p> -->
+                        <!-- <a href="https://www.google.com/" target="_blank">Click Aquí</a> -->
+                        <a href="https://www.google.com/" target="_blank">¡¿Quieres saber donde comprarlo?!</a>
+                    </div>
+                    <div id="calificaciones">
+                        <div id="promedio">
+                            <span id="promedio-valor">0.0</span>
+                            <span id="total_votos"></span>
+                        </div>
+                        <div id="barras">
+                            <div class="barra-estrellas">
+                                <div class="estrella">5</div>
+                                <div class="barra_contenedor">
+                                    <div class="barra" id="barra-5">
+                                        <div class="votos-estrellas" id="votos-5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="barra-estrellas">
+                                <div class="estrella">4</div>
+                                <div class="barra_contenedor">
+                                    <div class="barra" id="barra-4">
+                                        <div class="votos-estrellas" id="votos-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="barra-estrellas">
+                                <div class="estrella">3</div>
+                                <div class="barra_contenedor">
+                                    <div class="barra" id="barra-3">
+                                        <div class="votos-estrellas" id="votos-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="barra-estrellas">
+                                <div class="estrella">2</div>
+                                <div class="barra_contenedor">
+                                    <div class="barra" id="barra-2">
+                                        <div class="votos-estrellas" id="votos-2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="barra-estrellas">
+                                <div class="estrella">1</div>
+                                <div class="barra_contenedor">
+                                    <div class="barra" id="barra-1">
+                                        <div class="votos-estrellas" id="votos-1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="rating">
-                <i class="fa-solid fa-minus"></i>
-                <i class="fa-solid fa-minus"></i>
-                <i class="fa-solid fa-minus"></i>
-                <i class="fa-solid fa-minus"></i>
-                <i class="fa-solid fa-minus"></i>
-                <i class="fa-solid fa-minus"></i>
-                <h2>Califica este Libro:</h2>
-                <!-- el &#9733 representa la estrella, se llama al caracter especial -->
-                <span>&#9733;</span> 
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <p>Calificación: <span id="ratingValue">0</span> estrellas.</p>
+
+            <div id="rating_comentarios">
+                
+                <div class="rating">
+                    <i class="fa-solid fa-minus"></i>
+                    <i class="fa-solid fa-minus"></i>
+                    <i class="fa-solid fa-minus"></i>
+                    <i class="fa-solid fa-minus"></i>
+                    <i class="fa-solid fa-minus"></i>
+                    <i class="fa-solid fa-minus"></i>
+                    <h2>Califica este Libro:</h2>
+                    <!-- el &#9733 representa la estrella, se llama al caracter especial -->
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <p>Calificación: <span id="ratingValue">0</span> estrellas.</p>
+                    <button id="calificar" class="menuop">Calificar</button>
+                </div>
+
+                <div class="comentarios">
+                    <h3>Comentarios</h3>
+                    <div id="comentarios-container">
+                        <table id="tabla-comentarios">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Usuario</th>
+                                    <th>Comentario</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lista-comentarios">
+                                <!-- Los comentarios se generarán aquí -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <textarea id="nuevo-comentario" placeholder="Deja tu comentario" oninput="actualizarContador()"></textarea>
+                    <span id="contador-caracteres">500 caracteres restantes</span> 
+                    <button onclick="agregarComentario()">Enviar</button>
+                </div>
             </div>
-        </div>
-        
-        <div class="footer">
-            <div class="link-contacto">
-                <a href="https://wa.me/TUNUMERODERECIBIRMENSAJES">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="mailto:">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://www.facebook.com/">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="https://www.linkedin.com/">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a href="../templetes/location.html">
-                    <i class="fa-solid fa-font-awesome"></i>
-                </a>
-                <h6>&copy; 2023 Comisión 23527 - Grupo 11.</h6>
+
+
+
+            <div class="footer">
+                <div class="link-contacto">
+                    <a href="https://wa.me/TUNUMERODERECIBIRMENSAJES">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.facebook.com/">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="../templetes/location.html">
+                        <i class="fa-solid fa-font-awesome"></i>
+                    </a>
+                    <h6>&copy; 2023 Comisión 23527 - Grupo 11.</h6>
+                </div>
             </div>
-        </div>
     </section>
     <script src="../js/codigo.js"></script>
     <script src="../js/codigo_libro_seleccionado.js"></script>
-    <script src="../js/codigo_rating.js"></script>
+    <!-- <script src="../js/codigo_rating.js"></script> -->
+    <script src="../js/codigo_califica_comenta.js"></script>
 </body>
+
 </html>
