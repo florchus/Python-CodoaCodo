@@ -26,8 +26,8 @@ create TABLE Libro(
     Titulo VARCHAR(100) not null,
     Genero INT not null,
     Estado int DEFAULT 1 not null,
-    Autor VARCHAR(60) not null,
-    Resumen VARCHAR(300) not null,
+    Autor VARCHAR(100) not null,
+    Resumen VARCHAR(3000) not null,
     Portada VARCHAR(500) not null,
     Foreign Key (Genero) REFERENCES Genero(IDGenero)
 )

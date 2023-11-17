@@ -1,3 +1,4 @@
+
 INSERT INTO Genero (Descripcion)
 VALUES
 ('Aventura'),
@@ -12,3 +13,5 @@ VALUES
 ('Y NO QUEDO NINGUNO',2,'AGATHA CHRISTIE','Diez personas que no se han visto nunca son invitadas por un huésped desconocido a pasar unos días de vacaciones en una lujosa mansión situada en una isla de la costa inglesa. Cada uno de los invitados tiene algo que esconder; y un crimen por el que debe pagar','https://www.tematika.com/media/catalog/Ilhsa/Imagenes/701139.jpg')
 
 select * from genero
+
+select * from libro
