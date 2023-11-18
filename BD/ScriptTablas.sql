@@ -13,7 +13,7 @@ create table Cliente(
     Direccion varchar(100),
     FechaDeNacimiento date,
     Alias varchar(60),
-    Estado int default 1
+    TipoCuenta int
 )
 
 create Table Genero(
