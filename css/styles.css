@@ -26,7 +26,7 @@ html {
 
 .contenedor {
   display: grid;
-  grid-template: 20vh 1fr 10vh / 10vw 1fr;
+  grid-template: 20vh 1fr 8vh / 10vw 1fr;
   grid-template-areas: "header header"
     "left contenido"
     "footer footer";
@@ -232,6 +232,7 @@ a {
   text-align: left;
   padding: 3vw;
   font-size: 70%;
+  margin-bottom: 5vw;
 }
 .wrapper-reg  p {
   font-size: 80%;
@@ -524,7 +525,7 @@ input[type="checkbox"] {
 /* ============================== RESPONSIVE ==============================*/
 @media (max-width: 1000px) {
   .contenedor {
-    grid-template: 17vh 1fr 10vh / 10vw 1fr;
+    grid-template: 17vh 1fr 5vh / 10vw 1fr;
     grid-template-areas: "header header"
     "left contenido"
     "footer footer";
