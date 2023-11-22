@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
 from flask_cors import CORS
 from sqlalchemy import MetaData
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:2304@localhost:3306/librotopia'  
@@ -92,7 +93,54 @@ def verificar_cliente():
 
 
 
+@app.route('/obtener_cliente', methods=['GET'])
+def obtener_cliente():
+    try:
+        email = request.args.get('email')
 
+        """ data = request.get_json()
+        email = data['email'] """
+
+        result = db.session.execute(text("SELECT * FROM cliente WHERE Email = :email"), {'email': email})
+        cliente = result.fetchone()
+
+        if cliente:
+            # Convertir el resultado a un diccionario para facilitar el envío como JSON
+            cliente_dict = dict(zip(result.keys(), cliente))
+            cliente_dict['FechaDeNacimiento'] = cliente_dict['FechaDeNacimiento'].strftime('%Y-%m-%d')
+
+            return jsonify(cliente_dict)
+        else:
+            return jsonify({'error': 'Cliente no encontrado'}), 404
+
+    except Exception as e:
+        print(f"Error en el servidor: {str(e)}")
+        return jsonify({"error": "Error interno del servidor"}), 500
+
+# Ruta para actualizar los datos del usuario
+@app.route('/actualizar_cliente', methods=['PUT'])
+def actualizar_cliente():
+    try:
+        data = request.get_json()
+        data['FechaDeNacimiento'] = datetime.strptime(data['FechaDeNacimiento'], '%Y-%m-%d').date()
+        db.session.execute(
+            text("UPDATE cliente SET Nombre=:Nombre, Apellido=:Apellido, DNI=:DNI, Direccion=:Direccion, "
+         "FechaDeNacimiento=:FechaDeNacimiento, Alias=:Alias WHERE Email=:email"),
+        {
+        'email': data['email'],  
+        'Nombre': data['Nombre'],
+        'Apellido': data['Apellido'],
+        'DNI': data['DNI'],
+        'Direccion': data['Direccion'],
+        'FechaDeNacimiento': data['FechaDeNacimiento'],
+        'Alias': data['Alias'],})
+
+        db.session.commit()
+
+        return jsonify({'mensaje': 'Datos actualizados exitosamente'})
+    except Exception as e:
+        print(f"Error en el servidor: {str(e)}")
+        return jsonify({"error": "Error interno del servidor"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

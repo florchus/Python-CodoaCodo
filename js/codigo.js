@@ -117,7 +117,7 @@ function inicioSesion() {
     .then(function (res) {
       alert(res.mensaje)
       if (res.mensaje === 'Iniciando sección') {
-        window.location.href = "panel_usuario.html";
+        window.location.href = "panel_usuario.html?email="+correo.value;
       } else {
         correo.value = "";
         contraseña.value = "";
@@ -168,7 +168,7 @@ function validarFormularioUsuario() {
   }
 
   // Si todas las validaciones son exitosas, enviar el formulario
-  alert("Se enviaron los datos correctamnte.")
+  /* alert("Se enviaron los datos correctamnte.") */
   return true
 }
 
@@ -176,8 +176,11 @@ function validarFormularioUsuario() {
 // "Botón" Modo Invitado
 
 document.addEventListener("DOMContentLoaded", () => {
-  const enlace = document.getElementById("modoInvitado");
-  enlace.addEventListener('click', function (event) {
-    localStorage.setItem('url', 'libros.html?generos=aventure,mistery,nature,love');
-  });
+  // Verificar si estamos en la página index.html
+  if (window.location.pathname.includes("index.html")) {
+    const enlace = document.getElementById("modoInvitado");
+    enlace.addEventListener('click', function (event) {
+      localStorage.setItem('url', 'libros.html?generos=aventure,mistery,nature,love');
+    });
+  }
 });
