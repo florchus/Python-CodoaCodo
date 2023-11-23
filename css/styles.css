@@ -379,6 +379,7 @@ h3 {
   width: 40vw;
   /* height: 25vw; */
   margin-left: 25vw;
+  margin-bottom: 5vw;
 }
 
 .container-data button, .container-prefe button {

@@ -66,8 +66,6 @@ function nuevaCuenta() {
 
   const correo = document.getElementById("correo").value;
   const contraseña = document.getElementById("password1").value;
-  alert(correo);
-  alert(contraseña);
   const url = 'http://127.0.0.1:5000/registrar_cliente';
 
   const data = {
@@ -84,8 +82,7 @@ function nuevaCuenta() {
     .then(response => response.json())
     .then(function (res) {
       alert(res.mensaje)
-      window.location.href = "panel_usuario.html";
-
+      window.location.href = "panel_usuario.html?email="+correo;
     })
     .catch(err => {
       alert("Error al grabar")

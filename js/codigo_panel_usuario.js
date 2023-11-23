@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Obtener el parámetro 'email' de la URL
   const urlParams = new URLSearchParams(window.location.search);
   const correoId = urlParams.get('email');
+  const AdministrarUsuarios = document.getElementById("AdministrarUsuarios");
 
   const url = 'http://127.0.0.1:5000/obtener_cliente?email=' + correoId;
 
@@ -17,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
       /* document.getElementById('telefono').value = data.Telefono; */
       document.getElementById('fechana').value = data.FechaDeNacimiento !== undefined ? data.FechaDeNacimiento : '';
       document.getElementById('alias').value = data.Alias !== undefined ? data.Alias : '';
+      if (data.TipoCuenta == 2){
+        AdministrarUsuarios.style.display = "block";
+      }
     })
     .catch(error => console.error('Error al obtener los datos del cliente:', error));
 });
