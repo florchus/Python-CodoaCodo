@@ -145,7 +145,7 @@ a {
   grid-area: contenido;
   background-color: rgba(168, 134, 254, 0.324);
   border-radius: 1vw;
-  /* margin-top:6.5vw; */
+  margin-bottom: 5vw;
 }
 /* ============================== HEADER ==============================*/
 .header {

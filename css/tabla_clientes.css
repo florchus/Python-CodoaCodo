@@ -1,0 +1,96 @@
+
+.contenido{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+}
+
+table {
+    background-color: #001F3F;
+    border-collapse: collapse;
+    width: 60vw;
+    max-width: 60vw;
+    margin: 2vw auto;
+    font-family: Arial, sans-serif;
+    height:auto;
+    font-size: 50%;
+    margin-bottom: 8vw;
+}
+
+th, td {
+    border: 0.1vw solid #dddddd;
+    padding: 0.8vw;
+    text-align: left;
+    color: #dddddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #001F3F;
+    text-align: center;
+}
+
+.acciones{
+    display: flex;
+}
+
+/* a{
+    text-decoration: none;
+    color: #dddddd;
+} */
+
+td:hover{
+    background-color: #f2f2f2;
+    color:#001F3F
+}
+
+a:hover{
+    background-color: #f2f2f2;
+    color:#001F3F
+}
+
+button{
+    /* margin-right: 2vh; */
+    background-color: red; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 0.5vw 1vh; /* Relleno interno */
+    border: none; /* Quita el borde */
+    border-radius: 2vw; /* Borde redondeado */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Quita el subrayado predeterminado */
+    display: inline-block; /* Mostrar como bloque en línea */
+    font-size: 40%; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */ 
+}
+
+.boton{  
+    color: #f2f2f2;
+    margin-right: 1vh;
+    background-color: #4CAF50; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 0.5vw 1vh; /* Relleno interno */
+    border: none; /* Quita el borde */
+    border-radius: 2vw; /* Borde redondeado */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Quita el subrayado predeterminado */
+    display: inline-block; /* Mostrar como bloque en línea */
+    font-size: 40%; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}
+
+.nuevo{
+    color: #f2f2f2;
+    margin-right: 2vh;
+    background-color: #001F3F50; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 0.5vw 3vh; /* Relleno interno */
+    border: none; /* Quita el borde */
+    border-radius: 2vw; /* Borde redondeado */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Quita el subrayado predeterminado */
+    display: inline-block; /* Mostrar como bloque en línea */
+    font-size: 1vw; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}

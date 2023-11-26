@@ -41,7 +41,7 @@ def obtener_generos():
     generos_json = []
     for row in result:
         generos_json.append({
-            'IDGenero': row[0],   # Cambiar a índices en lugar de claves
+            'IDGenero': row[0],   
             'Descripcion': row[1]
         })
 
@@ -66,6 +66,7 @@ def registrar_cliente():
         print(f"Error en el servidor: {str(e)}")
         return jsonify({"error": "Error interno del servidor"}), 500
     
+
 # Ruta para verificar la existencia del usuario y la contraseña
 @app.route('/verificar_cliente', methods=['POST'])
 def verificar_cliente():
@@ -93,13 +94,25 @@ def verificar_cliente():
 
 
 
+@app.route('/clientes', methods=['GET'])
+def clientes():
+    try:
+        result = db.session.execute(text("SELECT * FROM cliente"))
+        # crea un diccionario con los datos generados en la consulta.
+        clientes = [dict(zip(result.keys(), cliente)) for cliente in result.fetchall()]
+        # transforma el formato de las fechas de nacimiento
+        """ for cliente in clientes:
+            cliente['FechaDeNacimiento'] = cliente['FechaDeNacimiento'].strftime('%Y-%m-%d') """
+        return jsonify(clientes)
+    except Exception as e:
+        print(f"Error en el servidor: {str(e)}")
+        return jsonify({"error": "Error interno del servidor"}), 500
+
+
 @app.route('/obtener_cliente', methods=['GET'])
 def obtener_cliente():
     try:
         email = request.args.get('email')
-
-        """ data = request.get_json()
-        email = data['email'] """
 
         result = db.session.execute(text("SELECT * FROM cliente WHERE Email = :email"), {'email': email})
         cliente = result.fetchone()
@@ -107,6 +120,7 @@ def obtener_cliente():
         if cliente:
             # Convertir el resultado a un diccionario para facilitar el envío como JSON
             cliente_dict = dict(zip(result.keys(), cliente))
+            # transforma el formato de la fecha
             cliente_dict['FechaDeNacimiento'] = cliente_dict['FechaDeNacimiento'].strftime('%Y-%m-%d')
 
             return jsonify(cliente_dict)
@@ -138,6 +152,20 @@ def actualizar_cliente():
         db.session.commit()
 
         return jsonify({'mensaje': 'Datos actualizados exitosamente'})
+    except Exception as e:
+        print(f"Error en el servidor: {str(e)}")
+        return jsonify({"error": "Error interno del servidor"}), 500
+
+@app.route('/eliminar_cliente', methods=['DELETE'])
+def eliminar_cliente():
+    try:
+        email = request.args.get('email')
+
+        db.session.execute(text("DELETE FROM cliente WHERE Email = :email"), {'email': email})
+        db.session.commit()
+
+        return jsonify({'mensaje': 'Cliente eliminado exitosamente'})
+
     except Exception as e:
         print(f"Error en el servidor: {str(e)}")
         return jsonify({"error": "Error interno del servidor"}), 500

@@ -37,6 +37,7 @@ function actualizarDatos() {
   // Obtener el parámetro 'email' de la URL
   const urlParams = new URLSearchParams(window.location.search);
   const correoId = urlParams.get('email');
+  const origen = urlParams.get('origen');
 
   const url = `http://127.0.0.1:5000/actualizar_cliente`;
 
@@ -64,7 +65,11 @@ function actualizarDatos() {
     .catch(err => {
       console.error(err);
     });
-}
+
+    if (origen === 'editar') {
+        window.location.href = "panel_administrador2.html";
+    }
+  }
 
 
 

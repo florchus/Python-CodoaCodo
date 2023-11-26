@@ -8,6 +8,9 @@
     <link rel="icon" href="../css/iconos/LogoTemp.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <title>Librotopía</title>
+
+    <link rel="stylesheet" href="../css/tabla_clientes.css">
+
 </head>
 
 <body>
@@ -26,7 +29,52 @@
             <button id="BotonAdminUsuarios" class="menuop">Usuarios</button>
         </div>
         <div class="contenido">
-    
+            <h2>Usuarios</h2>
+            <div id="app" >
+
+                <!-- Botón Nuevo -->
+                <!-- <a class="nuevo" href="templates/ingresar_producto.html">Nuevo</a> -->
+                
+                <section v-if="error">Lo sentimos se produjo un error</section>
+                <section v-else>
+                    <!-- <section v-if="cargando">
+                        <div class="spinner-border"></div>
+                        <p>Cargando .....</p>
+                    </section>
+                    <section v-else>  -->
+                        <div >
+                            <table class="tabla">
+                                <thead>
+                                    <tr>
+                                        <th><b>Correo</b></th>
+                                        <th><b>Nombre</b></th>
+                                        <th><b>Apellido</b></th>
+                                        <th><b>Alias</b></th>
+                                        <th><b>DNI</b></th>
+                                        <th><b>Dirección</b></th>
+                                        <th><b>Acciones</b></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="cliente in clientes">
+                                        <td >{{cliente.Email}}</td>
+                                        <td>{{cliente.Nombre}}</td>
+                                        <td>{{cliente.Apellido}}</td>
+                                        <td>{{cliente.Alias}}</td>
+                                        <td>{{cliente.DNI}}</td>
+                                        <td>{{cliente.Direccion}}</td>
+                                        <td class="acciones">
+                                            <a class="boton" :href="'panel_usuario.html?email='+cliente.Email+'&origen=editar'">Editar</a> 
+                                            <button type="button"  v-on:click="eliminar(cliente.Email)">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    <!-- </section> -->
+                </section>
+
+            </div>
         </div>
         <div class="footer">
             <div class="link-contacto">
@@ -49,8 +97,9 @@
             </div>
         </div>
     </section>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="../js/codigo.js"></script>
-    <script src="../js/codigo_panel_usuario.js"></script>
+    <script src="../js/codigo_panel_administrador.js"></script>
 </body>
 
 </html>

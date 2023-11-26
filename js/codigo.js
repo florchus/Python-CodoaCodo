@@ -82,7 +82,7 @@ function nuevaCuenta() {
     .then(response => response.json())
     .then(function (res) {
       alert(res.mensaje)
-      window.location.href = "panel_usuario.html?email="+correo;
+      window.location.href = "panel_usuario.html?email="+correo+"&origen=PaUs";
     })
     .catch(err => {
       alert("Error al grabar")
@@ -113,10 +113,9 @@ function inicioSesion() {
     .then(response => response.json()) /* captura la respuesta de la verificación */
     .then(function (res) {
       alert(res.mensaje)
-      if (res.mensaje === 'Iniciando sección') {
-        window.location.href = "panel_usuario.html?email="+correo.value;
+      if (res.mensaje === 'Iniciando sección...') {
+        window.location.href = "panel_usuario.html?email="+correo.value+"&origen=PaUs";
       } else {
-        correo.value = "";
         contraseña.value = "";
       }
     })
