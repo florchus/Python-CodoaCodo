@@ -23,6 +23,7 @@
             <a class="menuop" href="../index.html">Home</a>
             <button id="BotonDatosPersonales" class="menuop" disabled>Datos Personales</button>
             <button id="BotonPreferenciasLectura" class="menuop">Preferencias de Lectura</button>
+            <button id="BotonFavoritos" class="menuop">Favoritos</button>
             <!-- <button id="AdministrarUsuarios" class="menuop" style="display: none;">Usuarios</button> -->
             <a href="panel_administrador2.html" id="AdministrarUsuarios" class="menuop" style="display: none;">Usuarios</a>
         </div>
@@ -99,6 +100,17 @@
                         <button type="submit" class="btn">Ver Libros</button>
                     </div>
                 </form>
+                </div>
+            </div>
+            <div class="wrapper-panel" id="Favoritos" style="display: none;">
+                <div class="container-fav">
+                    <ul>
+                        <li>Titulo</li>
+                        <li>Autor</li>
+                    </ul>
+                    <!-- aca nos traemos los favoritos, y hay que hacer que se vea como el cambio entre
+                    preferencias y datos de usuario/ darle funcionalidad al eliminar -->
+                    <button>Eliminar</button>
                 </div>
             </div>
         </div>
