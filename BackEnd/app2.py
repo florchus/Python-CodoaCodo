@@ -24,6 +24,10 @@ class Genero(db.Model):
     IDGenero = db.Column(db.Integer, primary_key=True)
     Descripcion = db.Column(db.String(100)) 
 
+class Favoritos(db.Model):
+    IDFavoritos = db.Column(db.Integer, primary_key=True)
+    Email = db.Column(db.String(50), db.ForeignKey('cliente.Email'))
+    IDLibro = db.Column(db.Integer, db.ForeignKey('libro.IDLibro'))
 
 # Ruta para obtener los libros seleccionado por genero
 @app.route('/libros/<genero>', methods=['GET'])
@@ -78,6 +82,14 @@ def obtener_generos():
 
     return jsonify({'generos': generos_json})
 
+# Ruta para agregar libro a favoritos
+@app.route('/agregar_favorito/<int:IDLibro>/<email>', methods=['POST'])
+def agregarFavorito(IDLibro, email):
+    nuevo_favorito = Favoritos(IDLibro=IDLibro, Email=email)
+    db.session.add(nuevo_favorito)
+    db.session.commit()
+
+    return jsonify({"mensaje":"Libro agregado a tus favoritos"},200)
 
 
 # Ruta para registrar un nuevo usuario

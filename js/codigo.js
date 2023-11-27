@@ -41,6 +41,9 @@ modoDN.addEventListener('click', function () {
   cambiarDiaNoche();
 });
 
+//**************************************Guardar a Fvaoritos****************************************
+
+
 //**************************************Validad claves iguales en el registro****************************************
 function validarClavesRegistro() {
   // Obtener los valores ingresados por el usuario
@@ -114,7 +117,16 @@ function inicioSesion() {
     .then(function (res) {
       alert(res.mensaje)
       if (res.mensaje === 'Iniciando sección') {
-        window.location.href = "panel_usuario.html?email=" + correo.value;
+        // Crear un objeto con la información del usuario
+        const userInfo = {
+          email: correo.value,
+        };
+
+        // Almacenar el objeto en localStorage
+        localStorage.setItem('userInfo', JSON.stringify(userInfo));
+        window.location.href = `panel_usuario.html?email=${correo.value}`;
+
+
       } else {
         contraseña.value = "";
       }
@@ -122,9 +134,17 @@ function inicioSesion() {
     .catch(err => {
       alert("Error al grabar")
       console.error(err);
-    })
+    });
 }
 
+//**************************************Cerrar Sesión****************************************
+function cerrarSesion() {
+  // Eliminar la información de la sesión al cerrar sesión
+  localStorage.removeItem('userInfo');
+  alert('Sesión cerrada exitosamente.');
+  // Redirigir al home u otra página de inicio
+  window.location.href = "index.html";
+}
 
 //***************************Validad datos en el formulario del panel del usuario**************************************
 function validarFormularioUsuario() {

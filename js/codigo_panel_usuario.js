@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch(url)
     .then(response => response.json())
     .then(data => {
+      localStorage.setItem('clienteData', JSON.stringify(data));
+
       document.getElementById('nombre').value = data.Nombre !== undefined ? data.Nombre : '';
       document.getElementById('apellido').value = data.Apellido !== undefined ? data.Apellido : '';
       document.getElementById('DNI').value = data.DNI !== undefined ? data.DNI : '';
@@ -21,6 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (data.TipoCuenta == 2){
         AdministrarUsuarios.style.display = "block";
       }
+      // datos guardados sobre el clientedata
+      
     })
     .catch(error => console.error('Error al obtener los datos del cliente:', error));
 });
