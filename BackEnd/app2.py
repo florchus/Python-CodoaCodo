@@ -11,6 +11,37 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)   
 CORS(app)                                   
 
+class Libro(db.Model):
+    IDLibro = db.Column(db.Integer, primary_key=True)
+    Titulo = db.Column(db.String(100))
+    Genero = db.Column(db.Integer, db.ForeignKey('genero.id'))
+    Estado = db.Column(db.Integer)
+    Autor = db.Column(db.String(100))
+    Resumen = db.Column(db.String(3000))
+    Portada = db.Column(db.String(500))
+
+class Genero(db.Model):
+    IDGenero = db.Column(db.Integer, primary_key=True)
+    Descripcion = db.Column(db.String(100)) 
+
+
+# Ruta para obtener los libros seleccionado por genero
+@app.route('/libros/<genero>', methods=['GET'])
+def obtenerlibros_genero(genero):
+    libros = Libro.query.filter_by(Genero=genero).all()
+
+    libros_json = []
+    for libro in libros:
+        libros_json.append({
+            'IDLibro': libro.IDLibro,
+            'Titulo': libro.Titulo,
+            'Genero': libro.Genero,
+            'Estado': libro.Estado,
+            'Autor': libro.Autor,
+            'Resumen': libro.Resumen,
+            'Portada': libro.Portada
+        })
+    return jsonify({'libros': libros_json})
 
 # Ruta para obtener todos los libros
 @app.route('/libros', methods=['GET'])
