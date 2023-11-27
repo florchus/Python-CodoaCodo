@@ -2,6 +2,7 @@
 const calificaciones = [5, 8, 12, 15, 20]; // Cantidad de votos para 1, 2, 3, 4 y 5 estrellas, respectivamente
 
 //Actualizar el promedio y las barras
+obtener_calificaciones(ID)
 actualizar_datos();
 
 //Calificar el libro

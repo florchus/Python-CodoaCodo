@@ -319,5 +319,84 @@ def eliminar_cliente():
         print(f"Error en el servidor: {str(e)}")
         return jsonify({"error": "Error interno del servidor"}), 500
 
+# Ruta para obtener las calificaciones de un libro por su ID
+@app.route('/calificaciones/<id_libro>', methods=['GET'])
+def obtener_calificaciones(id_libro):
+    try:
+        # Convertir el ID del libro a entero
+        id_libro = int(id_libro)
+
+        calificaciones = Calificaciones.query.filter_by(IDLibro=id_libro).first()
+
+        if calificaciones:
+            calificaciones_json = {
+                'IDLibro': calificaciones.IDLibro,
+                'Estrella1': calificaciones.Estrella1,
+                'Estrella2': calificaciones.Estrella2,
+                'Estrella3': calificaciones.Estrella3,
+                'Estrella4': calificaciones.Estrella4,
+                'Estrella5': calificaciones.Estrella5
+            }
+        else:
+            # Si no hay calificaciones, devolver valores predeterminados
+            calificaciones_json = {
+                'IDLibro': id_libro,
+                'Estrella1': 0,
+                'Estrella2': 0,
+                'Estrella3': 0,
+                'Estrella4': 0,
+                'Estrella5': 0
+            }
+
+        return jsonify({'calificaciones': calificaciones_json})
+
+    except Exception as e:
+        print(f"Error en el servidor: {str(e)}")
+        return jsonify({"error": "Error interno del servidor"}), 500
+
+
+# Ruta para guardar las calificaciones
+@app.route('/guardar_calificaciones', methods=['POST'])
+def guardar_calificaciones():
+    try:
+        data = request.get_json()
+
+        id_libro = data['IDLibro']
+        estrella1 = data['Estrella1']
+        estrella2 = data['Estrella2']
+        estrella3 = data['Estrella3']
+        estrella4 = data['Estrella4']
+        estrella5 = data['Estrella5']
+
+        # Verificar si ya existe una entrada para este libro en Calificaciones
+        calificaciones = Calificaciones.query.filter_by(IDLibro=id_libro).first()
+
+        if calificaciones:
+            # Actualizar calificaciones existentes
+            calificaciones.Estrella1 = estrella1
+            calificaciones.Estrella2 = estrella2
+            calificaciones.Estrella3 = estrella3
+            calificaciones.Estrella4 = estrella4
+            calificaciones.Estrella5 = estrella5
+        else:
+            # Crear nuevas calificaciones
+            calificaciones = Calificaciones(
+                IDLibro=id_libro,
+                Estrella1=estrella1,
+                Estrella2=estrella2,
+                Estrella3=estrella3,
+                Estrella4=estrella4,
+                Estrella5=estrella5
+            )
+            db.session.add(calificaciones)
+
+        db.session.commit()
+
+        return jsonify({'mensaje': 'Calificaciones guardadas exitosamente'})
+    except Exception as e:
+        print(f"Error en el servidor: {str(e)}")
+        return jsonify({"error": "Error interno del servidor"}), 500
+
+
 if __name__ == '__main__':
     app.run(debug=True)
