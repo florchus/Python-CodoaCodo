@@ -24,7 +24,7 @@ barraDeProgreso.style.width = progreso + '%';
 // Recorrer arreglo de géneros selecionados
 generosSeleccionados.forEach(genero => {
   // Crear la URL de la API basada en el género actual
-  const apiUrl = `https://openlibrary.org/subjects/${genero}.json?limit=10`;
+  const apiUrl = `http://127.0.0.1:5000/libros/${genero}`;
 
   // Arreglo para almacenar los libros del género actual
   const librosGenero = [];
@@ -40,10 +40,10 @@ generosSeleccionados.forEach(genero => {
       return response.json()
     })
     .then(data => {
-      data.works.forEach(book => {
-        const titulo = book.title;
-        const autor = book.authors[0]?.name || 'Desconocido';
-        const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
+      data.libros.forEach(libro => {
+        const titulo = libro.Titulo;
+        const autor = libro.Autor|| 'Desconocido';
+        const coverUrl = libro.Portada;
 
         // Agregar el libro al arreglo del género actual
         librosGenero.push({ titulo, autor, coverUrl });
@@ -64,15 +64,16 @@ generosSeleccionados.forEach(genero => {
 function mostrarLibrosEnSeccion(libros, genero) {
   // Identificar la sección correspondiente en el HTML basada en el género
   const seccion = document.getElementById(`divGenero${genero}`);
-  // Coloca visible el div correspondiente
+  
   seccion.style.display = 'block';
 
   // Obtén el contenedor de libros dentro de la sección
   const contenedorLibros = seccion.querySelector('.libros');
-  const contenedortarjetas = seccion.querySelector('.tarjetas'); //nuevo
+  const contenedorTarjetas = seccion.querySelector('.tarjetas'); // Nuevo
+
   // Limpia el contenido
   contenedorLibros.innerHTML = '';
-  contenedortarjetas.innerHTML = ''; //nuevo
+  contenedorTarjetas.innerHTML = ''; //nuevo
 
   // Crea un enlace para la página de detalles del libro
   libros.forEach(libro => {
@@ -107,7 +108,7 @@ function mostrarLibrosEnSeccion(libros, genero) {
     // Agrega la imagen y la tarjeta al contenedor de libros
     contenedorLibros.appendChild(imagen);
     /* contenedorLibros.appendChild(tarjeta); */
-    contenedortarjetas.appendChild(tarjeta);
+    contenedorTarjetas.appendChild(tarjeta);
     // Agrega la imagen al enlace de detalles
     enlaceDetalle.appendChild(imagen);
     contenedorLibros.appendChild(enlaceDetalle);
