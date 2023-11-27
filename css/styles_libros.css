@@ -1,19 +1,19 @@
 
 /*======================================== Estilos para tira de libros ============================================ */
 /* Aplica los colores a los div de género */
-#divGeneroaventure {
+#divGenero1 {
   background-color: var(--color-aventura);
 }
 
-#divGenerolove {
+#divGenero4 {
   background-color: var(--color-romance);
 }
 
-#divGeneromistery {
+#divGenero2 {
   background-color: var(--color-misterio);
 }
 
-#divGeneronature {
+#divGenero3 {
   background-color: var(--color-naturaleza);
 }
 
