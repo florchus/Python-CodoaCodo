@@ -113,6 +113,33 @@ with app.app_context():
 
 ########################################## Rutas #################################################
 
+# Ruta para obtener los libros seleccionado por genero
+@app.route('/libros/<genero>', methods=['GET'])
+def obtenerlibros_genero(genero):
+    libros = Libro.query.filter_by(Genero=genero).all()
+
+    libros_json = []
+    for libro in libros:
+        libros_json.append({
+            'IDLibro': libro.IDLibro,
+            'Titulo': libro.Titulo,
+            'Genero': libro.Genero,
+            'Estado': libro.Estado,
+            'Autor': libro.Autor,
+            'Resumen': libro.Resumen,
+            'Portada': libro.Portada
+        })
+    return jsonify({'libros': libros_json})
+
+# Ruta para agregar libro a favoritos
+@app.route('/agregar_favorito/<int:IDLibro>/<email>', methods=['POST'])
+def agregarFavorito(IDLibro, email):
+    nuevo_favorito = Favoritos(IDLibro=IDLibro, Email=email)
+    db.session.add(nuevo_favorito)
+    db.session.commit()
+
+    return jsonify({"mensaje":"Libro agregado a tus favoritos"},200)
+
 # Ruta para obtener todos los libros
 @app.route('/libros', methods=['GET'])
 def obtener_libros():

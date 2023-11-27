@@ -2,9 +2,12 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   // Obtener el parámetro 'email' de la URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const correoId = urlParams.get('email');
+  // const urlParams = new URLSearchParams(window.location.search);
+  // const correoId = urlParams.get('email');
+  const correoId = localStorage.getItem('email');
   const AdministrarUsuarios = document.getElementById("AdministrarUsuarios");
+
+
 
   const url = 'http://127.0.0.1:5000/obtener_cliente?email=' + correoId;
 
@@ -24,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         AdministrarUsuarios.style.display = "block";
       }
       // datos guardados sobre el clientedata
-      
+
     })
     .catch(error => console.error('Error al obtener los datos del cliente:', error));
 });
@@ -141,3 +144,12 @@ generosForm.addEventListener("submit", function (event) {
   // Redirigir a la página "libros.html" con los parámetros de consulta
   window.location.href = url;
 });
+
+//**************************************Cerrar Sesión****************************************
+function cerrarSesion() {
+  // Eliminar la información de la sesión al cerrar sesión
+  localStorage.removeItem('email');
+  alert('Sesión cerrada exitosamente.');
+  // Redirigir al home u otra página de inicio
+  window.location.href = "../index.html";
+}

@@ -85,7 +85,9 @@ function nuevaCuenta() {
     .then(response => response.json())
     .then(function (res) {
       alert(res.mensaje)
-      window.location.href = "panel_usuario.html?email="+correo+"&origen=PaUs";
+      // Almacenar el objeto en localStorage
+      localStorage.setItem('email', correo.value);
+      window.location.href = "panel_usuario.html";
     })
     .catch(err => {
       alert("Error al grabar")
@@ -117,14 +119,10 @@ function inicioSesion() {
     .then(function (res) {
       alert(res.mensaje)
       if (res.mensaje === 'Iniciando sección') {
-        // Crear un objeto con la información del usuario
-        const userInfo = {
-          email: correo.value,
-        };
 
         // Almacenar el objeto en localStorage
-        localStorage.setItem('userInfo', JSON.stringify(userInfo));
-        window.location.href = `panel_usuario.html?email=${correo.value}`;
+        localStorage.setItem('email', correo.value);
+        window.location.href = `panel_usuario.html`;
 
 
       } else {
@@ -137,14 +135,6 @@ function inicioSesion() {
     });
 }
 
-//**************************************Cerrar Sesión****************************************
-function cerrarSesion() {
-  // Eliminar la información de la sesión al cerrar sesión
-  localStorage.removeItem('userInfo');
-  alert('Sesión cerrada exitosamente.');
-  // Redirigir al home u otra página de inicio
-  window.location.href = "index.html";
-}
 
 //***************************Validad datos en el formulario del panel del usuario**************************************
 function validarFormularioUsuario() {
