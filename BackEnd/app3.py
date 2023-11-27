@@ -239,7 +239,7 @@ def verificar_cliente():
 
         if cliente:
             if data['contraseña'] == cliente.Contraseña:
-                return jsonify({'mensaje': 'Iniciando sección...'})
+                return jsonify({'mensaje': 'Iniciando sección'})
             else:
                 return jsonify({'mensaje': 'La contraseña es incorrecta'})
         else:
@@ -348,7 +348,7 @@ def obtener_calificaciones(id_libro):
                 'Estrella5': 0
             }
 
-        return jsonify({'calificaciones': calificaciones_json})
+        return jsonify(calificaciones_json)
 
     except Exception as e:
         print(f"Error en el servidor: {str(e)}")

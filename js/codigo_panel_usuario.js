@@ -7,14 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const correoId = localStorage.getItem('email');
   const AdministrarUsuarios = document.getElementById("AdministrarUsuarios");
 
-
-
   const url = 'http://127.0.0.1:5000/obtener_cliente?email=' + correoId;
 
   fetch(url)
     .then(response => response.json())
     .then(data => {
-      localStorage.setItem('clienteData', JSON.stringify(data));
+      /* localStorage.setItem('clienteData', JSON.stringify(data)); */
 
       document.getElementById('nombre').value = data.Nombre !== undefined ? data.Nombre : '';
       document.getElementById('apellido').value = data.Apellido !== undefined ? data.Apellido : '';

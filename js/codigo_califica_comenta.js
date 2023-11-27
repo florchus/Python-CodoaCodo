@@ -1,9 +1,11 @@
 // Datos de ejemplo calificaciones
-const calificaciones = [5, 8, 12, 15, 20]; // Cantidad de votos para 1, 2, 3, 4 y 5 estrellas, respectivamente
+let calificaciones = []; // Este arreglo tendrá la cantidad de votos para cada estrellas
 
-//Actualizar el promedio y las barras
-obtener_calificaciones(ID)
-actualizar_datos();
+// Recupera el ID del libro en la URL
+const urlParams = new URLSearchParams(window.location.search);
+const id_libro = urlParams.get('id_libro');
+//Obtener calificaciones del libro, actualizar el promedio y las barras
+obtener_calificaciones(id_libro);
 
 //Calificar el libro
 const calificar = document.getElementById("calificar");
@@ -18,6 +20,29 @@ calificar.addEventListener("click", function () {
     calificado = true;
   };
 });
+
+
+function obtener_calificaciones(id_libro) {
+  const url = `http://127.0.0.1:5000/calificaciones/${id_libro}`;
+
+  fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        calificaciones = [
+          data.Estrella1,
+          data.Estrella2,
+          data.Estrella3,
+          data.Estrella4,
+          data.Estrella5
+        ];
+        //Actualizar el promedio y las barras  
+        actualizar_datos()
+      })
+      .catch(err => {
+          console.error(err);
+          // Manejo de errores si es necesario
+      });
+}
 
 
 function actualizar_datos() {
@@ -131,9 +156,6 @@ function actualizarContador() {
     nuevoComentario.value = nuevoComentario.value.slice(0, maxCaracteres); // Limitar la longitud del texto
   }
   contadorCaracteres.textContent = `${caracteresRestantes} caracteres restantes`;
-
-
-
 
   contadorCaracteres.style.color = caracteresRestantes == 0 ? "red" : "";
 }

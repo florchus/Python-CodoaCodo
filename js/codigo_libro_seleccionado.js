@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Obtener el elemento <a>
   const link = document.querySelector("#btnVolver");
   // Asigna la url almacenada en el localstorage. Si no hay entoces asigna la url completa.
-  const url = localStorage.getItem("url") || "libros.html?generos=aventure,mistery,nature,love";
+  const url = localStorage.getItem("url") || "libros.html?generos=1,2,3,4";
   link.setAttribute("href", url);
 });
 
@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function datosLibroSeleccionado() {
     // Recupera los datos del libro desde los parámetros de consulta en la URL y muestra en la página
     const urlParams = new URLSearchParams(window.location.search);
+    const id_libro = urlParams.get('id_libro');
     const titulo = urlParams.get('titulo');
     const autor = urlParams.get('autor');
     const genero = urlParams.get('genero');
