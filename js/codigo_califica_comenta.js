@@ -18,6 +18,7 @@ calificar.addEventListener("click", function () {
     actualizar_datos();
     calificar.disabled = true;
     calificado = true;
+    guardarCalificaciones(id_libro);
   };
 });
 
@@ -40,16 +41,44 @@ function obtener_calificaciones(id_libro) {
       })
       .catch(err => {
           console.error(err);
-          // Manejo de errores si es necesario
       });
 }
 
+function guardarCalificaciones(id_libro) {
+  const url = `http://127.0.0.1:5000/guardar_calificaciones`;
+
+  const data = {
+    IDLibro: id_libro,
+    Estrella1: calificaciones[0],
+    Estrella2: calificaciones[1],
+    Estrella3: calificaciones[2],
+    Estrella4: calificaciones[3],
+    Estrella5: calificaciones[4]
+  };
+
+  const options = {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+  };
+
+  fetch(url, options)
+      .then(response => response.json())
+      .then(function (res) {
+        alert(res.mensaje)
+      })
+      .catch(error => {
+          console.error('Error al guardar calificaciones:', error);
+      });
+}
 
 function actualizar_datos() {
   // Calcula el promedio
   const totalVotos = calificaciones.reduce((acc, votos, estrellas) => acc + votos * (estrellas + 1), 0);
   const totalPersonas = calificaciones.reduce((acc, votos) => acc + votos, 0);
-  const promedio = totalVotos / totalPersonas;
+  const promedio = totalPersonas !== 0 ? totalVotos / totalPersonas : 0;
 
   // Actualiza las barras de visualización y el promedio
   for (let i = 1; i <= 5; i++) {
