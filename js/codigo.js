@@ -113,8 +113,8 @@ function inicioSesion() {
     .then(response => response.json()) /* captura la respuesta de la verificación */
     .then(function (res) {
       alert(res.mensaje)
-      if (res.mensaje === 'Iniciando sección...') {
-        window.location.href = "panel_usuario.html?email="+correo.value+"&origen=PaUs";
+      if (res.mensaje === 'Iniciando sección') {
+        window.location.href = "panel_usuario.html?email=" + correo.value;
       } else {
         contraseña.value = "";
       }
