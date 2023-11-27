@@ -78,25 +78,40 @@ function actualizarDatos() {
 /* const botonCambiarSeccion = document.getElementById("cambiarSeccion"); */
 const DatosPersonales = document.getElementById("datosPersonales");
 const PreferenciasLectura = document.getElementById("preferenciasLectura");
+const Favoritos = document.getElementById("Favoritos");
 
-//con dos botones
+//con tres botones
 const botonDatosPersonales = document.getElementById("BotonDatosPersonales");
 const botonPreferenciasLectura = document.getElementById("BotonPreferenciasLectura");
+const botonFavoritos = document.getElementById("BotonFavoritos");
 
 botonDatosPersonales.addEventListener("click", function () {
-  // Mostrar datos personales y ocultar de preferencias de lectura
+  // Mostrar datos personales y ocultar de preferencias de lectura y se agrega el boton favoritos
   DatosPersonales.style.display = "block";
   PreferenciasLectura.style.display = "none";
+  Favoritos.style.display = "none";
   botonPreferenciasLectura.disabled = false;
   botonDatosPersonales.disabled = true;
+  botonFavoritos.disabled = false;
 });
 
 botonPreferenciasLectura.addEventListener("click", function () {
   // Mostrar preferencias de lectura y ocultar datos personales
   PreferenciasLectura.style.display = "block";
   DatosPersonales.style.display = "none";
+  Favoritos.style.display = "none";
   botonPreferenciasLectura.disabled = true;
   botonDatosPersonales.disabled = false;
+  botonFavoritos.disabled = false;
+
+  botonFavoritos.addEventListener("click", function() {
+    Favoritos.style.display = "block";
+    DatosPersonales.style.display = "none";
+    PreferenciasLectura.style.display = "none";
+    botonPreferenciasLectura.disabled = false;
+    botonDatosPersonales.disabled = false;
+    botonFavoritos.disabled= true;
+  })
 });
 
 //***************************Capturar Géneros selecionados en Perfil del Usuario**************************************
