@@ -122,7 +122,7 @@ function inicioSesion() {
 
         // Almacenar el objeto en localStorage
         localStorage.setItem('email', correo.value);
-        window.location.href = `panel_usuario.html`;
+        window.location.href = "panel_usuario.html";
 
 
       } else {
