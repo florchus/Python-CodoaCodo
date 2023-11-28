@@ -403,5 +403,23 @@ def guardar_calificaciones():
         return jsonify({"error": "Error interno del servidor"}), 500
 
 
+# Ruta para obtener todos los comentarios para un libro
+@app.route('/comentarios/<id_libro>', methods=['GET'])
+def obtener_comentarios(id_libro):
+    id_libro = int(id_libro)
+
+    comentarios = Comentarios.query.filter_by(IDLibro=id_libro).all()
+
+    comentarios_json = []
+    for comentario in comentarios:
+        comentarios_json.append({
+            'IDComentario': comentario.IDComentario, 
+            'IDLibro': comentario.IDLibro,
+            'Email': comentario.Email,
+            'Comentario': comentario.Comentario,
+            'FechaComentario': comentario.FechaComentario.strftime('%Y-%m-%d') if comentario.FechaComentario else None, 
+        })
+    return jsonify(comentarios_json)
+
 if __name__ == '__main__':
     app.run(debug=True)

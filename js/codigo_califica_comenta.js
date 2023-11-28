@@ -24,7 +24,7 @@ calificar.addEventListener("click", function () {
 
 
 function obtener_calificaciones(id_libro) {
-  const url = `http://librotopia.mysql.pythonanywhere-services.com/calificaciones/${id_libro}`;
+  const url = `https://librotopia.pythonanywhere.com/calificaciones/${id_libro}`;
 
   fetch(url)
       .then(response => response.json())
@@ -36,6 +36,7 @@ function obtener_calificaciones(id_libro) {
           data.Estrella4,
           data.Estrella5
         ];
+        alert("calificaciones");alert(calificaciones);
         //Actualizar el promedio y las barras  
         actualizar_datos()
       })
@@ -45,7 +46,7 @@ function obtener_calificaciones(id_libro) {
 }
 
 function guardarCalificaciones(id_libro) {
-  const url = `http://librotopia.mysql.pythonanywhere-services.com/guardar_calificaciones`;
+  const url = `https://librotopia.pythonanywhere.com/guardar_calificaciones`;
 
   const data = {
     IDLibro: id_libro,
@@ -97,7 +98,7 @@ function actualizar_datos() {
 
 // *********************************************Comentarios**********************************************
 // arreglo de objetos con los comentarios de ejemplo
-const comentarios = [
+let comentarios = [
   {
     fecha: "01/11/2023",
     usuario: "Usuario1",
@@ -120,8 +121,23 @@ const comentarios = [
   },
 ];
 
-// Llama a la función para generar los comentarios al cargar la página
-generarComentarios();
+function obtener_comentarios(id_libro) {
+  const url = `https://librotopia.pythonanywhere.com/comentarios/${id_libro}`;
+  fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        // pasa la data a los comentarios
+        comentarios = data;
+        // Función para generar en el HTML de los comentarios
+        generarComentarios();
+      })
+      .catch(err => {
+          console.error(err);
+      });
+}
+       
+
+obtener_comentarios(id_libro);
 
 // Función para generar en el HTML de los comentarios
 function generarComentarios() {
@@ -131,9 +147,9 @@ function generarComentarios() {
   comentarios.forEach((comentario) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td>${comentario.fecha}</td>
-      <td>${comentario.usuario}</td>
-      <td>${comentario.comentario}</td>
+      <td>${comentario.FechaComentario}</td>
+      <td>${comentario.Email}</td>
+      <td>${comentario.Comentario}</td>
     `;
 
     listaComentarios.appendChild(tr);
@@ -146,9 +162,9 @@ function agregarComentario() {
   if (nuevoComentario.trim() !== "") {
     // Crear un nuevo objeto de comentario
     const nuevoComentarioObj = {
-      fecha: obtenerFechaActual(),
-      usuario: "Nuevo Usuario",
-      comentario: nuevoComentario,
+      FechaComentario: obtenerFechaActual(),
+      Email: "Nuevo Usuario",
+      Comentario: nuevoComentario,
     };
 
     // Agregar el nuevo comentario al principio de la lista
