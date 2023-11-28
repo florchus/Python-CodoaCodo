@@ -113,6 +113,11 @@ with app.app_context():
 
 ########################################## Rutas #################################################
 
+# / Ruta de inicio
+@app.route("/")
+def index():
+    return f'App Web para Librotopía'
+
 # Ruta para obtener los libros seleccionado por genero
 @app.route('/libros/<genero>', methods=['GET'])
 def obtenerlibros_genero(genero):

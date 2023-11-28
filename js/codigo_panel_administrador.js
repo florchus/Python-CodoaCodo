@@ -3,7 +3,7 @@ const { createApp } = Vue
   createApp({
     data() {
       return {
-        url:"http://127.0.0.1:5000/clientes",
+        url:"http://librotopia.mysql.pythonanywhere-services.com/clientes",
         clientes:[],
         error:false,
         cargando:true
@@ -31,7 +31,7 @@ const { createApp } = Vue
         // el correo se necesita para buscar en la DB y eliminarlo
         eliminar(correo) {
             console.log(correo);
-            const url = 'http://127.0.0.1:5000/eliminar_cliente?email=' + correo;
+            const url = 'http://librotopia.mysql.pythonanywhere-services.com/eliminar_cliente?email=' + correo;
             var options = {
                 method: 'DELETE',
             }

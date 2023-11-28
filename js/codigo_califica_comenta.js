@@ -24,7 +24,7 @@ calificar.addEventListener("click", function () {
 
 
 function obtener_calificaciones(id_libro) {
-  const url = `http://127.0.0.1:5000/calificaciones/${id_libro}`;
+  const url = `http://librotopia.mysql.pythonanywhere-services.com/calificaciones/${id_libro}`;
 
   fetch(url)
       .then(response => response.json())
@@ -45,7 +45,7 @@ function obtener_calificaciones(id_libro) {
 }
 
 function guardarCalificaciones(id_libro) {
-  const url = `http://127.0.0.1:5000/guardar_calificaciones`;
+  const url = `http://librotopia.mysql.pythonanywhere-services.com/guardar_calificaciones`;
 
   const data = {
     IDLibro: id_libro,

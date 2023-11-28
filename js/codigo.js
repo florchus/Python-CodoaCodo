@@ -69,7 +69,7 @@ function nuevaCuenta() {
 
   const correo = document.getElementById("correo").value;
   const contraseña = document.getElementById("password1").value;
-  const url = 'http://127.0.0.1:5000/registrar_cliente';
+  const url = 'http://librotopia.mysql.pythonanywhere-services.com/registrar_cliente';
 
   const data = {
     email: correo,
@@ -102,7 +102,7 @@ function inicioSesion() {
   const correo = document.getElementById("email");
   const contraseña = document.getElementById("password");
 
-  const url = 'http://127.0.0.1:5000/verificar_cliente';
+  const url = 'http://librotopia.mysql.pythonanywhere-services.com/verificar_cliente';
 
   const data = {
     email: correo.value,
