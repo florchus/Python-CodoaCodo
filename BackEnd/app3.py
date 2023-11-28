@@ -312,7 +312,7 @@ def actualizar_cliente():
 def eliminar_cliente():
     try:
         email = request.args.get('email')
-
+        
         cliente = Cliente.query.filter_by(Email=email).first()
 
         db.session.delete(cliente)

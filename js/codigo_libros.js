@@ -24,7 +24,7 @@ barraDeProgreso.style.width = progreso + '%';
 // Recorrer arreglo de géneros selecionados
 generosSeleccionados.forEach(genero => {
   // Crear la URL de la API basada en el género actual
-  const apiUrl = `http://librotopia.mysql.pythonanywhere-services.com/libros/${genero}`;
+  const apiUrl = `https://librotopia.pythonanywhere.com/libros/${genero}`;
 
   // Arreglo para almacenar los libros del género actual
   const librosGenero = [];

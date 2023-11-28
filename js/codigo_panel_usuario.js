@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const correoId = localStorage.getItem('email');
   const AdministrarUsuarios = document.getElementById("AdministrarUsuarios");
 
-  const url = 'http://librotopia.mysql.pythonanywhere-services.com/obtener_cliente?email=' + correoId;
+  const url = 'https://librotopia.pythonanywhere.com/obtener_cliente?email=' + correoId;
 
   fetch(url)
     .then(response => response.json())
@@ -44,7 +44,7 @@ function actualizarDatos() {
   const correoId = urlParams.get('email');
   const origen = urlParams.get('origen');
 
-  const url = `http://librotopia.mysql.pythonanywhere-services.com/actualizar_cliente`;
+  const url = `https://librotopia.pythonanywhere.com/actualizar_cliente`;
 
   const data = {
     email: correoId,

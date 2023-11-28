@@ -97,29 +97,8 @@ function actualizar_datos() {
 }
 
 // *********************************************Comentarios**********************************************
-// arreglo de objetos con los comentarios de ejemplo
-let comentarios = [
-  {
-    fecha: "01/11/2023",
-    usuario: "Usuario1",
-    comentario: "Este es un comentario de Usuario1.",
-  },
-  {
-    fecha: "02/11/2023",
-    usuario: "Usuario2",
-    comentario: "Este es un comentario de Usuario2.",
-  },
-  {
-    fecha: "03/11/2023",
-    usuario: "Usuario1",
-    comentario: "Este es otro comentario de Usuario1 pero mucho más largo para ver como se comporta la tabla.",
-  },
-  {
-    fecha: "04/11/2023",
-    usuario: "Usuario3",
-    comentario: "Este es un comentario de Usuario3.",
-  },
-];
+// arreglo de objetos con los comentarios
+let comentarios = [];
 
 function obtener_comentarios(id_libro) {
   const url = `https://librotopia.pythonanywhere.com/comentarios/${id_libro}`;

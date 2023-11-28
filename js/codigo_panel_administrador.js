@@ -3,7 +3,7 @@ const { createApp } = Vue
   createApp({
     data() {
       return {
-        url:"http://librotopia.mysql.pythonanywhere-services.com/clientes",
+        url:"https://librotopia.pythonanywhere.com/clientes",
         clientes:[],
         error:false,
         cargando:true
@@ -30,15 +30,14 @@ const { createApp } = Vue
         },
         // el correo se necesita para buscar en la DB y eliminarlo
         eliminar(correo) {
-            console.log(correo);
-            const url = 'http://librotopia.mysql.pythonanywhere-services.com/eliminar_cliente?email=' + correo;
+            const url = 'https://librotopia.pythonanywhere.com/eliminar_cliente?email=' + correo;
             var options = {
                 method: 'DELETE',
             }
             fetch(url, options)
                 .then(res => res.text()) // or res.json()
                 .then(res => {
-                    alert("Eliminado correctamente")
+                    alert(res)
                     location.reload();
                 })
         }
