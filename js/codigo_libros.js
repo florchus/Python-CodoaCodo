@@ -41,13 +41,13 @@ generosSeleccionados.forEach(genero => {
     })
     .then(data => {
       data.libros.forEach(libro => {
-        const id_libro = libro.IDLibro;
+        const IDLibro = libro.IDLibro;
         const titulo = libro.Titulo;
         const autor = libro.Autor|| 'Desconocido';
         const coverUrl = libro.Portada;
 
         // Agregar el libro al arreglo del género actual
-        librosGenero.push({ id_libro, titulo, autor, coverUrl });
+        librosGenero.push({ IDLibro, titulo, autor, coverUrl });
       });
       // Añadir los libros al div del género correspondiente
       mostrarLibrosEnSeccion(librosGenero, genero);
@@ -79,7 +79,7 @@ function mostrarLibrosEnSeccion(libros, genero) {
   // Crea un enlace para la página de detalles del libro
   libros.forEach(libro => {
     const enlaceDetalle = document.createElement('a');
-    enlaceDetalle.href = `seleccion_libro.html?id_libro=${encodeURIComponent(libro.id_libro)}&titulo=${encodeURIComponent(libro.titulo)}&autor=${encodeURIComponent(libro.autor)}&genero=${encodeURIComponent(genero)}&portada=${encodeURIComponent(libro.coverUrl)}`;
+    enlaceDetalle.href = `seleccion_libro.html?IDLibro=${encodeURIComponent(libro.IDLibro)}&titulo=${encodeURIComponent(libro.titulo)}&autor=${encodeURIComponent(libro.autor)}&genero=${encodeURIComponent(genero)}&portada=${encodeURIComponent(libro.coverUrl)}`;
 
     // Crea la imagen del libro
     const imagen = document.createElement('img');

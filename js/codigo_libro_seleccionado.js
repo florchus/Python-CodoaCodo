@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function datosLibroSeleccionado() {
     // Recupera los datos del libro desde los parámetros de consulta en la URL y muestra en la página
     const urlParams = new URLSearchParams(window.location.search);
-    const id_libro = urlParams.get('id_libro');
+    const IDLibro = urlParams.get('IDLibro');
     const titulo = urlParams.get('titulo');
     const autor = urlParams.get('autor');
     const genero = urlParams.get('genero');
@@ -26,3 +26,18 @@ function datosLibroSeleccionado() {
 
 //se llama a la funcion para cargar los datos que voy a utilizar para el libro seleccionado
 datosLibroSeleccionado()
+
+//se llama a metodo para agregar libro a favoritos
+function agregarLibro() {
+  const url = 'http//127.0.0.1:5000/agregar_favorito/${IDLibro}/${email}';
+  fetch(url, {
+    method:'POST',
+  })
+  .then(response => {
+    if(response != 'Agregado'){
+      console.log('Error al agregar')
+    }
+    return response.jason;
+  })
+
+}

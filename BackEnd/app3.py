@@ -143,7 +143,23 @@ def agregarFavorito(IDLibro, email):
     db.session.add(nuevo_favorito)
     db.session.commit()
 
-    return jsonify({"mensaje":"Libro agregado a tus favoritos"},200)
+    return jsonify({"mensaje":"Agregado"},200)
+
+# Ruta para obtener todos los favoritos
+@app.route('/favoritos/<email>', methods=['GET'])
+def obtener_favoritos():
+    favoritos = Favoritos.query.filter_by(Email=email).all()
+    resultado = []
+    for favorito in favoritos:
+        favs = {
+            'IDLibro': favorito.IDLibro,
+            'Titulo': favorito.Titulo,
+            'Portada': favorito.Portada
+        }
+        resultado.append(favs)
+        
+    return jsonify(resultado)
+
 
 # Ruta para obtener todos los libros
 @app.route('/libros', methods=['GET'])
