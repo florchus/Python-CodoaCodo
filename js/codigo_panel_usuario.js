@@ -1,10 +1,12 @@
 //***************************Cargar información desde la base de datos**************************************
+let correoId // correo del cliente actual
+let origen  // html de donde se llama a panel_usuario
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Obtener el parámetro 'email' de la URL
-  // const urlParams = new URLSearchParams(window.location.search);
-  // const correoId = urlParams.get('email');
-  const correoId = localStorage.getItem('email');
+  // se recupera el correo del usuario y la página de donde es invocada panel_usuario
+  correoId = localStorage.getItem('email');
+  origen = localStorage.getItem('origen');
+
   const AdministrarUsuarios = document.getElementById("AdministrarUsuarios");
 
   const url = 'https://librotopia.pythonanywhere.com/obtener_cliente?email=' + correoId;
@@ -38,11 +40,6 @@ function actualizarDatos() {
   if (!validarFormularioUsuario()) {
     return;
   }
-
-  // Obtener el parámetro 'email' de la URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const correoId = urlParams.get('email');
-  const origen = urlParams.get('origen');
 
   const url = `https://librotopia.pythonanywhere.com/actualizar_cliente`;
 

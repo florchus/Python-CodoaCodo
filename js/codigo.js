@@ -87,6 +87,7 @@ function nuevaCuenta() {
       alert(res.mensaje)
       // Almacenar el objeto en localStorage
       localStorage.setItem('email', correo.value);
+      localStorage.setItem('origen', 'cuentaNueva');
       window.location.href = "panel_usuario.html";
     })
     .catch(err => {
@@ -122,6 +123,7 @@ function inicioSesion() {
 
         // Almacenar el objeto en localStorage
         localStorage.setItem('email', correo.value);
+        localStorage.setItem('origen', 'inicio');
         window.location.href = "panel_usuario.html";
 
 
@@ -173,8 +175,6 @@ function validarFormularioUsuario() {
     return false
   }
 
-  // Si todas las validaciones son exitosas, enviar el formulario
-  /* alert("Se enviaron los datos correctamnte.") */
   return true
 }
 
@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname.includes("index.html")) {
     const enlace = document.getElementById("modoInvitado");
     enlace.addEventListener('click', function (event) {
-      localStorage.setItem('url', 'libros.html?generos=aventure,mistery,nature,love');
+      localStorage.setItem('url', 'libros.html?generos=1,2,3,4');
     });
   }
 });

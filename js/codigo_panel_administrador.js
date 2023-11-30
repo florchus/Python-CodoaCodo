@@ -40,6 +40,11 @@ const { createApp } = Vue
                     alert(res)
                     location.reload();
                 })
+        },
+        editar(correo) {
+            localStorage.setItem('email', correo);
+            localStorage.setItem('origen', 'editar');
+            window.location.href = "panel_usuario.html";
         }
     },
     
