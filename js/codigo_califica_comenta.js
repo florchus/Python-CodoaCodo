@@ -1,11 +1,19 @@
-// Datos de ejemplo calificaciones
+let correoId // correo del cliente actual
+let id_libro // ID del libro actual
 let calificaciones = []; // Este arreglo tendrá la cantidad de votos para cada estrellas
+let comentarios = []; // arreglo de objetos con los comentarios
 
-// Recupera el ID del libro en la URL
-const urlParams = new URLSearchParams(window.location.search);
-const id_libro = urlParams.get('IDLibro');
-//Obtener calificaciones del libro, actualizar el promedio y las barras
-obtener_calificaciones(id_libro);
+document.addEventListener("DOMContentLoaded", function () {
+  // se recupera el correo del usuario
+  correoId = localStorage.getItem('email');
+  // Recupera el ID del libro en la URL
+  const urlParams = new URLSearchParams(window.location.search);
+  id_libro = urlParams.get('IDLibro');
+  //Obtener calificaciones del libro, actualizar el promedio y las barras
+  obtener_calificaciones(id_libro);
+  //Obtener los comentarios, actualiza la lista en el html
+  obtener_comentarios(id_libro);
+});
 
 //Calificar el libro
 const calificar = document.getElementById("calificar");
@@ -27,21 +35,21 @@ function obtener_calificaciones(id_libro) {
   const url = `https://librotopia.pythonanywhere.com/calificaciones/${id_libro}`;
 
   fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        calificaciones = [
-          data.Estrella1,
-          data.Estrella2,
-          data.Estrella3,
-          data.Estrella4,
-          data.Estrella5
-        ];
-        //Actualizar el promedio y las barras  
-        actualizar_datos()
-      })
-      .catch(err => {
-          console.error(err);
-      });
+    .then(response => response.json())
+    .then(data => {
+      calificaciones = [
+        data.Estrella1,
+        data.Estrella2,
+        data.Estrella3,
+        data.Estrella4,
+        data.Estrella5
+      ];
+      //Actualizar el promedio y las barras  
+      actualizar_datos()
+    })
+    .catch(err => {
+      console.error(err);
+    });
 }
 
 function guardarCalificaciones(id_libro) {
@@ -57,21 +65,21 @@ function guardarCalificaciones(id_libro) {
   };
 
   const options = {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
   };
 
   fetch(url, options)
-      .then(response => response.json())
-      .then(function (res) {
-        alert(res.mensaje)
-      })
-      .catch(error => {
-          console.error('Error al guardar calificaciones:', error);
-      });
+    .then(response => response.json())
+    .then(function (res) {
+      alert(res.mensaje)
+    })
+    .catch(error => {
+      console.error('Error al guardar calificaciones:', error);
+    });
 }
 
 function actualizar_datos() {
@@ -96,26 +104,21 @@ function actualizar_datos() {
 }
 
 // *********************************************Comentarios**********************************************
-// arreglo de objetos con los comentarios
-let comentarios = [];
 
 function obtener_comentarios(id_libro) {
   const url = `https://librotopia.pythonanywhere.com/comentarios/${id_libro}`;
   fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        // pasa la data a los comentarios
-        comentarios = data;
-        // Función para generar en el HTML de los comentarios
-        generarComentarios();
-      })
-      .catch(err => {
-          console.error(err);
-      });
+    .then(response => response.json())
+    .then(data => {
+      // pasa la data a los comentarios
+      comentarios = data;
+      // Función para generar en el HTML de los comentarios
+      generarComentarios();
+    })
+    .catch(err => {
+      console.error(err);
+    });
 }
-       
-
-obtener_comentarios(id_libro);
 
 // Función para generar en el HTML de los comentarios
 function generarComentarios() {
@@ -140,8 +143,9 @@ function agregarComentario() {
   if (nuevoComentario.trim() !== "") {
     // Crear un nuevo objeto de comentario
     const nuevoComentarioObj = {
+      IDLibro: id_libro,
       FechaComentario: obtenerFechaActual(),
-      Email: "Nuevo Usuario",
+      Email: correoId,
       Comentario: nuevoComentario,
     };
 
@@ -153,9 +157,33 @@ function agregarComentario() {
 
     // Volver a generar la lista de comentarios
     generarComentarios();
+    // Enviar a la BD el nuevo comentario
+    guardarComentario(nuevoComentarioObj);
   }
   // Llamar a actualizarContador después de agregar un comentario
   actualizarContador();
+}
+
+
+function guardarComentario(data) {
+  const url = `https://librotopia.pythonanywhere.com/guardar_comentario`;
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  };
+
+  fetch(url, options)
+    .then(response => response.json())
+    .then(function (res) {
+      alert(res.mensaje)
+    })
+    .catch(error => {
+      console.error('Error al guardar el comentario:', error);
+    });
 }
 
 function obtenerFechaActual() {
