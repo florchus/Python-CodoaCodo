@@ -435,5 +435,28 @@ def obtener_comentarios(id_libro):
         })
     return jsonify(comentarios_json)
 
+# Ruta para guardar los comentarios
+@app.route('/guardar_comentario', methods=['POST'])
+def guardar_comentario():
+    try:
+        data = request.get_json()
+
+        comentario = Comentarios(  
+            IDLibro = data['IDLibro'],
+            Email = data['Email'],
+            Comentario = data['Comentario'],
+            FechaComentario = data['FechaComentario']
+        )
+
+        db.session.add(comentario)
+        db.session.commit()
+
+        return jsonify({'mensaje': 'Comentario guardado exitosamente'})
+    except Exception as e:
+        print(f"Error en el servidor: {str(e)}")
+        return jsonify({"error": "Error interno del servidor"}), 500
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
