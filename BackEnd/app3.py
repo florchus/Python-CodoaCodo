@@ -344,8 +344,6 @@ def eliminar_cliente():
 @app.route('/calificaciones/<id_libro>', methods=['GET'])
 def obtener_calificaciones(id_libro):
     try:
-        # Convertir el ID del libro a entero
-        id_libro = int(id_libro)
 
         calificaciones = Calificaciones.query.filter_by(IDLibro=id_libro).first()
 

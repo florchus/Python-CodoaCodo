@@ -3,7 +3,7 @@ let calificaciones = []; // Este arreglo tendrá la cantidad de votos para cada 
 
 // Recupera el ID del libro en la URL
 const urlParams = new URLSearchParams(window.location.search);
-const id_libro = urlParams.get('id_libro');
+const id_libro = urlParams.get('IDLibro');
 //Obtener calificaciones del libro, actualizar el promedio y las barras
 obtener_calificaciones(id_libro);
 

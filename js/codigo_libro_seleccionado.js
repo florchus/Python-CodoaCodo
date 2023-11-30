@@ -20,7 +20,7 @@ function datosLibroSeleccionado() {
     // Muestra los detalles en la página
     document.getElementById('titulo').textContent = titulo;
     document.getElementById('autor').textContent = autor;
-    document.getElementById('genero').textContent = (genero == "aventure") ? "Aventura" : (genero == "mistery") ? "Misterio" : (genero == "nature") ? "Naturaleza" : "Romance";
+    document.getElementById('genero').textContent = (genero == 1) ? "Aventura" : (genero == 2) ? "Misterio" : (genero == 3) ? "Naturaleza" : "Romance";
     document.getElementById('portada').src = portada;
   }
 
