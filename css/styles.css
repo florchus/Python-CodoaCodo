@@ -145,7 +145,8 @@ a {
   grid-area: contenido;
   background-color: rgba(168, 134, 254, 0.324);
   border-radius: 1vw;
-  margin-bottom: 5vw;
+  /* margin-bottom: 5vw; */
+  padding-bottom: 5vw;
 }
 /* ============================== HEADER ==============================*/
 .header {
@@ -239,7 +240,7 @@ a {
   width: 95%;
 }
 .container-registro {
-  background-color: whitesmoke;
+  background-color: #d0d0d0;
   box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
   border-radius: 5px;
   width: 24vw;
@@ -302,7 +303,7 @@ h3 {
   width: 95%;
 }
 .container-login {
-  background-color: whitesmoke;
+  background-color: #d0d0d0;
   box-shadow: 0 0 10px rgba(10, 12, 14, 0.747);
   border-radius: 5px;
   width: 24vw;

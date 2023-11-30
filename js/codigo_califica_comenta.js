@@ -36,7 +36,6 @@ function obtener_calificaciones(id_libro) {
           data.Estrella4,
           data.Estrella5
         ];
-        alert("calificaciones");alert(calificaciones);
         //Actualizar el promedio y las barras  
         actualizar_datos()
       })
