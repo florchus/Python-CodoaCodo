@@ -65,8 +65,8 @@
                                         <td>{{cliente.Direccion}}</td>
                                         <td class="acciones">
                                             <!-- <a class="boton" :href="'panel_usuario.html?origen=editar'">Editar</a> --> 
-                                            <button type="button" v-on:click="editar(cliente.Email)">Editar</button>
-                                            <button type="button"  v-on:click="eliminar(cliente.Email)">Eliminar</button>
+                                            <button type="button" id="botonEditar" v-on:click="editar(cliente.Email)">Editar</button>
+                                            <button type="button" id="botonEliminar" v-on:click="eliminar(cliente.Email)">Eliminar</button>
                                         </td>
                                     </tr>
                                 </tbody>

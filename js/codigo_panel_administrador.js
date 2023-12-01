@@ -35,9 +35,9 @@ const { createApp } = Vue
                 method: 'DELETE',
             }
             fetch(url, options)
-                .then(res => res.text()) // or res.json()
-                .then(res => {
-                    alert(res)
+                .then(response => response.json())
+                .then(function (res) {
+                    alert(res.mensaje);
                     location.reload();
                 })
         },
