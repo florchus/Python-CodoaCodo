@@ -188,7 +188,7 @@ function guardarComentario(data) {
 
 function obtenerFechaActual() {
   const fecha = new Date();
-  return `${formatoDosDigitos(fecha.getDate())}/${formatoDosDigitos(fecha.getMonth() + 1)}/${fecha.getFullYear()}`;
+  return `${fecha.getFullYear()}-${formatoDosDigitos(fecha.getMonth() + 1)}-${formatoDosDigitos(fecha.getDate())}`;
 }
 
 function formatoDosDigitos(numero) {
