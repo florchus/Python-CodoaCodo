@@ -328,10 +328,20 @@ def actualizar_cliente():
 def eliminar_cliente():
     try:
         email = request.args.get('email')
-        
+        # Si existen, se eliminan los comentarios de ese cliente
+        comentarios = Comentarios.query.filter_by(Email=email).all()
+        if comentarios:
+            for comentario in comentarios:
+                db.session.delete(comentario)
+        # Si existen, se eliminan los favoritos de ese cliente
+        favoritos = Favoritos.query.filter_by(Email=email).all()
+        if favoritos:
+            for favorito in favoritos:
+                db.session.delete(favorito)
+        # Se busca y se elimina al cliente
         cliente = Cliente.query.filter_by(Email=email).first()
-
         db.session.delete(cliente)
+        # Se actualizan todos los cambios en la BD
         db.session.commit()
 
         return jsonify({'mensaje': 'Cliente eliminado exitosamente'})
