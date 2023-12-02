@@ -86,7 +86,7 @@ function nuevaCuenta() {
     .then(function (res) {
       alert(res.mensaje)
       // Almacenar el objeto en localStorage
-      localStorage.setItem('email', correo.value);
+      localStorage.setItem('email', correo);
       localStorage.setItem('origen', 'cuentaNueva');
       window.location.href = "panel_usuario.html";
     })
