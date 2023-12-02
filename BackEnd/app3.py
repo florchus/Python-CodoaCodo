@@ -239,17 +239,21 @@ def registrar_cliente():
         email = data['email']
         contraseña = data['contraseña']
 
-        # Crear una instancia del modelo Cliente
-        nuevo_cliente = Cliente(Email=email, Contraseña=contraseña, 
-        Nombre='', Apellido='', DNI=0, Direccion='',
-        FechaDeNacimiento='1970-01-01', Alias='', TipoCuenta=1)
+        # Consultar si el cliente ya existe
+        cliente = Cliente.query.filter_by(Email=email).first()
 
-
-        # Agregar el nuevo cliente a la sesión y realizar la confirmación
-        db.session.add(nuevo_cliente)
-        db.session.commit()
-
-        return jsonify({'mensaje': 'Usuario registrado exitosamente'})
+        if cliente:
+            return jsonify({'mensaje': 'Ya este Usuario existe en la base de datos. Inicie sesión'})
+        else:
+            # Crear una instancia del modelo Cliente
+            nuevo_cliente = Cliente(Email=email, Contraseña=contraseña, 
+            Nombre='', Apellido='', DNI=0, Direccion='',
+            FechaDeNacimiento='1970-01-01', Alias='', TipoCuenta=1)
+            # Agregar el nuevo cliente a la sesión y realizar la confirmación
+            db.session.add(nuevo_cliente)
+            db.session.commit()
+            return jsonify({'mensaje': 'Usuario registrado exitosamente'})
+        
     except Exception as e:
         print(f"Error en el servidor: {str(e)}")
         return jsonify({"error": "Error interno del servidor"}), 500
