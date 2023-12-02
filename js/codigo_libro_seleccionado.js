@@ -24,20 +24,31 @@ function datosLibroSeleccionado() {
     document.getElementById('portada').src = portada;
   }
 
-//se llama a la funcion para cargar los datos que voy a utilizar para el libro seleccionado
-datosLibroSeleccionado()
-
 //se llama a metodo para agregar libro a favoritos
 function agregarLibro() {
-  const url = 'http//127.0.0.1:5000/agregar_favorito/${IDLibro}/${email}';
-  fetch(url, {
-    method:'POST',
-  })
-  .then(response => {
-    if(response != 'Agregado'){
-      console.log('Error al agregar')
-    }
-    return response.jason;
-  })
+  const urlParams = new URLSearchParams(window.location.search);
+  const IDLibro = urlParams.get('IDLibro');
+  const email = localStorage.getItem('email');
 
+  const url = `https://librotopia.pythonanywhere.com/agregar_favorito/${IDLibro}/${email}`;
+
+  const data = {
+    IDLibro: IDLibro,
+    email: email
+  };
+
+  var options = {
+    body: JSON.stringify(data),
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  };
+
+  fetch(url, options)
+    .then(response => response.json())
+    .then(function (res) {
+      alert('Agregado a Favoritos');
+    })
+    .catch(err => {
+      console.error(err);
+    });
 }

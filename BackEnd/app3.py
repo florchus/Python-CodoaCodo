@@ -139,11 +139,17 @@ def obtenerlibros_genero(genero):
 # Ruta para agregar libro a favoritos
 @app.route('/agregar_favorito/<int:IDLibro>/<email>', methods=['POST'])
 def agregarFavorito(IDLibro, email):
-    nuevo_favorito = Favoritos(IDLibro=IDLibro, Email=email)
-    db.session.add(nuevo_favorito)
+    data = request.get_json()
+    email = data['email']
+    IDLibro = data['IDLibro']
+
+    nuevoFavorito = Favoritos(IDLibro=IDLibro, Email=email)
+    db.session.add(nuevoFavorito)
+
     db.session.commit()
 
     return jsonify({"mensaje":"Agregado"},200)
+	
 
 # Ruta para obtener todos los favoritos
 @app.route('/favoritos/<email>', methods=['GET'])
