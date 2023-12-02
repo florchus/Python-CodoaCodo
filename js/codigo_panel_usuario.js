@@ -140,6 +140,32 @@ generosForm.addEventListener("submit", function (event) {
   window.location.href = url;
 });
 
+//**************************************Mostrar Favoritos****************************************
+
+function MostrarFavoritos() {
+  const email = localStorage.getItem('email');
+
+  const url = 'https://librotopia.pythonanywhere.com/favoritos/${email}';
+
+  const data = {
+    email: email
+  };
+
+  var options = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  };
+
+  fetch(url, options)
+    .then(response => response.json())
+    .then(function (res) {
+      console.log(res);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+}
+
 //**************************************Cerrar Sesión****************************************
 function cerrarSesion() {
   // Eliminar la información de la sesión al cerrar sesión

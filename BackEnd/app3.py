@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://usuario:contraseña@localhost:3306/nombre_de_la_base_de_datos'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:2304@localhost:3306/librotopia'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost:3306/librotopia'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -153,7 +153,7 @@ def agregarFavorito(IDLibro, email):
 
 # Ruta para obtener todos los favoritos
 @app.route('/favoritos/<email>', methods=['GET'])
-def obtener_favoritos():
+def obtener_favoritos(email):
     favoritos = Favoritos.query.filter_by(Email=email).all()
     resultado = []
     for favorito in favoritos:
