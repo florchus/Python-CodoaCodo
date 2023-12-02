@@ -7,7 +7,7 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://usuario:contraseña@localhost:3306/nombre_de_la_base_de_datos'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://librotopia:Libro2357@librotopia.mysql.pythonanywhere-services.com/librotopia$default'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost:3306/librotopia'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
