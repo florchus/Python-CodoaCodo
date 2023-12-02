@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://librotopia:Libro2357@librotopia.mysql.pythonanywhere-services.com/librotopia$default'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:2304@localhost:3306/librotopia'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost:3306/librotopia'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
