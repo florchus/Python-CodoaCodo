@@ -151,7 +151,7 @@ def agregarFavorito(IDLibro, email):
     return jsonify({"mensaje":"Agregado"},200)
 	
 
-# Ruta para obtener todos los favoritos
+# Ruta para obtener los IDLibro de la tabla favoritos
 @app.route('/favoritos/<email>', methods=['GET'])
 def obtener_favoritos(email):
     favoritos = Favoritos.query.filter_by(Email=email).all()
@@ -159,11 +159,23 @@ def obtener_favoritos(email):
     for favorito in favoritos:
         favs = {
             'IDLibro': favorito.IDLibro,
-            'Titulo': favorito.Titulo,
-            'Portada': favorito.Portada
         }
         resultado.append(favs)
-        
+    return jsonify(resultado)
+
+# Ruta para obtener datos de los libros a traves de un array
+@app.route('/librosporID/<IDLibro>', methods=['GET'])
+def obtenerLibrosID(IDLibro):
+    # consulto los datos de la tabla Libros para los IDLibros del array data
+    libros = Libro.query.filter_by(IDLibro=IDLibro).all()
+    resultado = []
+    for libro in libros:
+        lista = {
+            'Titulo': libro.Titulo,
+            'Autor': libro.Autor,
+            'Portada': libro.Portada
+        }
+        resultado.append(lista)
     return jsonify(resultado)
 
 

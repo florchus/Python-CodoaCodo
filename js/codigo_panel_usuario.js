@@ -143,47 +143,46 @@ generosForm.addEventListener("submit", function (event) {
 //**************************************Mostrar Favoritos****************************************
 
 function MostrarFavoritos() {
+
+  //me traigo un listado de los favoritos que tiene esa cuenta
   const email = localStorage.getItem('email');
-  const url = 'https://librotopia.pythonanywhere.com/favoritos/${email}';
+  const url = `http://127.0.0.1:5000/favoritos/${email}`;
+  console.log(email);
 
   fetch(url)
-    .then(response => response.json())
-    .then(function (res) {
-      // Obtener la referencia al contenedor de favoritos en el HTML
-      const favoritosContainer = document.getElementById('Favoritos');
+  .then(response => {
+    return response.json(); //aca me devuelve la rta en formato json
+  })
+  .then(data => {
+    const cantFavoritos = [];
+    data.forEach(element => {
+      const IDLibro = element.IDLibro;
 
-      // Obtener la referencia a la lista (ul) dentro del contenedor
-      const listaFavoritos = favoritosContainer.querySelector('ul');
-
-      // Limpiar la lista actual (por si había elementos anteriores)
-      listaFavoritos.innerHTML = '';
-
-      // Recorrer los favoritos obtenidos y agregarlos a la lista
-      res.forEach(favorito => {
-        const nuevoElemento = document.createElement('li');
-
-        const tituloElemento = document.createElement('span');
-        tituloElemento.textContent = favorito.Titulo;
-
-        const autorElemento = document.createElement('span');
-        autorElemento.textContent = favorito.Autor;
-
-        const portadaElemento = document.createElement('img')
-        portadaElemento.src = favorito.Portada;
-
-        nuevoElemento.appendChild(tituloElemento);
-        nuevoElemento.appendChild(autorElemento);
-        nuevoElemento.appendChild(portadaElemento);
-
-        // Agregar el nuevo elemento a la lista
-        listaFavoritos.appendChild(nuevoElemento);
-      });
-      // Mostrar el contenedor de favoritos
-      favoritosContainer.style.display = 'block';
-    })
-    .catch(err => {
-      console.error(err);
+      cantFavoritos.push({IDLibro});
+      console.log(cantFavoritos);
     });
+    //tengo que pasar ese listado para que me filtre los favoritos
+    const listaFav = []; //lista para almacenar los datos de los libros
+    cantFavoritos.forEach(element => {
+      const IDLibro = element.IDLibro;
+      const urlFav = `http://127.0.0.1:5000/librosporID/${IDLibro}`;
+  
+      fetch(urlFav)
+      .then(response =>{
+        return response.json();
+      })
+      .then(data => {
+        //agrego los datos del libro a la listaFav
+        listaFav.push(data);
+        console.log(listaFav);
+      })
+
+    })
+
+
+  })
+
+
 }
 
 //**************************************Cerrar Sesión****************************************
