@@ -24,6 +24,9 @@ function datosLibroSeleccionado() {
     document.getElementById('portada').src = portada;
   }
 
+  //se llama a la funcion para cargar los datos que voy a utilizar para el libro seleccionado
+  datosLibroSeleccionado()
+
 //se llama a metodo para agregar libro a favoritos
 function agregarLibro() {
   const urlParams = new URLSearchParams(window.location.search);
