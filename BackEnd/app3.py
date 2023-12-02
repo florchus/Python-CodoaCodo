@@ -243,7 +243,7 @@ def registrar_cliente():
         cliente = Cliente.query.filter_by(Email=email).first()
 
         if cliente:
-            return jsonify({'mensaje': 'Ya este Usuario existe en la base de datos. Inicie sesión'})
+            return jsonify({'mensaje': 'Ya existe este Usuario en la base de datos, se inicia sesión'})
         else:
             # Crear una instancia del modelo Cliente
             nuevo_cliente = Cliente(Email=email, Contraseña=contraseña, 
