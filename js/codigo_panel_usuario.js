@@ -144,22 +144,42 @@ generosForm.addEventListener("submit", function (event) {
 
 function MostrarFavoritos() {
   const email = localStorage.getItem('email');
-
   const url = 'https://librotopia.pythonanywhere.com/favoritos/${email}';
 
-  const data = {
-    email: email
-  };
-
-  var options = {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  };
-
-  fetch(url, options)
+  fetch(url)
     .then(response => response.json())
     .then(function (res) {
-      console.log(res);
+      // Obtener la referencia al contenedor de favoritos en el HTML
+      const favoritosContainer = document.getElementById('Favoritos');
+
+      // Obtener la referencia a la lista (ul) dentro del contenedor
+      const listaFavoritos = favoritosContainer.querySelector('ul');
+
+      // Limpiar la lista actual (por si había elementos anteriores)
+      listaFavoritos.innerHTML = '';
+
+      // Recorrer los favoritos obtenidos y agregarlos a la lista
+      res.forEach(favorito => {
+        const nuevoElemento = document.createElement('li');
+
+        const tituloElemento = document.createElement('span');
+        tituloElemento.textContent = favorito.Titulo;
+
+        const autorElemento = document.createElement('span');
+        autorElemento.textContent = favorito.Autor;
+
+        const portadaElemento = document.createElement('img')
+        portadaElemento.src = favorito.Portada;
+
+        nuevoElemento.appendChild(tituloElemento);
+        nuevoElemento.appendChild(autorElemento);
+        nuevoElemento.appendChild(portadaElemento);
+
+        // Agregar el nuevo elemento a la lista
+        listaFavoritos.appendChild(nuevoElemento);
+      });
+      // Mostrar el contenedor de favoritos
+      favoritosContainer.style.display = 'block';
     })
     .catch(err => {
       console.error(err);
