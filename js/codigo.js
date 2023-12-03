@@ -67,9 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-//**************************************Guardar a Fvaoritos****************************************
-
-
 //**************************************Validad claves iguales en el registro****************************************
 function validarClavesRegistro() {
   // Obtener los valores ingresados por el usuario
@@ -95,7 +92,7 @@ function nuevaCuenta() {
 
   const correo = document.getElementById("correo").value;
   const contraseña = document.getElementById("password1").value;
-  const url = 'https://librotopia.pythonanywhere.com/registrar_cliente';
+  const url = 'http://127.0.0.1:5000/registrar_cliente';
 
   const data = {
     email: correo,
@@ -129,7 +126,7 @@ function inicioSesion() {
   const correo = document.getElementById("email");
   const contraseña = document.getElementById("password");
 
-  const url = 'https://librotopia.pythonanywhere.com/verificar_cliente';
+  const url = 'http://127.0.0.1:5000/verificar_cliente';
 
   const data = {
     email: correo.value,

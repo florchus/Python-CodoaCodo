@@ -13,10 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
   obtener_calificaciones(id_libro);
   //Obtener los comentarios, actualiza la lista en el html
   obtener_comentarios(id_libro);
+  
 });
 
 //Calificar el libro
 const calificar = document.getElementById("calificar");
+const enviarComentario = document.getElementById("enviar-comentario");
 let calificado = false;
 
 calificar.addEventListener("click", function () {
@@ -171,53 +173,54 @@ function agregarComentario() {
     // Llamar a actualizarContador después de agregar un comentario
     actualizarContador();
   }
-
-
-function guardarComentario(data) {
-  const url = `https://librotopia.pythonanywhere.com/guardar_comentario`;
-
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  };
-
-  fetch(url, options)
-    .then(response => response.json())
-    .then(function (res) {
-      alert(res.mensaje)
-    })
-    .catch(error => {
-      console.error('Error al guardar el comentario:', error);
-    });
-}
-
-function obtenerFechaActual() {
-  const fecha = new Date();
-  return `${fecha.getFullYear()}-${formatoDosDigitos(fecha.getMonth() + 1)}-${formatoDosDigitos(fecha.getDate())}`;
-}
-
-function formatoDosDigitos(numero) {
-  return numero < 10 ? `0${numero}` : numero;
-}
-
-function actualizarContador() {
-  const nuevoComentario = document.getElementById("nuevo-comentario");
-  const contadorCaracteres = document.getElementById("contador-caracteres");
-  const maxCaracteres = 500;
-
-  let caracteresRestantes = maxCaracteres - nuevoComentario.value.length;
-  // Ajustar el límite para permitir la escritura negativa, pero seguir mostrando el contador
-  if (caracteresRestantes < 0) {
-    caracteresRestantes = 0;
-    nuevoComentario.value = nuevoComentario.value.slice(0, maxCaracteres); // Limitar la longitud del texto
+  
+  
+  function guardarComentario(data) {
+    const url = `https://librotopia.pythonanywhere.com/guardar_comentario`;
+  
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    };
+  
+    fetch(url, options)
+      .then(response => response.json())
+      .then(function (res) {
+        alert(res.mensaje)
+      })
+      .catch(error => {
+        console.error('Error al guardar el comentario:', error);
+      });
   }
-  contadorCaracteres.textContent = `${caracteresRestantes} caracteres restantes`;
-
-  contadorCaracteres.style.color = caracteresRestantes == 0 ? "red" : "";
-}
+  
+  function obtenerFechaActual() {
+    const fecha = new Date();
+    return `${fecha.getFullYear()}-${formatoDosDigitos(fecha.getMonth() + 1)}-${formatoDosDigitos(fecha.getDate())}`;
+  }
+  
+  function formatoDosDigitos(numero) {
+    return numero < 10 ? `0${numero}` : numero;
+  }
+  
+  function actualizarContador() {
+    const nuevoComentario = document.getElementById("nuevo-comentario");
+    const contadorCaracteres = document.getElementById("contador-caracteres");
+    const maxCaracteres = 500;
+  
+    let caracteresRestantes = maxCaracteres - nuevoComentario.value.length;
+    // Ajustar el límite para permitir la escritura negativa, pero seguir mostrando el contador
+    if (caracteresRestantes < 0) {
+      caracteresRestantes = 0;
+      nuevoComentario.value = nuevoComentario.value.slice(0, maxCaracteres); // Limitar la longitud del texto
+    }
+    contadorCaracteres.textContent = `${caracteresRestantes} caracteres restantes`;
+  
+    contadorCaracteres.style.color = caracteresRestantes == 0 ? "red" : "";
+  }
+  }
 
 
 // ============================================= rating ====================================================

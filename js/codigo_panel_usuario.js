@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const AdministrarUsuarios = document.getElementById("AdministrarUsuarios");
 
-  const url = 'https://librotopia.pythonanywhere.com/obtener_cliente?email=' + correoId;
+  const url = 'http://127.0.0.1:5000/obtener_cliente?email=' + correoId;
 
   fetch(url)
     .then(response => response.json())
@@ -47,7 +47,7 @@ function actualizarDatos() {
     return;
   }
 
-  const url = `https://librotopia.pythonanywhere.com/actualizar_cliente`;
+  const url = `http://127.0.0.1:5000/actualizar_cliente`;
 
   const data = {
     email: correoId,
