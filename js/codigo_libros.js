@@ -9,6 +9,15 @@ let generosSeleccionados = urlParametros.get("generos").split(",");
 // Indices para mover la cinta de portada de cada género.
 const generosIndices = {};
 
+const modo = urlParametros.get('modo');
+
+//aca obtenemos el modo invitado de la URL para bloquear el btn de panel de usuario
+if(modo === 'invitado'){
+  const panelUsuarioButton = document.getElementById('panelUsuario');
+  if(panelUsuarioButton){
+    panelUsuarioButton.style.display = 'none';
+  }
+}
 
 // Barra de progreso
 const carga = document.getElementById('carga');

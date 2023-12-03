@@ -21,13 +21,16 @@ let calificado = false;
 
 calificar.addEventListener("click", function () {
   // rating se define en codigo_rating.js y tienes el número de estrellas con que se calificó al libro
-  if (rating !== 0) {
+  if (correoId !== null & rating !== 0) {
     calificaciones[rating - 1]++;
     actualizar_datos();
     calificar.disabled = true;
     calificado = true;
     guardarCalificaciones(id_libro);
-  };
+  }
+  else{
+    alert('Modo Invitado no puede calificar');
+  }
 });
 
 
@@ -138,31 +141,36 @@ function generarComentarios() {
 }
 
 function agregarComentario() {
-  const nuevoComentario = document.getElementById("nuevo-comentario").value;
-
-  if (nuevoComentario.trim() !== "") {
-    // Crear un nuevo objeto de comentario
-    const nuevoComentarioObj = {
-      IDLibro: id_libro,
-      FechaComentario: obtenerFechaActual(),
-      Email: correoId,
-      Comentario: nuevoComentario,
-    };
-
-    // Agregar el nuevo comentario al principio de la lista
-    comentarios.unshift(nuevoComentarioObj);
-
-    // Limpiar el área de comentario
-    document.getElementById("nuevo-comentario").value = "";
-
-    // Volver a generar la lista de comentarios
-    generarComentarios();
-    // Enviar a la BD el nuevo comentario
-    guardarComentario(nuevoComentarioObj);
+  if(correoId === null){
+    alert('Modo Invitado no puede comentar');
   }
-  // Llamar a actualizarContador después de agregar un comentario
-  actualizarContador();
-}
+  else{
+
+    const nuevoComentario = document.getElementById("nuevo-comentario").value;
+  
+    if (nuevoComentario.trim() !== "") {
+      // Crear un nuevo objeto de comentario
+      const nuevoComentarioObj = {
+        IDLibro: id_libro,
+        FechaComentario: obtenerFechaActual(),
+        Email: correoId,
+        Comentario: nuevoComentario,
+      };
+  
+      // Agregar el nuevo comentario al principio de la lista
+      comentarios.unshift(nuevoComentarioObj);
+  
+      // Limpiar el área de comentario
+      document.getElementById("nuevo-comentario").value = "";
+  
+      // Volver a generar la lista de comentarios
+      generarComentarios();
+      // Enviar a la BD el nuevo comentario
+      guardarComentario(nuevoComentarioObj);
+    }
+    // Llamar a actualizarContador después de agregar un comentario
+    actualizarContador();
+  }
 
 
 function guardarComentario(data) {

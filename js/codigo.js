@@ -41,6 +41,32 @@ modoDN.addEventListener('click', function () {
   cambiarDiaNoche();
 });
 
+//falta darle estilo al boton cerrar sesion que lo puse en otro div
+//aca verifico si hay una sesion iniciada y si es asi creo el boton cerrar sesion 
+//y oculto el iniciar sesion. Ademas de la funcionalidad al cerrar la sesion.
+document.addEventListener("DOMContentLoaded", function () {
+  const email = localStorage.getItem('email');
+
+  if (email != null) {
+    const contenedorBotonCerrarSesion = document.getElementById('boton-cerrar-sesion-container');
+    // Obtén el elemento del enlace "Iniciar Sesión" por su id
+    const enlaceIniciarSesion = document.getElementById('iniciarSesion');
+    // Oculta el enlace
+    enlaceIniciarSesion.style.display = 'none';
+
+    const botonCerrarSesion = document.createElement('button');
+    botonCerrarSesion.textContent = 'Cerrar Sesión';
+    botonCerrarSesion.addEventListener('click', function () {
+      // Limpiar el localStorage al cerrar sesión
+      localStorage.removeItem('email');
+      // Redirigir a la página de inicio de sesión o a la página principal
+      location.reload();
+    });
+    contenedorBotonCerrarSesion.appendChild(botonCerrarSesion);
+  }
+});
+
+
 //**************************************Guardar a Fvaoritos****************************************
 
 
