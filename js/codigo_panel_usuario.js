@@ -141,13 +141,13 @@ generosForm.addEventListener("submit", function (event) {
 });
 
 //**************************************Mostrar Favoritos****************************************
+const listaFav = []; //lista para almacenar los datos de los libros
 
 function MostrarFavoritos() {
 
   //me traigo un listado de los favoritos que tiene esa cuenta
   const email = localStorage.getItem('email');
   const url = `http://127.0.0.1:5000/favoritos/${email}`;
-  console.log(email);
 
   fetch(url)
   .then(response => {
@@ -157,12 +157,13 @@ function MostrarFavoritos() {
     const cantFavoritos = [];
     data.forEach(element => {
       const IDLibro = element.IDLibro;
-
       cantFavoritos.push({IDLibro});
-      console.log(cantFavoritos);
     });
+    console.log(cantFavoritos)
     //tengo que pasar ese listado para que me filtre los favoritos
-    const listaFav = []; //lista para almacenar los datos de los libros
+    
+    //para cada uno de los IDlibros en el array cantFavoritos, saco los datos de los libros con la API
+    //librosporID
     cantFavoritos.forEach(element => {
       const IDLibro = element.IDLibro;
       const urlFav = `http://127.0.0.1:5000/librosporID/${IDLibro}`;
@@ -173,17 +174,87 @@ function MostrarFavoritos() {
       })
       .then(data => {
         //agrego los datos del libro a la listaFav
-        listaFav.push(data);
-        console.log(listaFav);
-      })
+        data.forEach(element =>{
+          const Titulo = element.Titulo;
+          const Autor = element.Autor;
+          const Portada = element.Portada;
+          listaFav.push({IDLibro,Titulo,Autor,Portada});
+          
+        })
+      });     
+    });
+  });
+  console.log(listaFav);
+  //error: tengo que apretar dos veces en favoritos, y ademas cada vez que apreto favorito como que no me borra lo anterior
 
-    })
+listaFav.forEach(function(libro) {
+  let contenedor = document.getElementById('Favoritos');
+  let tabla = document.createElement('table');
+  tabla.className = 'tabla-fav';
 
+  // Crear la cabecera de la tabla
+  let cabecera = tabla.createTHead();
+  let filaCabecera = cabecera.insertRow();
+  let celdaTitulo = filaCabecera.insertCell(0);
+  let celdaAutor = filaCabecera.insertCell(1);
+  let celdaPortada = filaCabecera.insertCell(2);
+  let celdaEliminar = filaCabecera.insertCell(3);
 
-  })
+  celdaTitulo.innerHTML = '<b>Título</b>';
+  celdaAutor.innerHTML = '<b>Autor</b>';
+  celdaPortada.innerHTML = '<b>Portada</b>';
+  celdaEliminar.innerHTML = '<b>Acción</b>'
 
+  // Agregar la tabla al contenedor
+  contenedor.appendChild(tabla);
 
+  // Llenar la tabla con los datos de listaFav
+  listaFav.forEach(function(libro) {
+    let nuevaFila = tabla.insertRow();
+    
+    // Insertar celdas con la información del libro
+    nuevaFila.insertCell(0).textContent = libro.Titulo;
+    nuevaFila.insertCell(1).textContent = libro.Autor;
+
+    // Crear una celda para la imagen de la portada
+    let celdaPortada = nuevaFila.insertCell(2);
+    let imagenPortada = document.createElement('img');
+    imagenPortada.src = libro.Portada;
+    imagenPortada.alt = 'Portada del libro';
+    celdaPortada.appendChild(imagenPortada);
+
+    // Crear una celda para el botón Eliminar
+    let celdaEliminar = nuevaFila.insertCell(3);
+    let botonEliminar = document.createElement('button');
+    botonEliminar.textContent = 'Eliminar';
+    botonEliminar.onclick = function() {
+      eliminarFavorito(libro.IDLibro);
+    };
+    celdaEliminar.appendChild(botonEliminar);
+  });
+
+});
 }
+//**************************************Eliminar Favorito****************************************
+function eliminarFavorito(IDLibro){
+   console.log(IDLibro);
+   const email = localStorage.getItem('email');
+   const url = `http://127.0.0.1:5000//borrarFavorito/${IDLibro}/${email}`;
+
+   fetch(url, {
+     method: 'DELETE'
+   })
+   .then(response => response.json())
+   .then(data => {
+     alert(data.respuesta);
+     location.reload();
+
+     const elementoEliminar = document.getElementById(IDLibro);
+     if(elementoEliminar){
+       elementoEliminar.remove();
+     }
+   })
+ }
 
 //**************************************Cerrar Sesión****************************************
 function cerrarSesion() {

@@ -33,25 +33,40 @@ function agregarLibro() {
   const IDLibro = urlParams.get('IDLibro');
   const email = localStorage.getItem('email');
 
-  const url = `https://librotopia.pythonanywhere.com/agregar_favorito/${IDLibro}/${email}`;
+  const urlVerif = `http://127.0.0.1:5000/verificarFavorito/${IDLibro}/${email}`;
 
-  const data = {
-    IDLibro: IDLibro,
-    email: email
-  };
-
-  var options = {
-    body: JSON.stringify(data),
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-  };
-
-  fetch(url, options)
-    .then(response => response.json())
-    .then(function (res) {
-      alert('Agregado a Favoritos');
+  fetch(urlVerif)
+    .then(response =>{
+      return response.json();
     })
-    .catch(err => {
-      console.error(err);
-    });
+    .then(data => {
+      if(data.respuesta === 'NO'){
+        alert('Ya se encuentra Agregado');
+      }
+      else {
+        const url = `http://127.0.0.1:5000/agregar_favorito/${IDLibro}/${email}`;
+      
+        const data = {
+          IDLibro: IDLibro,
+          email: email
+        };
+      
+        var options = {
+          body: JSON.stringify(data),
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+        };
+      
+        fetch(url, options)
+          .then(response => response.json())
+          .then(function (res) {
+            alert('Agregado a Favoritos');
+          })
+          .catch(err => {
+            console.error(err);
+          });
+
+      }
+    })
+
 }

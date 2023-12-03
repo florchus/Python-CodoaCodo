@@ -136,6 +136,16 @@ def obtenerlibros_genero(genero):
         })
     return jsonify({'libros': libros_json})
 
+# Ruta para verificar que ese IDLibro no este ya guardado
+@app.route('/verificarFavorito/<int:IDLibro>/<email>', methods=['GET'])
+def verificarFavorito(IDLibro,email):
+    favorito = Favoritos.query.filter_by(Email=email,IDLibro=IDLibro).all()
+
+    if favorito:
+        return jsonify({'respuesta':'NO'})
+    else:
+        return jsonify({'respuesta': 'SI'})
+    
 # Ruta para agregar libro a favoritos
 @app.route('/agregar_favorito/<int:IDLibro>/<email>', methods=['POST'])
 def agregarFavorito(IDLibro, email):
@@ -178,6 +188,17 @@ def obtenerLibrosID(IDLibro):
         resultado.append(lista)
     return jsonify(resultado)
 
+# Ruta para borrar un favorito
+@app.route('/borrarFavorito/<IDLibro>/<email>', methods=['DELETE'])
+def borrarFavorito(IDLibro,email):
+    favorito = Favoritos.query.filter_by(Email=email, IDLibro=IDLibro).first()
+    # Si el favorito existe hay que eliminarlo
+    if favorito:
+        db.session.delete(favorito)
+        db.session.commit()
+        return jsonify({'respuesta':'Favorito eliminado correctamente'})
+    else:
+        return jsonify({'respuesta':'No se encontro el favorito'})
 
 # Ruta para obtener todos los libros
 @app.route('/libros', methods=['GET'])
