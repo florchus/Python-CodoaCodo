@@ -33,7 +33,7 @@ function agregarLibro() {
   const IDLibro = urlParams.get('IDLibro');
   const email = localStorage.getItem('email');
 
-  const urlVerif = `http://127.0.0.1:5000/verificarFavorito/${IDLibro}/${email}`;
+  const urlVerif = `https://librotopia.pythonanywhere.com/verificarFavorito/${IDLibro}/${email}`;
 
   fetch(urlVerif)
     .then(response =>{
@@ -44,7 +44,7 @@ function agregarLibro() {
         alert('Ya se encuentra Agregado');
       }
       else {
-        const url = `http://127.0.0.1:5000/agregar_favorito/${IDLibro}/${email}`;
+        const url = `https://librotopia.pythonanywhere.com/agregar_favorito/${IDLibro}/${email}`;
       
         const data = {
           IDLibro: IDLibro,

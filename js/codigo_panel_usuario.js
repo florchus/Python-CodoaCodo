@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const AdministrarUsuarios = document.getElementById("AdministrarUsuarios");
 
-  const url = 'http://127.0.0.1:5000/obtener_cliente?email=' + correoId;
+  const url = 'https://librotopia.pythonanywhere.com/obtener_cliente?email=' + correoId;
 
   fetch(url)
     .then(response => response.json())
@@ -47,7 +47,7 @@ function actualizarDatos() {
     return;
   }
 
-  const url = `http://127.0.0.1:5000/actualizar_cliente`;
+  const url = `https://librotopia.pythonanywhere.com/actualizar_cliente`;
 
   const data = {
     email: correoId,
@@ -154,7 +154,7 @@ function MostrarFavoritos() {
 
   //me traigo un listado de los favoritos que tiene esa cuenta
   const email = localStorage.getItem('email');
-  const url = `http://127.0.0.1:5000/favoritos/${email}`;
+  const url = `https://librotopia.pythonanywhere.com/favoritos/${email}`;
 
   fetch(url)
   .then(response => {
@@ -173,7 +173,7 @@ function MostrarFavoritos() {
     //librosporID
     cantFavoritos.forEach(element => {
       const IDLibro = element.IDLibro;
-      const urlFav = `http://127.0.0.1:5000/librosporID/${IDLibro}`;
+      const urlFav = `https://librotopia.pythonanywhere.com/librosporID/${IDLibro}`;
   
       fetch(urlFav)
       .then(response =>{
@@ -246,7 +246,7 @@ listaFav.forEach(function(libro) {
 function eliminarFavorito(IDLibro){
    console.log(IDLibro);
    const email = localStorage.getItem('email');
-   const url = `http://127.0.0.1:5000//borrarFavorito/${IDLibro}/${email}`;
+   const url = `https://librotopia.pythonanywhere.com//borrarFavorito/${IDLibro}/${email}`;
 
    fetch(url, {
      method: 'DELETE'
