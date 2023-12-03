@@ -23,6 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
       /* document.getElementById('telefono').value = data.Telefono; */
       document.getElementById('fechana').value = data.FechaDeNacimiento !== undefined ? data.FechaDeNacimiento : '';
       document.getElementById('alias').value = data.Alias !== undefined ? data.Alias : '';
+      document.getElementById('tipoCuentaData').value = data.TipoCuenta ;
+      if(origen == "editar") {
+        document.getElementById("tipoCuenta").style.display = "block"; 
+      } else {
+        document.getElementById("tipoCuenta").style.display = "none"; 
+      }
       if (data.TipoCuenta == 2){
         AdministrarUsuarios.style.display = "block";
       }
@@ -50,7 +56,8 @@ function actualizarDatos() {
     DNI: document.getElementById('DNI').value,
     Direccion: document.getElementById('direccion').value,
     FechaDeNacimiento: document.getElementById('fechana').value,
-    Alias: document.getElementById('alias').value
+    Alias: document.getElementById('alias').value,
+    TipoCuenta: document.getElementById('tipoCuentaData').value
   };
 
   var options = {

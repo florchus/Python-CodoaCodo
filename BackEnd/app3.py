@@ -357,7 +357,8 @@ def actualizar_cliente():
         cliente.Direccion = data['Direccion']
         cliente.FechaDeNacimiento = datetime.strptime(data['FechaDeNacimiento'], '%Y-%m-%d').date()
         cliente.Alias = data['Alias']
-
+        cliente.TipoCuenta = data['TipoCuenta']
+        
         db.session.commit()
 
         return jsonify({'mensaje': 'Datos actualizados exitosamente'})
