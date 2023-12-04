@@ -93,6 +93,25 @@ html.modoNoche {
   cursor: pointer;
 }
 
+/* ============================== Boton Cerrar Sesion ==============================*/
+
+.left button {
+  border: none;
+  background: #6246ea;
+  color: rgb(201, 201, 201);
+  padding: 2vh 0vw;
+  border-radius: 5px;
+  font-size: 45%;
+  margin: 0.5vw 0.5vw;
+  width: 80%;
+  height: auto;
+  text-align: center;
+ }
+ .left button:hover {
+  background: #0732f12d;
+  color: black;
+ }
+
 .left {
   grid-area: left;
   background-color: rgba(168, 134, 254, 0.324);
