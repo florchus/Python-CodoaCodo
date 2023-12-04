@@ -148,56 +148,59 @@ generosForm.addEventListener("submit", function (event) {
 });
 
 //**************************************Mostrar Favoritos****************************************
-const listaFav = []; //lista para almacenar los datos de los libros
 
-function MostrarFavoritos() {
+let listaFav = []; //lista para almacenar los datos de los libros
 
-  //me traigo un listado de los favoritos que tiene esa cuenta
+async function MostrarFavoritos() {
+  // Limpiar la listaFav antes de cargar nuevos favoritos
+  listaFav = [];
+
+  // Me traigo un listado de los favoritos que tiene esa cuenta
   const email = localStorage.getItem('email');
   const url = `https://librotopia.pythonanywhere.com/favoritos/${email}`;
 
-  fetch(url)
-  .then(response => {
-    return response.json(); //aca me devuelve la rta en formato json
-  })
-  .then(data => {
-    const cantFavoritos = [];
-    data.forEach(element => {
-      const IDLibro = element.IDLibro;
-      cantFavoritos.push({IDLibro});
-    });
-    console.log(cantFavoritos)
-    //tengo que pasar ese listado para que me filtre los favoritos
-    
-    //para cada uno de los IDlibros en el array cantFavoritos, saco los datos de los libros con la API
-    //librosporID
-    cantFavoritos.forEach(element => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const cantFavoritos = data.map(element => ({ IDLibro: element.IDLibro }));
+
+    // Para cada IDLibro en el array cantFavoritos, saco los datos de los libros con la API
+    const promises = cantFavoritos.map(async element => {
       const IDLibro = element.IDLibro;
       const urlFav = `https://librotopia.pythonanywhere.com/librosporID/${IDLibro}`;
-  
-      fetch(urlFav)
-      .then(response =>{
-        return response.json();
-      })
-      .then(data => {
-        //agrego los datos del libro a la listaFav
-        data.forEach(element =>{
-          const Titulo = element.Titulo;
-          const Autor = element.Autor;
-          const Portada = element.Portada;
-          listaFav.push({IDLibro,Titulo,Autor,Portada});
-          
-        })
-      });     
-    });
-  });
-  console.log(listaFav);
-  //error: tengo que apretar dos veces en favoritos, y ademas cada vez que apreto favorito como que no me borra lo anterior
 
-listaFav.forEach(function(libro) {
+      const responseFav = await fetch(urlFav);
+      const dataFav = await responseFav.json();
+
+      // Agrego los datos del libro a la listaFav
+      dataFav.forEach(element => {
+        const Titulo = element.Titulo;
+        const Autor = element.Autor;
+        const Portada = element.Portada;
+        listaFav.push({ IDLibro, Titulo, Autor, Portada });
+      });
+    });
+
+    // Esperar a que todas las promesas se resuelvan antes de continuar
+    await Promise.all(promises);
+
+    generarTablaFav();
+  } catch (error) {
+    console.error('Error al obtener favoritos:', error);
+  }
+}
+
+function generarTablaFav() {
+  //error: tengo que apretar dos veces en favoritos, y ademas cada vez que apreto favorito como que no me borra lo anterior
+  console.log('listaFav', listaFav);
   let contenedor = document.getElementById('Favoritos');
   let tabla = document.createElement('table');
   tabla.className = 'tabla-fav';
+
+  // Limpiar la tabla antes de agregar nuevas filas
+  contenedor.innerHTML = '';
+  tabla.innerHTML = '';
 
   // Crear la cabecera de la tabla
   let cabecera = tabla.createTHead();
@@ -218,29 +221,29 @@ listaFav.forEach(function(libro) {
   // Llenar la tabla con los datos de listaFav
   listaFav.forEach(function(libro) {
     let nuevaFila = tabla.insertRow();
-    
+      
     // Insertar celdas con la información del libro
     nuevaFila.insertCell(0).textContent = libro.Titulo;
     nuevaFila.insertCell(1).textContent = libro.Autor;
 
-    // Crear una celda para la imagen de la portada
-    let celdaPortada = nuevaFila.insertCell(2);
-    let imagenPortada = document.createElement('img');
-    imagenPortada.src = libro.Portada;
-    imagenPortada.alt = 'Portada del libro';
-    celdaPortada.appendChild(imagenPortada);
+      // Crear una celda para la imagen de la portada
+      let celdaPortada = nuevaFila.insertCell(2);
+      let imagenPortada = document.createElement('img');
+      imagenPortada.src = libro.Portada;
+      imagenPortada.alt = 'Portada del libro';
+      celdaPortada.appendChild(imagenPortada);
 
-    // Crear una celda para el botón Eliminar
-    let celdaEliminar = nuevaFila.insertCell(3);
-    let botonEliminar = document.createElement('button');
-    botonEliminar.textContent = 'Eliminar';
-    botonEliminar.onclick = function() {
-      eliminarFavorito(libro.IDLibro);
-    };
-    celdaEliminar.appendChild(botonEliminar);
-  });
+      // Crear una celda para el botón Eliminar
+      let celdaEliminar = nuevaFila.insertCell(3);
+      let botonEliminar = document.createElement('button');
+      botonEliminar.textContent = 'Eliminar';
+      botonEliminar.onclick = function() {
+        eliminarFavorito(libro.IDLibro);
+      };
+      celdaEliminar.appendChild(botonEliminar);
+    });
+    listaFav = [];
 
-});
 }
 //**************************************Eliminar Favorito****************************************
 function eliminarFavorito(IDLibro){
