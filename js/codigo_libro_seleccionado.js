@@ -33,6 +33,12 @@ function agregarLibro() {
   const IDLibro = urlParams.get('IDLibro');
   const email = localStorage.getItem('email');
 
+   //verificamos que no este en modo invitado
+  if(email === null){
+    alert('Debes registrarte primero');
+    window.location.href = 'registro.html';
+  }
+
   const urlVerif = `https://librotopia.pythonanywhere.com/verificarFavorito/${IDLibro}/${email}`;
 
   fetch(urlVerif)
